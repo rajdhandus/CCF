@@ -1,0 +1,14 @@
+{
+  "endpoints": {
+    "/feeds/{feedId}": {
+      "get": {
+        "js_module": "src/endpoints/feeds.js",
+        "js_function": "getFeed",
+        "forwarding_required": "always",
+        "execute_outside_consensus": "never",
+        "authn_policies": [],
+        "readonly": true
+      }
+    }
+  }
+}
