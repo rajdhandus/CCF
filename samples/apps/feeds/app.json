@@ -1,10 +1,48 @@
 {
   "endpoints": {
-    "/feeds/{feedId}": {
+    "/feeds/{dnsName}": {
       "get": {
         "js_module": "src/endpoints/feeds.js",
-        "js_function": "getFeed",
+        "js_function": "getFeedNamespace",
+        "forwarding_required": "never",
+        "execute_outside_consensus": "never",
+        "authn_policies": [],
+        "readonly": true
+      },
+      "put": {
+        "js_module": "src/endpoints/feeds.js",
+        "js_function": "setFeedNamespace",
         "forwarding_required": "always",
+        "execute_outside_consensus": "never",
+        "authn_policies": [],
+        "readonly": false
+      }
+    },
+    "/feeds/{dnsName}/{itemName}": {
+      "post": {
+        "js_module": "src/endpoints/feeds.js",
+        "js_function": "recordItemIdentity",
+        "forwarding_required": "always",
+        "execute_outside_consensus": "never",
+        "authn_policies": [],
+        "readonly": false
+      }
+    },
+    "/feeds/{dnsName}/{itemName}/latest": {
+      "get": {
+        "js_module": "src/endpoints/feeds.js",
+        "js_function": "getLatestItemIdentity",
+        "forwarding_required": "never",
+        "execute_outside_consensus": "never",
+        "authn_policies": [],
+        "readonly": true
+      }
+    },
+    "/feeds/{dnsName}/{itemName}/{seqno}": {
+      "get": {
+        "js_module": "src/endpoints/feeds.js",
+        "js_function": "getItemIdentity",
+        "forwarding_required": "never",
         "execute_outside_consensus": "never",
         "authn_policies": [],
         "readonly": true

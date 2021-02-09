@@ -4,7 +4,9 @@
     "build": "del-cli -f dist/ && rollup --config && cp app.json dist/"
   },
   "type": "module",
-  "dependencies": {},
+  "dependencies": {
+    "jshashes": "^1.0.8"
+  },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^14.0.0",
     "@rollup/plugin-node-resolve": "^8.4.0",
