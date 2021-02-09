@@ -3,3 +3,4 @@ node_modules/
 dist/
 .venv_ccf_sandbox
 workspace/
+tmp/

@@ -5,12 +5,14 @@
   },
   "type": "module",
   "dependencies": {
-    "jshashes": "^1.0.8"
+    "jshashes": "^1.0.8",
+    "jsrsasign": "^10.1.8"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^14.0.0",
     "@rollup/plugin-node-resolve": "^8.4.0",
     "@rollup/plugin-typescript": "^5.0.2",
+    "@types/jsrsasign": "^8.0.9",
     "del-cli": "^3.0.1",
     "rollup": "^2.23.0",
     "tslib": "^2.0.1",

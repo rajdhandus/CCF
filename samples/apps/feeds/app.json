@@ -26,9 +26,7 @@
         "execute_outside_consensus": "never",
         "authn_policies": [],
         "readonly": false
-      }
-    },
-    "/feeds/{dnsName}/{itemName}/latest": {
+      },
       "get": {
         "js_module": "src/endpoints/feeds.js",
         "js_function": "getLatestItemIdentity",

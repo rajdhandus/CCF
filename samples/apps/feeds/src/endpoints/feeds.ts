@@ -1,4 +1,5 @@
 import Hashes from "jshashes";
+import { KJUR, KEYUTIL, X509 } from 'jsrsasign';
 import * as ccf from "../types/ccf";
 
 interface Error {
@@ -75,7 +76,7 @@ export function setFeedNamespace(request: ccf.Request<FeedNamespace>): ccf.Respo
   }
 }
 
-// GET /feeds/{dnsName}/{itemName}/latest
+// GET /feeds/{dnsName}/{itemName}
 export function getLatestItemIdentity(request: ccf.Request): ccf.Response<ItemIdentityResponse | Error> {
   const dnsName = request.params['dnsName'];
   const itemName = request.params['itemName'];
@@ -143,6 +144,76 @@ export function recordItemIdentity(request: ccf.Request): ccf.Response<ItemIdent
   const nextSeqno = currentSeqno === undefined ? 1 : currentSeqno + 1;
 
   const body = request.body.text();
+  
+  let jws: KJUR.jws.JWS.JWSResult
+  try {
+    jws = KJUR.jws.JWS.parse(body);
+  } catch (e) {
+    return {
+      statusCode: 400,
+      body: {
+        error: {
+          code: 'InvalidInput',
+          message: `Body is not a JWT: ${e}`
+        }
+      }
+    };
+  }
+  const header = jws.headerObj as any
+  if (!Array.isArray(header.x5c) || header.x5c.length === 0) {
+    return {
+      statusCode: 400,
+      body: {
+        error: {
+          code: 'InvalidInput',
+          message: `JWT is missing X.509 cert in header`
+        }
+      }
+    };
+  }
+  const certX5c = header.x5c[0];
+  const certPem = 
+    '-----BEGIN CERTIFICATE-----\n' +
+    certX5c +
+    '\n-----END CERTIFICATE-----';
+  const publicKey = KEYUTIL.getKey(certPem)
+  const isValid = KJUR.jws.JWS.verifyJWT(body, <any>publicKey, <any>{
+    alg: ['RS256'],
+    // No trusted time, disable time validation.
+    verifyAt: Date.parse('2000-01-01T00:00:00') / 1000,
+    gracePeriod: 100 * 365 * 24 * 60 * 60
+  });
+  if (!isValid) {
+    return {
+      statusCode: 400,
+      body: {
+        error: {
+          code: 'InvalidInput',
+          message: `JWT validation failed`
+        }
+      }
+    };
+  }
+
+  // TODO check if cert chain is valid
+
+  const x509 = new X509();
+  x509.readCertPEM(certPem);
+  const x509Subject: Array<Array<any>> = (<any>x509).getSubject().array
+  const cn = x509Subject.find(v => v[0].type == 'CN')[0].value
+  // TODO handle wildcards
+  if (cn !== dnsName) {
+    return {
+      statusCode: 400,
+      body: {
+        error: {
+          code: 'InvalidInput',
+          message: `CN of signing certificate does not match feed: ${cn}`
+        }
+      }
+    };
+  }
+
   const item: ItemIdentity = {
     hash: new Hashes.SHA256().hex(body)
   }
