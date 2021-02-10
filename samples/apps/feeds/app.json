@@ -35,16 +35,6 @@
         "authn_policies": [],
         "readonly": true
       }
-    },
-    "/feeds/{dnsName}/{itemName}/{seqno}": {
-      "get": {
-        "js_module": "src/endpoints/feeds.js",
-        "js_function": "getItemIdentity",
-        "forwarding_required": "never",
-        "execute_outside_consensus": "never",
-        "authn_policies": [],
-        "readonly": true
-      }
     }
   }
 }

@@ -1,6 +1,7 @@
 import sys
 sys.path.append("../../../tests")
 
+import json
 import requests
 from pathlib import Path
 
@@ -44,10 +45,15 @@ def populate_feeds():
         with open(jwt_path, 'w') as f:
             f.write(jwt)
         r = client.post(f"/app/feeds/{dns_name}/{item_name}", jwt)
+        data = r.body.json()
 
-        r = client.get(f"/app/feeds/{dns_name}/{item_name}")
+        client.wait_for_commit(r)
+        r = client.get(f"/app/receipt?commit={r.seqno}")
+        receipt = r.body.json()
+
         with open(tmp_dir / f'item_{item_name}.receipt.json', 'w') as f:
-            f.write(r.body.text())
+            combined = {**receipt, "data": data}
+            json.dump(combined, f, indent=2)
 
 def main():
     populate_feeds()

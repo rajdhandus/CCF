@@ -76,6 +76,7 @@ export function setFeedNamespace(request: ccf.Request<FeedNamespace>): ccf.Respo
   }
 }
 
+// TODO not really needed, we just care about the receipt
 // GET /feeds/{dnsName}/{itemName}
 export function getLatestItemIdentity(request: ccf.Request): ccf.Response<ItemIdentityResponse | Error> {
   const dnsName = request.params['dnsName'];
@@ -103,21 +104,6 @@ export function getLatestItemIdentity(request: ccf.Request): ccf.Response<ItemId
       hash: itemIdentity.hash
     }
   }
-}
-
-// GET /feeds/{dnsName}/{itemName}/{seqno}
-export function getItemIdentity(request: ccf.Request): ccf.Response<ItemIdentityResponse | Error> {
-  const dnsName = request.params['dnsName'];
-  const itemName = request.params['itemName'];
-  const seqno = parseInt(request.params['seqno']);
-  const feedName = `${dnsName}/${itemName}`
-  const currentSeqno = feedSeqnoMap.get(feedName);
-  if (currentSeqno === seqno) {
-    return getLatestItemIdentity(request);
-  }
-
-  // TODO: how to do historic queries to get a specific seqno?
-  throw new Error('not implemented');
 }
 
 // POST /feeds/{dnsName}/{itemName}
