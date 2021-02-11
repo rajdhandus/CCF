@@ -195,8 +195,6 @@ export function recordItemIdentity(request: ccf.Request): ccf.Response<ItemIdent
     };
   }
 
-  // TODO check if cert chain is valid
-
   if (feedNamespace.itemAuth.type === 'jwks') {
     const signingKeyId = header.kid;
     // Get the stored signing key to validate the token.
@@ -243,6 +241,8 @@ export function recordItemIdentity(request: ccf.Request): ccf.Response<ItemIdent
       throw new Error(`url mismatch: ${keyIssuer} !== https://${dnsName}`);
     }
   } else if (feedNamespace.itemAuth.type == 'tlsCert') {
+    // TODO check if cert chain is valid
+    
     const x509 = new X509();
     x509.readCertPEM(certPem);
     const x509Subject: Array<Array<any>> = (<any>x509).getSubject().array
