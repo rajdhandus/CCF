@@ -5,6 +5,7 @@
   },
   "type": "module",
   "dependencies": {
+    "js-base64": "^3.6.0",
     "jshashes": "^1.0.8",
     "jsrsasign": "^10.1.8"
   },

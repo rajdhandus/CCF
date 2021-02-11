@@ -1,5 +1,6 @@
 import Hashes from "jshashes";
 import { KJUR, KEYUTIL, X509 } from 'jsrsasign';
+import { Base64 } from "js-base64";
 import * as ccf from "../types/ccf";
 
 interface Error {
@@ -13,7 +14,20 @@ interface Auth {
   cert: string
 }
 
+interface JWKSItemAuth {
+  // Signing certs are published at well-known url https://<namespace>/.well-known/openid-configuration
+  type: 'jwks'
+}
+
+interface TLSCertItemAuth {
+  // TLS cert is used for signing
+  type: 'tlsCert'
+}
+
+type ItemAuth = JWKSItemAuth | TLSCertItemAuth
+
 interface FeedNamespace {
+  itemAuth: ItemAuth
   permissions: {
     owner: Auth
     writer: Auth
@@ -183,21 +197,71 @@ export function recordItemIdentity(request: ccf.Request): ccf.Response<ItemIdent
 
   // TODO check if cert chain is valid
 
-  const x509 = new X509();
-  x509.readCertPEM(certPem);
-  const x509Subject: Array<Array<any>> = (<any>x509).getSubject().array
-  const cn = x509Subject.find(v => v[0].type == 'CN')[0].value
-  // TODO handle wildcards
-  if (cn !== dnsName) {
-    return {
-      statusCode: 400,
-      body: {
-        error: {
-          code: 'InvalidInput',
-          message: `CN of signing certificate does not match feed: ${cn}`
-        }
+  if (feedNamespace.itemAuth.type === 'jwks') {
+    const signingKeyId = header.kid;
+    // Get the stored signing key to validate the token.
+    const keysMap = new ccf.TypedKVMap(
+      ccf.kv["public:ccf.gov.jwt_public_signing_keys"],
+      ccf.string,
+      ccf.typedArray(Uint8Array)
+    );
+    const publicKeyDer = keysMap.get(signingKeyId);
+    if (publicKeyDer === undefined) {
+      throw new Error("signing key not found");
+    }
+    // jsrsasign can only load X.509 certs from PEM strings
+    const publicKeyB64 = Base64.fromUint8Array(publicKeyDer);
+    const publicKeyPem =
+      "-----BEGIN CERTIFICATE-----\n" +
+      publicKeyB64 +
+      "\n-----END CERTIFICATE-----";
+    const publicKey = KEYUTIL.getKey(publicKeyPem);
+
+    // Validate the token signature.
+    const valid = KJUR.jws.JWS.verifyJWT(
+      body,
+      <any>publicKey,
+      <any>{
+        alg: ["RS256"],
+        // No trusted time, disable time validation.
+        verifyAt: Date.parse("2020-01-01T00:00:00") / 1000,
+        gracePeriod: 10 * 365 * 24 * 60 * 60,
       }
-    };
+    );
+    if (!valid) {
+      throw new Error("jwt validation failed");
+    }
+
+    // Get the issuer associated to the signing key.
+    const keyIssuerMap = new ccf.TypedKVMap(
+      ccf.kv["public:ccf.gov.jwt_public_signing_key_issuer"],
+      ccf.string,
+      ccf.string
+    );
+    const keyIssuer = keyIssuerMap.get(signingKeyId);
+    if (keyIssuer !== `https://${dnsName}`) {
+      throw new Error(`url mismatch: ${keyIssuer} !== https://${dnsName}`);
+    }
+  } else if (feedNamespace.itemAuth.type == 'tlsCert') {
+    const x509 = new X509();
+    x509.readCertPEM(certPem);
+    const x509Subject: Array<Array<any>> = (<any>x509).getSubject().array
+    // TODO check SANs
+    // TODO handle wildcards
+    const cn = x509Subject.find(v => v[0].type == 'CN')[0].value
+    if (cn !== dnsName) {
+      return {
+        statusCode: 400,
+        body: {
+          error: {
+            code: 'InvalidInput',
+            message: `CN of signing certificate does not match feed: ${cn}`
+          }
+        }
+      };
+    }
+  } else {
+    throw new Error('invalid itemAuth type')
   }
 
   const item: ItemIdentity = {

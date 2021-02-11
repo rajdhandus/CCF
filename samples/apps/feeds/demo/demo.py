@@ -31,6 +31,9 @@ def populate_npm_feed(data_dir: Path):
         "permissions": {
             #"owner": 
             #"writer":
+        },
+        "itemAuth": {
+            "type": "tlsCert"
         }
     })
 
@@ -75,6 +78,9 @@ def populate_npm_audit_feed(data_dir: Path):
         "permissions": {
             #"owner": 
             #"writer":
+        },
+        "itemAuth": {
+            "type": "tlsCert"
         }
     })
 
