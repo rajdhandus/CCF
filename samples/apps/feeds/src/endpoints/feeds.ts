@@ -34,14 +34,11 @@ interface FeedNamespace {
   };
 }
 
-interface ItemIdentity {
-  hash: string
-}
-
-interface ItemIdentityResponse extends ItemIdentity {
+interface ItemResponse {
   dnsName: string
   itemName: string
   seqno: number
+  jwt: string
 }
 
 namespace kv {
@@ -53,7 +50,7 @@ namespace kv {
 }
 
 const feedNamespacesMap = new ccf.TypedKVMap(ccf.kv['feed_namespaces'], kv.DNSName, ccf.json<FeedNamespace>());
-const feedItemIdentityMap = new ccf.TypedKVMap(ccf.kv['feed_item_identity'], kv.FeedName, ccf.json<ItemIdentity>());
+const feedItemMap = new ccf.TypedKVMap(ccf.kv['feed_item'], kv.FeedName, ccf.string);
 const feedSeqnoMap = new ccf.TypedKVMap(ccf.kv['feed_seqno'], kv.FeedName, ccf.uint32);
 
 // GET /feeds/{dnsName}
@@ -90,38 +87,8 @@ export function setFeedNamespace(request: ccf.Request<FeedNamespace>): ccf.Respo
   }
 }
 
-// TODO not really needed, we just care about the receipt
-// GET /feeds/{dnsName}/{itemName}
-export function getLatestItemIdentity(request: ccf.Request): ccf.Response<ItemIdentityResponse | Error> {
-  const dnsName = request.params['dnsName'];
-  const itemName = request.params['itemName'];
-  const feedName = `${dnsName}/${itemName}`
-  const itemIdentity = feedItemIdentityMap.get(feedName);
-  if (itemIdentity === undefined) {
-    return {
-      statusCode: 404,
-      body: {
-        error: {
-          code: 'ResourceNotFound',
-          message: "Feed not found"
-        }
-      }
-    };
-  }
-  const seqno = feedSeqnoMap.get(dnsName);
-  return {
-    statusCode: 200,
-    body: {
-      dnsName: dnsName,
-      itemName: itemName,
-      seqno: seqno,
-      hash: itemIdentity.hash
-    }
-  }
-}
-
 // POST /feeds/{dnsName}/{itemName}
-export function recordItemIdentity(request: ccf.Request): ccf.Response<ItemIdentityResponse | Error> {
+export function recordItem(request: ccf.Request): ccf.Response<ItemResponse | Error> {
   const dnsName = request.params['dnsName'];
   const itemName = request.params['itemName'];
   const feedName = `${dnsName}/${itemName}`
@@ -264,12 +231,10 @@ export function recordItemIdentity(request: ccf.Request): ccf.Response<ItemIdent
     throw new Error('invalid itemAuth type')
   }
 
-  const item: ItemIdentity = {
-    hash: new Hashes.SHA256().hex(body)
-  }
+  //new Hashes.SHA256().hex(body)
 
   feedSeqnoMap.set(feedName, nextSeqno);
-  feedItemIdentityMap.set(feedName, item);
+  feedItemMap.set(feedName, body);
 
   return {
     statusCode: 201,
@@ -277,7 +242,7 @@ export function recordItemIdentity(request: ccf.Request): ccf.Response<ItemIdent
       dnsName: dnsName,
       itemName: itemName,
       seqno: nextSeqno,
-      hash: item.hash
+      jwt: body
     }
   }
 }

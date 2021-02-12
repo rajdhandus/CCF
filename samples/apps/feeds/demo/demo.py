@@ -90,7 +90,12 @@ def populate_npm_audit_feed(data_dir: Path):
         
         item_name = npm_receipt["data"]["itemName"] + "-audit"
         audit = {
-            "subject": npm_receipt,
+            "subject": {
+                "id": npm_receipt['data']['dnsName'] + "/" +
+                      npm_receipt['data']['itemName'] + "/" +
+                      str(npm_receipt['data']['seqno']),
+                "hash": "tbd"
+            },
             "status": random.choice(["approved", "rejected"])
         }
 

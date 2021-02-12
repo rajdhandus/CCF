@@ -21,19 +21,11 @@
     "/feeds/{dnsName}/{itemName}": {
       "post": {
         "js_module": "src/endpoints/feeds.js",
-        "js_function": "recordItemIdentity",
+        "js_function": "recordItem",
         "forwarding_required": "always",
         "execute_outside_consensus": "never",
         "authn_policies": [],
         "readonly": false
-      },
-      "get": {
-        "js_module": "src/endpoints/feeds.js",
-        "js_function": "getLatestItemIdentity",
-        "forwarding_required": "never",
-        "execute_outside_consensus": "never",
-        "authn_policies": [],
-        "readonly": true
       }
     }
   }
