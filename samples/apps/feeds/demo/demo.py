@@ -47,6 +47,8 @@ def populate_npm_feed(data_dir: Path):
         r = requests.get(url)
         r.raise_for_status()
         pkg_info = r.json()
+        pkg_info["iss"] = dns_name
+        pkg_info["sub"] = item_name
 
         json_path = data_dir / f'{dns_name}_{item_name}.json'
         with open(json_path, 'w') as f:
@@ -56,7 +58,7 @@ def populate_npm_feed(data_dir: Path):
         jwt_path = data_dir / f'{dns_name}_{item_name}.jwt'
         with open(jwt_path, 'w') as f:
             f.write(jwt)
-        r = client.post(f"/app/feeds/{dns_name}/{item_name}", jwt)
+        r = client.post(f"/app/submit", jwt)
         data = r.body.json()
 
         client.wait_for_commit(r)
@@ -90,10 +92,12 @@ def populate_npm_audit_feed(data_dir: Path):
         
         item_name = npm_receipt["data"]["itemName"] + "-audit"
         audit = {
-            "subject": {
-                "id": npm_receipt['data']['dnsName'] + "/" +
-                      npm_receipt['data']['itemName'] + "/" +
-                      str(npm_receipt['data']['seqno']),
+            "iss": dns_name,
+            "sub": item_name,
+            "artifactReference": {
+                "iss": npm_receipt["data"]["dnsName"],
+                "sub": npm_receipt["data"]["itemName"],
+                "seqno": npm_receipt['data']['seqno'],
                 "hash": "tbd"
             },
             "status": random.choice(["approved", "rejected"])
@@ -107,7 +111,7 @@ def populate_npm_audit_feed(data_dir: Path):
         jwt_path = data_dir / f'{dns_name}_{item_name}.jwt'
         with open(jwt_path, 'w') as f:
             f.write(jwt)
-        r = client.post(f"/app/feeds/{dns_name}/{item_name}", jwt)
+        r = client.post(f"/app/submit", jwt)
         data = r.body.json()
 
         client.wait_for_commit(r)

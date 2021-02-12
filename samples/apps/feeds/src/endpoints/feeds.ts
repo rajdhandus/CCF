@@ -87,10 +87,40 @@ export function setFeedNamespace(request: ccf.Request<FeedNamespace>): ccf.Respo
   }
 }
 
-// POST /feeds/{dnsName}/{itemName}
-export function recordItem(request: ccf.Request): ccf.Response<ItemResponse | Error> {
-  const dnsName = request.params['dnsName'];
-  const itemName = request.params['itemName'];
+// POST /submit
+export function submit(request: ccf.Request): ccf.Response<ItemResponse | Error> {
+  const body = request.body.text();
+  
+  let jws: KJUR.jws.JWS.JWSResult
+  try {
+    jws = KJUR.jws.JWS.parse(body);
+  } catch (e) {
+    return {
+      statusCode: 400,
+      body: {
+        error: {
+          code: 'InvalidInput',
+          message: `Body is not a JWT: ${e}`
+        }
+      }
+    };
+  }
+  const header = jws.headerObj as any
+  const payload = jws.payloadObj as any
+  if (!Array.isArray(header.x5c) || header.x5c.length === 0) {
+    return {
+      statusCode: 400,
+      body: {
+        error: {
+          code: 'InvalidInput',
+          message: `JWT is missing X.509 cert in header`
+        }
+      }
+    };
+  }
+
+  const dnsName = payload['iss'];
+  const itemName = payload['sub'];
   const feedName = `${dnsName}/${itemName}`
   const feedNamespace = feedNamespacesMap.get(dnsName);
   if (feedNamespace === undefined) {
@@ -109,58 +139,6 @@ export function recordItem(request: ccf.Request): ccf.Response<ItemResponse | Er
 
   const currentSeqno = feedSeqnoMap.get(feedName);
   const nextSeqno = currentSeqno === undefined ? 1 : currentSeqno + 1;
-
-  const body = request.body.text();
-  
-  let jws: KJUR.jws.JWS.JWSResult
-  try {
-    jws = KJUR.jws.JWS.parse(body);
-  } catch (e) {
-    return {
-      statusCode: 400,
-      body: {
-        error: {
-          code: 'InvalidInput',
-          message: `Body is not a JWT: ${e}`
-        }
-      }
-    };
-  }
-  const header = jws.headerObj as any
-  if (!Array.isArray(header.x5c) || header.x5c.length === 0) {
-    return {
-      statusCode: 400,
-      body: {
-        error: {
-          code: 'InvalidInput',
-          message: `JWT is missing X.509 cert in header`
-        }
-      }
-    };
-  }
-  const certX5c = header.x5c[0];
-  const certPem = 
-    '-----BEGIN CERTIFICATE-----\n' +
-    certX5c +
-    '\n-----END CERTIFICATE-----';
-  const publicKey = KEYUTIL.getKey(certPem)
-  const isValid = KJUR.jws.JWS.verifyJWT(body, <any>publicKey, <any>{
-    alg: ['RS256'],
-    // No trusted time, disable time validation.
-    verifyAt: Date.parse('2000-01-01T00:00:00') / 1000,
-    gracePeriod: 100 * 365 * 24 * 60 * 60
-  });
-  if (!isValid) {
-    return {
-      statusCode: 400,
-      body: {
-        error: {
-          code: 'InvalidInput',
-          message: `JWT validation failed`
-        }
-      }
-    };
-  }
 
   if (feedNamespace.itemAuth.type === 'jwks') {
     const signingKeyId = header.kid;
@@ -209,6 +187,30 @@ export function recordItem(request: ccf.Request): ccf.Response<ItemResponse | Er
     }
   } else if (feedNamespace.itemAuth.type == 'tlsCert') {
     // TODO check if cert chain is valid
+
+    const certX5c = header.x5c[0];
+    const certPem = 
+      '-----BEGIN CERTIFICATE-----\n' +
+      certX5c +
+      '\n-----END CERTIFICATE-----';
+    const publicKey = KEYUTIL.getKey(certPem)
+    const isValid = KJUR.jws.JWS.verifyJWT(body, <any>publicKey, <any>{
+      alg: ['RS256'],
+      // No trusted time, disable time validation.
+      verifyAt: Date.parse('2000-01-01T00:00:00') / 1000,
+      gracePeriod: 100 * 365 * 24 * 60 * 60
+    });
+    if (!isValid) {
+      return {
+        statusCode: 400,
+        body: {
+          error: {
+            code: 'InvalidInput',
+            message: `JWT validation failed`
+          }
+        }
+      };
+    }
     
     const x509 = new X509();
     x509.readCertPEM(certPem);
@@ -223,6 +225,18 @@ export function recordItem(request: ccf.Request): ccf.Response<ItemResponse | Er
           error: {
             code: 'InvalidInput',
             message: `CN of signing certificate does not match feed: ${cn}`
+          }
+        }
+      };
+    }
+
+    if (dnsName !== cn) {
+      return {
+        statusCode: 400,
+        body: {
+          error: {
+            code: 'InvalidInput',
+            message: `CN of signing certificate does not match "iss" claim`
           }
         }
       };

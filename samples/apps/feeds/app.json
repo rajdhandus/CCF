@@ -18,10 +18,10 @@
         "readonly": false
       }
     },
-    "/feeds/{dnsName}/{itemName}": {
+    "/submit": {
       "post": {
         "js_module": "src/endpoints/feeds.js",
-        "js_function": "recordItem",
+        "js_function": "submit",
         "forwarding_required": "always",
         "execute_outside_consensus": "never",
         "authn_policies": [],
