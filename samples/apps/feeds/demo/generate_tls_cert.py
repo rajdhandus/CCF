@@ -7,6 +7,7 @@ import infra.crypto
 
 def main(args):
     data_dir = Path('data')
+    data_dir.mkdir(exist_ok=True)
 
     tls_key_path = data_dir / 'tls_key.pem'
     tls_cert_path = data_dir / 'tls_cert.pem'
