@@ -19,21 +19,30 @@ def generate_npm_feed(data_dir: Path):
     feed_dir = data_dir / name
     feed_dir.mkdir(exist_ok=True)
 
-    with open(feed_dir / 'jwt_key.pem', 'w') as f:
+    jwt_key_path = feed_dir / 'jwt_key.pem'
+    jwt_cert_path = feed_dir / 'jwt_cert.pem'
+    jwt_jwks_path = feed_dir / 'jwt_certs.jwks'
+    print(f'Writing {jwt_key_path}')
+    print(f'Writing {jwt_cert_path}')
+    print(f'Writing {jwt_jwks_path}')
+    with open(jwt_key_path, 'w') as f:
         f.write(jwt_key_priv_pem)
-    with open(feed_dir / 'jwt_cert.pem', 'w') as f:
+    with open(jwt_cert_path, 'w') as f:
         f.write(jwt_cert_pem)
-    with open(feed_dir / 'jwt_certs.jwks', 'w') as f:
+    with open(jwt_jwks_path, 'w') as f:
         jwks = create_jwks(name, jwt_cert_pem)
         json.dump(jwks, f, indent=2)
 
-    r = requests.get('https://registry.npmjs.org/-/v1/search?text=%22js%22&size=5') # 250 max
+    npm_search_url = 'https://registry.npmjs.org/-/v1/search?text=%22js%22&size=5' # 250 max
+    print(f'Fetching {npm_search_url}')
+    r = requests.get(npm_search_url) 
     r.raise_for_status()
     pkgs = r.json()["objects"]
     for pkg in pkgs:
         pkg_name = pkg["package"]["name"]
         subject = pkg_name.replace('/', '_')
         url = f"https://registry.npmjs.org/{pkg_name}/latest"
+        print(f'Fetching {url}')
         r = requests.get(url)
         r.raise_for_status()
         pkg_info = r.json()
@@ -61,11 +70,17 @@ def generate_contoso_feed(data_dir: Path):
     feed_dir = data_dir / name
     feed_dir.mkdir(exist_ok=True)
 
-    with open(feed_dir / 'jwt_key.pem', 'w') as f:
+    jwt_key_path = feed_dir / 'jwt_key.pem'
+    jwt_cert_path = feed_dir / 'jwt_cert.pem'
+    jwt_jwks_path = feed_dir / 'jwt_certs.jwks'
+    print(f'Writing {jwt_key_path}')
+    print(f'Writing {jwt_cert_path}')
+    print(f'Writing {jwt_jwks_path}')
+    with open(jwt_key_path, 'w') as f:
         f.write(jwt_key_priv_pem)
-    with open(feed_dir / 'jwt_cert.pem', 'w') as f:
+    with open(jwt_cert_path, 'w') as f:
         f.write(jwt_cert_pem)
-    with open(feed_dir / 'jwt_certs.jwks', 'w') as f:
+    with open(jwt_jwks_path, 'w') as f:
         jwks = create_jwks(name, jwt_cert_pem)
         json.dump(jwks, f, indent=2)
 
@@ -73,6 +88,7 @@ def generate_contoso_feed(data_dir: Path):
     found = False
     for npm_receipt_path in npm_feed_dir.glob('*.receipt.json'):
         found = True
+        print(f'Reading {npm_receipt_path}')
         with open(npm_receipt_path) as f:
             npm_receipt = json.load(f)
         
