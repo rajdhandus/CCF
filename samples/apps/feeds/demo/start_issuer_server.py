@@ -40,7 +40,7 @@ class JwtCertDiscoveryServer(AbstractContextManager):
                 self.wfile.write(body)
 
             def log_message(self, fmt, *args):  # pylint: disable=arguments-differ
-                print(f"OpenIDProviderServer: {fmt % args}")
+                print(fmt % args)
 
         self.httpd = HTTPServer((host, port), MyHTTPRequestHandler)
         self.httpd.socket = ssl.wrap_socket(
