@@ -1,17 +1,9 @@
 {
   "endpoints": {
-    "/feeds/{dnsName}": {
-      "get": {
+    "/register": {
+      "post": {
         "js_module": "src/endpoints/feeds.js",
-        "js_function": "getFeedNamespace",
-        "forwarding_required": "never",
-        "execute_outside_consensus": "never",
-        "authn_policies": [],
-        "readonly": true
-      },
-      "put": {
-        "js_module": "src/endpoints/feeds.js",
-        "js_function": "setFeedNamespace",
+        "js_function": "registerNamespace",
         "forwarding_required": "always",
         "execute_outside_consensus": "never",
         "authn_policies": [],
