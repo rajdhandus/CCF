@@ -197,9 +197,7 @@ def create_jwt(body_claims: dict, key_priv_pem: str, key_id=None, cert_pem=None)
         headers["kid"] = key_id
     if cert_pem:
         headers["x5c"] = [base64.b64encode(cert_pem_to_der(cert_pem)).decode()]
-    return jwt.encode(
-        body_claims, key_priv_pem, algorithm="RS256", headers=headers
-    )
+    return jwt.encode(body_claims, key_priv_pem, algorithm="RS256", headers=headers)
 
 
 def cert_pem_to_der(pem: str) -> bytes:
