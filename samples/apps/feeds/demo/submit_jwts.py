@@ -73,7 +73,7 @@ def propose_jwt_issuer(issuer, ca_cert_path, feed_dir):
     assert r.status_code == HTTPStatus.OK.value
 
     # temporary to avoid waiting until CCF's JWT cert auto-refresh is done
-    jwks_path = feed_dir / 'jwt_certs.jwks'
+    jwks_path = feed_dir / 'certs'
     with open(jwks_path) as f:
         jwks = json.load(f)
 

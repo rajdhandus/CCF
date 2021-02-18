@@ -19,19 +19,7 @@ def generate_npm_feed(data_dir: Path):
     feed_dir = data_dir / name
     feed_dir.mkdir(exist_ok=True)
 
-    jwt_key_path = feed_dir / 'jwt_key.pem'
-    jwt_cert_path = feed_dir / 'jwt_cert.pem'
-    jwt_jwks_path = feed_dir / 'jwt_certs.jwks'
-    print(f'Writing {jwt_key_path}')
-    print(f'Writing {jwt_cert_path}')
-    print(f'Writing {jwt_jwks_path}')
-    with open(jwt_key_path, 'w') as f:
-        f.write(jwt_key_priv_pem)
-    with open(jwt_cert_path, 'w') as f:
-        f.write(jwt_cert_pem)
-    with open(jwt_jwks_path, 'w') as f:
-        jwks = create_jwks(name, jwt_cert_pem)
-        json.dump(jwks, f, indent=2)
+    write_jwks(feed_dir, jwt_cert_pem)
 
     npm_search_url = 'https://registry.npmjs.org/-/v1/search?text=%22js%22&size=5' # 250 max
     print(f'Fetching {npm_search_url}')
@@ -70,19 +58,7 @@ def generate_contoso_feed(data_dir: Path):
     feed_dir = data_dir / name
     feed_dir.mkdir(exist_ok=True)
 
-    jwt_key_path = feed_dir / 'jwt_key.pem'
-    jwt_cert_path = feed_dir / 'jwt_cert.pem'
-    jwt_jwks_path = feed_dir / 'jwt_certs.jwks'
-    print(f'Writing {jwt_key_path}')
-    print(f'Writing {jwt_cert_path}')
-    print(f'Writing {jwt_jwks_path}')
-    with open(jwt_key_path, 'w') as f:
-        f.write(jwt_key_priv_pem)
-    with open(jwt_cert_path, 'w') as f:
-        f.write(jwt_cert_pem)
-    with open(jwt_jwks_path, 'w') as f:
-        jwks = create_jwks(name, jwt_cert_pem)
-        json.dump(jwks, f, indent=2)
+    write_jwks(feed_dir, jwt_cert_pem)
 
     npm_feed_dir = data_dir / 'npm'
     found = False
@@ -117,6 +93,21 @@ def generate_contoso_feed(data_dir: Path):
     
     if not found:
         print('No receipts in npm feed folder found, run "submit_jwts.py npm" first')
+
+def write_jwks(feed_dir, jwt_cert_pem):
+    jwt_jwks_path = feed_dir / 'certs'
+    print(f'Writing {jwt_jwks_path}')
+    with open(jwt_jwks_path, 'w') as f:
+        jwks = create_jwks(feed_dir.name, jwt_cert_pem)
+        json.dump(jwks, f, indent=2)
+    well_known_dir = feed_dir / '.well-known'
+    well_known_dir.mkdir(exist_ok=True)
+    discovery_path = well_known_dir / 'openid-configuration'
+    print(f'Writing {discovery_path}')
+    with open(discovery_path, 'w') as f:
+        json.dump({
+            "jwks_uri": f"https://localhost/{feed_dir.name}/certs"
+        }, f)
 
 def create_jwks(kid, cert_pem):
     der_b64 = base64.b64encode(
