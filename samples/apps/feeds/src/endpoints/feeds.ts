@@ -4,7 +4,7 @@
 import Hashes from "jshashes";
 import { KJUR, KEYUTIL, X509 } from "jsrsasign";
 import { Base64 } from "js-base64";
-import { URL } from "core-js-pure/web/url";
+import URL from "core-js-pure/web/url";
 import * as ccf from "../types/ccf";
 
 interface Error {
@@ -58,8 +58,8 @@ export function registerNamespace(
 ): ccf.Response<FeedNamespace> {
   const req = request.body.json();
   const issuer = req.issuer;
-  /*let issuerUrl: URL
-
+  
+  let issuerUrl: URL
   try {
     issuerUrl = new URL(`https://${issuer}`)
   } catch (e) {
@@ -84,7 +84,7 @@ export function registerNamespace(
       }
     };
   }
-*/
+
   // TODO fetch certs (for now, rely on existing JWT signing key refresh of CCF)
 
   const isUpdate = feedNamespacesMap.has(issuer);
