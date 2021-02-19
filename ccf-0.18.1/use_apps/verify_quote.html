@@ -1,0 +1,346 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Verifying Quote &#8212; CCF  documentation</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Python Client Tutorial" href="python_tutorial.html" />
+    <link rel="prev" title="Verifying Transaction" href="verify_tx.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+    
+    <a class="navbar-brand" href="../index.html">
+      <img src="../_static/ccf.svg" class="logo" alt="logo">
+    </a>
+    
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navbar-menu" class="col-11 collapse navbar-collapse">
+      <ul id="navbar-main-elements" class="navbar-nav mr-auto">
+        
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../overview/index.html">Overview</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../build_apps/index.html">Build Apps</a>
+        </li>
+        
+        <li class="nav-item active">
+            <a class="nav-link" href="index.html">Use Apps</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../operations/index.html">Operations</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../governance/index.html">Governance</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../audit/index.html">Audit</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../contribute/index.html">Contribute</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../glossary.html">Glossary</a>
+        </li>
+        
+        
+      </ul>
+
+      <ul class="navbar-nav">
+        
+          <li class="nav-item">
+            <a class="nav-link" href="https://github.com/Microsoft/CCF" target="_blank" rel="noopener">
+              <span><i class="fab fa-github-square"></i></span>
+            </a>
+          </li>
+        
+        
+      </ul>
+    </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+          <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+<script>
+    function onVersionChange() {
+      window.location.href = document.getElementById("versions").value;
+    }
+
+    window.addEventListener("DOMContentLoaded",function(){
+        let selectedVersion = "main"
+        const thisURL = window.location.toString()
+        let indexOfVersion = thisURL.indexOf("ccf-")
+        if (indexOfVersion != -1) {
+            selectedVersion = thisURL.substring(indexOfVersion, thisURL.indexOf("/", indexOfVersion));
+        }
+        let sel = document.getElementById("versions");
+        if (sel != null) {
+            let opts = sel.options;
+            for (var opt, j = 0; opt = opts[j]; j++) {
+                if (opt.text == selectedVersion) {
+                    sel.selectedIndex = j;
+                    break;
+                }
+            }
+        }
+    }, false);
+</script>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+
+    <div class="bd-toc-item active">
+        
+
+        <ul class="nav bd-sidenav">
+            
+            
+            
+            
+            
+            
+            
+            
+            <li class="">
+                <a href="issue_commands.html">Issuing Commands</a>
+            </li>
+            
+            
+            
+            <li class="">
+                <a href="verify_tx.html">Verifying Transaction</a>
+            </li>
+            
+            
+            
+            <li class="active">
+                <a href="">Verifying Quote</a>
+            </li>
+            
+            
+            
+            <li class="">
+                <a href="python_tutorial.html">Python Client Tutorial</a>
+            </li>
+            
+            
+            
+            <li class="">
+                <a href="python_api.html">Python Client API</a>
+            </li>
+            
+            
+            
+            <li class="">
+                <a href="rpc_api.html">RPC API</a>
+            </li>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+        </ul>
+
+        
+        <h6> Versions </h6>
+        <select name="versions" id="versions" class="custom-select custom-select-sm" style="width:50%" onchange="onVersionChange()">
+            <option value="../../main/use_apps/verify_quote.html">main </option>
+            <option value="../../ccf-0.18.2/use_apps/verify_quote.html">ccf-0.18.2 </option>
+            <option value="verify_quote.html">ccf-0.18.1 </option>
+            <option value="../../ccf-0.18.0/use_apps/verify_quote.html">ccf-0.18.0 </option>
+            <option value="../../ccf-0.17.2/use_apps/verify_quote.html">ccf-0.17.2 </option>
+            <option value="../../ccf-0.17.1/use_apps/verify_quote.html">ccf-0.17.1 </option>
+            <option value="../../ccf-0.17.0/use_apps/verify_quote.html">ccf-0.17.0 </option>
+            <option value="../../ccf-0.16.3/use_apps/verify_quote.html">ccf-0.16.3 </option>
+            <option value="../../ccf-0.16.2/use_apps/verify_quote.html">ccf-0.16.2 </option>
+            <option value="../../ccf-0.16.1/use_apps/verify_quote.html">ccf-0.16.1 </option>
+            <option value="../../ccf-0.16.0/use_apps/verify_quote.html">ccf-0.16.0 </option>
+            <option value="../../ccf-0.15.2/index.html">ccf-0.15.2 </option>
+            <option value="../../ccf-0.15.1/index.html">ccf-0.15.1 </option>
+            <option value="../../ccf-0.15.0/index.html">ccf-0.15.0 </option>
+            <option value="../../ccf-0.14.3/index.html">ccf-0.14.3 </option>
+            <option value="../../ccf-0.14.2/index.html">ccf-0.14.2 </option>
+            <option value="../../ccf-0.14.1/index.html">ccf-0.14.1 </option>
+            <option value="../../ccf-0.14.0/index.html">ccf-0.14.0 </option>
+            <option value="../../ccf-0.13.4/index.html">ccf-0.13.4 </option>
+            <option value="../../ccf-0.13.3/index.html">ccf-0.13.3 </option>
+            <option value="../../ccf-0.13.2/index.html">ccf-0.13.2 </option>
+            <option value="../../ccf-0.13.1/index.html">ccf-0.13.1 </option>
+            <option value="../../ccf-0.13.0/index.html">ccf-0.13.0 </option>
+            <option value="../../ccf-0.12.2/index.html">ccf-0.12.2 </option>
+            <option value="../../ccf-0.12.1/index.html">ccf-0.12.1 </option>
+            <option value="../../ccf-0.12.0/index.html">ccf-0.12.0 </option>
+            <option value="../../ccf-0.11.7/index.html">ccf-0.11.7 </option>
+            <option value="../../ccf-0.11.4/index.html">ccf-0.11.4 </option>
+            <option value="../../ccf-0.11.1/index.html">ccf-0.11.1 </option>
+        </select>
+        
+</nav>
+          </div>
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+              
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+    </ul>
+</nav>
+
+
+
+<div class="tocsection editthispage">
+    <a href="https://github.com/Microsoft/CCF/edit/main/doc/use_apps/verify_quote.rst">
+        <i class="fas fa-pencil-alt"></i> Edit this page
+    </a>
+</div>
+
+              
+          </div>
+          
+
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <div class="section" id="verifying-quote">
+<h1>Verifying Quote<a class="headerlink" href="#verifying-quote" title="Permalink to this headline">¶</a></h1>
+<p>A client can verify the validity of the SGX quote of the CCF node that it connects to. This can be done using the <code class="docutils literal notranslate"><span class="pre">verify_quote.sh</span></code> script installed as part of the CCF install or ccf Python package (see <a class="reference internal" href="python_tutorial.html"><span class="doc">Python Client Tutorial</span></a>).</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ verify_quote.sh https://&lt;ccf-node-address&gt; <span class="o">[</span>--mrenclave &lt;mrenclave_hex&gt;<span class="o">]</span> <span class="o">[</span>CURL_OPTIONS<span class="o">]</span>
+Retrieved <span class="m">1</span> accepted code versions from CCF service.
+Node quote successfully retrieved. Verifying quote...
+mrenclave: 3175971c02d00c1a8f9dd23ca89e64955c5caa94e24f4a3a0579dcfb2e6aebf9
+Quote verification successful.
+</pre></div>
+</div>
+<p>The script verifies the target CCF node’s SGX quote by:</p>
+<ol class="arabic simple">
+<li><p>Retrieving the node’s SGX quote via the <code class="docutils literal notranslate"><span class="pre">/node/quote</span></code> endpoint.</p></li>
+<li><p>Verifying that the cryptographic hash of the node’s identity public key (as presented in the node’s certificate in the TLS session) matches the quote’s report data.</p></li>
+<li><p>Verifying that the quote’s measurement (<code class="docutils literal notranslate"><span class="pre">MRENCLAVE</span></code>) matches one of the trusted enclave measurements.</p></li>
+</ol>
+<p>A specific trusted SGX enclave measurement can be specified <code class="docutils literal notranslate"><span class="pre">--mrenclave</span> <span class="pre">&lt;mrenclave_hex&gt;</span></code> (e.g. using the value returned by the Open Enclave <code class="docutils literal notranslate"><span class="pre">oesign</span> <span class="pre">dump</span></code> utility) as follows:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ verify_quote.sh https://&lt;ccf-node-address&gt; --mrenclave 3175971c02d00c1a8f9dd23ca89e64955c5caa94e24f4a3a0579dcfb2e6aebf9 <span class="o">[</span>CURL_OPTIONS<span class="o">]</span>
+Node quote successfully retrieved. Verifying quote...
+mrenclave: 3175971c02d00c1a8f9dd23ca89e64955c5caa94e24f4a3a0579dcfb2e6aebf9
+Quote verification successful.
+</pre></div>
+</div>
+<p>If no code measurement is specified, the <code class="docutils literal notranslate"><span class="pre">verify_quote.sh</span></code> script automatically verifies it against the code versions currently trusted by the CCF service, as returned by the <code class="docutils literal notranslate"><span class="pre">/node/code</span></code> endpoint.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">verify_quote.sh</span></code> script uses the <code class="docutils literal notranslate"><span class="pre">oeverify</span></code> CLI included in the Open Enclave <code class="docutils literal notranslate"><span class="pre">hostverify</span></code> package available on the <a class="reference external" href="https://github.com/openenclave/openenclave/releases">Open Enclave release page</a>.</p>
+</div>
+<p>Alternatively, the SGX quotes of all currently trusted nodes can be retrieved via the <code class="docutils literal notranslate"><span class="pre">/node/quotes</span></code> endpoint:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ curl https://&lt;ccf-node-address&gt;/node/quotes --cacert networkcert.pem
+<span class="o">{</span><span class="s2">&quot;quotes&quot;</span>: <span class="o">[</span>
+<span class="o">{</span><span class="s2">&quot;mrenclave&quot;</span>:<span class="s2">&quot;&lt;measurement_hash&gt;, &quot;</span>node_id<span class="s2">&quot;:&lt;node_id&gt;, &quot;</span>raw<span class="s2">&quot;:&quot;</span>&lt;hex_encoded_raw_quote&gt;<span class="s2">&quot;},</span>
+<span class="s2">{&quot;</span>mrenclave<span class="s2">&quot;:&quot;</span>&lt;measurement_hash&gt;, <span class="s2">&quot;node_id&quot;</span>:&lt;node_id&gt;, <span class="s2">&quot;raw&quot;</span>:<span class="s2">&quot;&lt;hex_encoded_raw_quote&gt;&quot;</span><span class="o">}]}</span>
+</pre></div>
+</div>
+</div>
+
+
+              </div>
+              
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="verify_tx.html" title="previous page">Verifying Transaction</a>
+    <a class='right-next' id="next-link" href="python_tutorial.html" title="next page">Python Client Tutorial</a>
+
+              </div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    <p>
+          &copy; Copyright 2018, Microsoft Research.<br/>
+        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.1.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

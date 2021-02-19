@@ -1,0 +1,318 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Concepts &#8212; CCF  documentation</title>
+    
+  <link rel="stylesheet" href="_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/custom.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Start Here" href="quickstart/index.html" />
+    <link rel="prev" title="CCF documentation" href="index.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+    
+    <a class="navbar-brand" href="index.html">
+      <img src="_static/ccf.svg" class="logo" alt="logo">
+    </a>
+    
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navbar-menu" class="col-11 collapse navbar-collapse">
+      <ul id="navbar-main-elements" class="navbar-nav mr-auto">
+        
+        
+        <li class="nav-item active">
+            <a class="nav-link" href="">Concepts</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="quickstart/index.html">Start Here</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="members/index.html">Governance</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="developers/index.html">Building Apps</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="operators/index.html">Operations</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="users/index.html">Using Apps</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="glossary.html">Glossary</a>
+        </li>
+        
+        
+      </ul>
+
+      <ul class="navbar-nav">
+        
+          <li class="nav-item">
+            <a class="nav-link" href="https://github.com/Microsoft/CCF" target="_blank" rel="noopener">
+              <span><i class="fab fa-github-square"></i></span>
+            </a>
+          </li>
+        
+        
+      </ul>
+    </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+          <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+<script>
+    function onVersionChange() {
+      window.location.href = document.getElementById("versions").value;
+    }
+
+    window.addEventListener("DOMContentLoaded",function(){
+        let selectedVersion = "main"
+        const thisURL = window.location.toString()
+        let indexOfVersion = thisURL.indexOf("ccf-")
+        if (indexOfVersion != -1) {
+            selectedVersion = thisURL.substring(indexOfVersion, thisURL.indexOf("/", indexOfVersion));
+        }
+        let sel = document.getElementById("versions");
+        if (sel != null) {
+            let opts = sel.options;
+            for (var opt, j = 0; opt = opts[j]; j++) {
+                if (opt.text == selectedVersion) {
+                    sel.selectedIndex = j;
+                    break;
+                }
+            }
+        }
+    }, false);
+</script>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+
+    <div class="bd-toc-item active">
+        
+
+        <ul class="nav bd-sidenav">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+        </ul>
+
+        
+        <h6> Versions </h6>
+        <select name="versions" id="versions" class="custom-select custom-select-sm" style="width:50%" onchange="onVersionChange()">
+            <option value="../main/index.html">main </option>
+            <option value="../ccf-0.18.2/index.html">ccf-0.18.2 </option>
+            <option value="../ccf-0.18.1/index.html">ccf-0.18.1 </option>
+            <option value="../ccf-0.18.0/index.html">ccf-0.18.0 </option>
+            <option value="../ccf-0.17.2/index.html">ccf-0.17.2 </option>
+            <option value="../ccf-0.17.1/index.html">ccf-0.17.1 </option>
+            <option value="../ccf-0.17.0/index.html">ccf-0.17.0 </option>
+            <option value="../ccf-0.16.3/index.html">ccf-0.16.3 </option>
+            <option value="../ccf-0.16.2/index.html">ccf-0.16.2 </option>
+            <option value="../ccf-0.16.1/index.html">ccf-0.16.1 </option>
+            <option value="../ccf-0.16.0/index.html">ccf-0.16.0 </option>
+            <option value="../ccf-0.15.2/concepts.html">ccf-0.15.2 </option>
+            <option value="../ccf-0.15.1/concepts.html">ccf-0.15.1 </option>
+            <option value="../ccf-0.15.0/concepts.html">ccf-0.15.0 </option>
+            <option value="../ccf-0.14.3/concepts.html">ccf-0.14.3 </option>
+            <option value="../ccf-0.14.2/concepts.html">ccf-0.14.2 </option>
+            <option value="../ccf-0.14.1/concepts.html">ccf-0.14.1 </option>
+            <option value="../ccf-0.14.0/concepts.html">ccf-0.14.0 </option>
+            <option value="../ccf-0.13.4/concepts.html">ccf-0.13.4 </option>
+            <option value="../ccf-0.13.3/concepts.html">ccf-0.13.3 </option>
+            <option value="../ccf-0.13.2/concepts.html">ccf-0.13.2 </option>
+            <option value="../ccf-0.13.1/concepts.html">ccf-0.13.1 </option>
+            <option value="../ccf-0.13.0/concepts.html">ccf-0.13.0 </option>
+            <option value="../ccf-0.12.2/concepts.html">ccf-0.12.2 </option>
+            <option value="../ccf-0.12.1/concepts.html">ccf-0.12.1 </option>
+            <option value="concepts.html">ccf-0.12.0 </option>
+            <option value="../ccf-0.11.7/concepts.html">ccf-0.11.7 </option>
+            <option value="../ccf-0.11.4/concepts.html">ccf-0.11.4 </option>
+            <option value="../ccf-0.11.1/concepts.html">ccf-0.11.1 </option>
+        </select>
+        
+</nav>
+          </div>
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+              
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#network-and-nodes" class="nav-link">Network and Nodes</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#application" class="nav-link">Application</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#ledger" class="nav-link">Ledger</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#governance" class="nav-link">Governance</a>
+        </li>
+    
+    </ul>
+</nav>
+
+
+
+<div class="tocsection editthispage">
+    <a href="https://github.com/Microsoft/CCF/edit/main/doc/concepts.rst">
+        <i class="fas fa-pencil-alt"></i> Edit this page
+    </a>
+</div>
+
+              
+          </div>
+          
+
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <div class="section" id="concepts">
+<h1>Concepts<a class="headerlink" href="#concepts" title="Permalink to this headline">¶</a></h1>
+<p>This page provides a broad overview of the key concepts and components of CCF.</p>
+<p>The following diagram shows a CCF network made of 3 nodes, running the same application inside an enclave. The effects of user and member transactions are eventually committed to a replicated encrypted ledger. A consortium of members is in charge of governing the network.</p>
+<img alt="_images/ccf_concepts.svg" src="_images/ccf_concepts.svg" /><div class="section" id="network-and-nodes">
+<h2>Network and Nodes<a class="headerlink" href="#network-and-nodes" title="Permalink to this headline">¶</a></h2>
+<p>A CCF network consists of several nodes, each running on top of a Trusted Execution Environment (<a class="reference internal" href="glossary.html#term-TEE"><span class="xref std std-term">TEE</span></a>), or enclave, such as <a class="reference internal" href="glossary.html#term-SGX"><span class="xref std std-term">SGX</span></a>. As such, a CCF network is decentralised and highly-available.</p>
+<p>Nodes are run and maintained by <a class="reference internal" href="glossary.html#term-Operators"><span class="xref std std-term">Operators</span></a>. However, nodes must be trusted by the consortium of members before participating in a CCF network.</p>
+</div>
+<div class="section" id="application">
+<h2>Application<a class="headerlink" href="#application" title="Permalink to this headline">¶</a></h2>
+<p>Each node runs the same application (a.k.a. transaction engine). An application is a collection of endpoints that can be triggered by trusted <a class="reference internal" href="glossary.html#term-Users"><span class="xref std std-term">Users</span></a>’ commands over <a class="reference internal" href="glossary.html#term-TLS"><span class="xref std std-term">TLS</span></a>.</p>
+<p>Each endpoint mutates an in-enclave-memory Key-Value Store that is replicated across all nodes in the network. Changes to the Key-Value Store must be agreed by a variable number of nodes, depending on the consensus algorithm selected (either Raft or PBFT), before being applied.</p>
+<p>The Key-Value Store is a collection of maps (associating a key to a value) that are defined by the application. These maps can be private (encrypted in the ledger) or public (visible by anyone that has access to the ledger).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Since all nodes in the CCF network can read the content of private maps, it is up to the application logic to control the access to such maps. Since every application endpoint has access to the identity of the user triggering it, it is easy to restrict which maps (and entries in those maps) a user can read or write to.</p>
+</div>
+</div>
+<div class="section" id="ledger">
+<h2>Ledger<a class="headerlink" href="#ledger" title="Permalink to this headline">¶</a></h2>
+<p>All changes to the Key-Value Store are encrypted and recorded by each node of the network to disk to a decentralised ledger.</p>
+<p>The integrity of the ledger is guaranteed by a Merkle tree whose root is periodically signed by the current primary/leader node.</p>
+</div>
+<div class="section" id="governance">
+<h2>Governance<a class="headerlink" href="#governance" title="Permalink to this headline">¶</a></h2>
+<p>A CCF network is governed by a consortium of <a class="reference internal" href="glossary.html#term-Members"><span class="xref std std-term">Members</span></a>. The <a class="reference internal" href="glossary.html#term-Constitution"><span class="xref std std-term">Constitution</span></a>, recorded in the ledger itself, defines a set of rules that members must follow.</p>
+<p>Members can submit proposals to modify the state of the Key-Value Store. For example, members can vote to allow a new trusted user to issue requests to the application or to add a new member to the consortium.</p>
+<p>Proposals are executed only when the conditions defined in the constitution are met (e.g. a majority of members have voted favourably for that proposal).</p>
+</div>
+</div>
+
+
+              </div>
+              
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="index.html" title="previous page">CCF documentation</a>
+    <a class='right-next' id="next-link" href="quickstart/index.html" title="next page">Start Here</a>
+
+              </div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+
+    
+  <script src="_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    <p>
+          &copy; Copyright 2018, Microsoft Research.<br/>
+        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.1.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

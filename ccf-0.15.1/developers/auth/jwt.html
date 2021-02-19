@@ -1,0 +1,430 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JWT Authentication &#8212; CCF  documentation</title>
+    
+  <link rel="stylesheet" href="../../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Certificate Authentication" href="cert.html" />
+    <link rel="prev" title="User Authentication" href="index.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+    
+    <a class="navbar-brand" href="../../index.html">
+      <img src="../../_static/ccf.svg" class="logo" alt="logo">
+    </a>
+    
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navbar-menu" class="col-11 collapse navbar-collapse">
+      <ul id="navbar-main-elements" class="navbar-nav mr-auto">
+        
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../../concepts.html">Overview</a>
+        </li>
+        
+        <li class="nav-item active">
+            <a class="nav-link" href="../index.html">Build Apps</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../../users/index.html">Use Apps</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../../operators/index.html">Operations</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../../members/index.html">Governance</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../../audit/index.html">Audit</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../../glossary.html">Glossary</a>
+        </li>
+        
+        
+      </ul>
+
+      <ul class="navbar-nav">
+        
+          <li class="nav-item">
+            <a class="nav-link" href="https://github.com/Microsoft/CCF" target="_blank" rel="noopener">
+              <span><i class="fab fa-github-square"></i></span>
+            </a>
+          </li>
+        
+        
+      </ul>
+    </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+          <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+<script>
+    function onVersionChange() {
+      window.location.href = document.getElementById("versions").value;
+    }
+
+    window.addEventListener("DOMContentLoaded",function(){
+        let selectedVersion = "main"
+        const thisURL = window.location.toString()
+        let indexOfVersion = thisURL.indexOf("ccf-")
+        if (indexOfVersion != -1) {
+            selectedVersion = thisURL.substring(indexOfVersion, thisURL.indexOf("/", indexOfVersion));
+        }
+        let sel = document.getElementById("versions");
+        if (sel != null) {
+            let opts = sel.options;
+            for (var opt, j = 0; opt = opts[j]; j++) {
+                if (opt.text == selectedVersion) {
+                    sel.selectedIndex = j;
+                    break;
+                }
+            }
+        }
+    }, false);
+</script>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+
+    <div class="bd-toc-item active">
+        
+
+        <ul class="nav bd-sidenav">
+            
+            
+            
+            
+            
+            
+            <li class="">
+                <a href="../example.html">C++ Application</a>
+            </li>
+            
+            
+            
+            <li class="">
+                <a href="../js_app.html">JavaScript Application</a>
+            </li>
+            
+            
+            
+            <li class="">
+                <a href="../build_app.html">Build and Sign CCF Applications</a>
+            </li>
+            
+            
+            
+            <li class="">
+                <a href="../run_app.html">Running CCF Applications</a>
+            </li>
+            
+            
+            
+            <li class="">
+                <a href="../demo.html">End-to-end demo</a>
+            </li>
+            
+            
+            
+
+            <li class="active">
+                <a href="index.html">User Authentication</a>
+                <ul>
+                    
+                    <li class="active">
+                        <a href="">JWT Authentication</a>
+                    </li>
+                    
+                    <li class="">
+                        <a href="cert.html">Certificate Authentication</a>
+                    </li>
+                    
+                    <li class="">
+                        <a href="jwt_ms_example.html">JWT Authentication example using Microsoft Identity Platform</a>
+                    </li>
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li class="">
+                <a href="../kv/index.html">Key-Value Store</a>
+            </li>
+            
+            
+            
+            <li class="">
+                <a href="../upgrading_app.html">Upgrade Your Application</a>
+            </li>
+            
+            
+            
+            <li class="">
+                <a href="../api.html">Developer API</a>
+            </li>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+        </ul>
+
+        
+        <h6> Versions </h6>
+        <select name="versions" id="versions" class="custom-select custom-select-sm" style="width:50%" onchange="onVersionChange()">
+            <option value="../../../main/index.html">main </option>
+            <option value="../../../ccf-0.18.2/index.html">ccf-0.18.2 </option>
+            <option value="../../../ccf-0.18.1/index.html">ccf-0.18.1 </option>
+            <option value="../../../ccf-0.18.0/index.html">ccf-0.18.0 </option>
+            <option value="../../../ccf-0.17.2/index.html">ccf-0.17.2 </option>
+            <option value="../../../ccf-0.17.1/index.html">ccf-0.17.1 </option>
+            <option value="../../../ccf-0.17.0/index.html">ccf-0.17.0 </option>
+            <option value="../../../ccf-0.16.3/index.html">ccf-0.16.3 </option>
+            <option value="../../../ccf-0.16.2/index.html">ccf-0.16.2 </option>
+            <option value="../../../ccf-0.16.1/index.html">ccf-0.16.1 </option>
+            <option value="../../../ccf-0.16.0/index.html">ccf-0.16.0 </option>
+            <option value="../../../ccf-0.15.2/developers/auth/jwt.html">ccf-0.15.2 </option>
+            <option value="jwt.html">ccf-0.15.1 </option>
+            <option value="../../../ccf-0.15.0/index.html">ccf-0.15.0 </option>
+            <option value="../../../ccf-0.14.3/index.html">ccf-0.14.3 </option>
+            <option value="../../../ccf-0.14.2/index.html">ccf-0.14.2 </option>
+            <option value="../../../ccf-0.14.1/index.html">ccf-0.14.1 </option>
+            <option value="../../../ccf-0.14.0/index.html">ccf-0.14.0 </option>
+            <option value="../../../ccf-0.13.4/index.html">ccf-0.13.4 </option>
+            <option value="../../../ccf-0.13.3/index.html">ccf-0.13.3 </option>
+            <option value="../../../ccf-0.13.2/index.html">ccf-0.13.2 </option>
+            <option value="../../../ccf-0.13.1/index.html">ccf-0.13.1 </option>
+            <option value="../../../ccf-0.13.0/index.html">ccf-0.13.0 </option>
+            <option value="../../../ccf-0.12.2/index.html">ccf-0.12.2 </option>
+            <option value="../../../ccf-0.12.1/index.html">ccf-0.12.1 </option>
+            <option value="../../../ccf-0.12.0/index.html">ccf-0.12.0 </option>
+            <option value="../../../ccf-0.11.7/index.html">ccf-0.11.7 </option>
+            <option value="../../../ccf-0.11.4/index.html">ccf-0.11.4 </option>
+            <option value="../../../ccf-0.11.1/index.html">ccf-0.11.1 </option>
+        </select>
+        
+</nav>
+          </div>
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+              
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#storing-public-token-signing-keys" class="nav-link">Storing public token signing keys</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#validating-tokens" class="nav-link">Validating tokens</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#advanced-issuer-configuration" class="nav-link">Advanced issuer configuration</a>
+        </li>
+    
+    </ul>
+</nav>
+
+
+
+<div class="tocsection editthispage">
+    <a href="https://github.com/Microsoft/CCF/edit/main/doc/developers/auth/jwt.rst">
+        <i class="fas fa-pencil-alt"></i> Edit this page
+    </a>
+</div>
+
+              
+          </div>
+          
+
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <div class="section" id="jwt-authentication">
+<h1>JWT Authentication<a class="headerlink" href="#jwt-authentication" title="Permalink to this headline">¶</a></h1>
+<p>JWT (<a class="reference external" href="https://tools.ietf.org/html/rfc7519">JSON Web Token</a>) bearer authentication allows to use an external identity provider (IdP) such as the <a class="reference external" href="https://aka.ms/IdentityPlatform">Microsoft Identity Platform</a> for user authentication in CCF.</p>
+<p>Once the user has acquired a token from an IdP supported by the app, they can include it in HTTP requests in the <code class="docutils literal notranslate"><span class="pre">Authorization</span></code> header as <a class="reference external" href="https://tools.ietf.org/html/rfc6750">bearer token</a>.
+The CCF app validates the token and can then use the user identity and other claims embedded in the token.</p>
+<p>CCF provides support for storing and retrieving public token signing keys required for validating tokens.
+In the future, CCF will support validating token signatures (currently the responsibility of apps) and automatically refreshing token signing keys from OpenID Provider Configuration endpoints.</p>
+<div class="section" id="storing-public-token-signing-keys">
+<h2>Storing public token signing keys<a class="headerlink" href="#storing-public-token-signing-keys" title="Permalink to this headline">¶</a></h2>
+<p>IdPs sign tokens with private keys that are periodically updated.
+Corresponding public keys in the form of certificates are needed to validate the signature of a token and are typically published by IdPs at a well-known location in JWKS (<a class="reference external" href="https://tools.ietf.org/html/rfc7517">JSON Web Key Set</a>) format.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Most IdPs support the OpenID Connect Discovery specification which defines how to discover the location to the  certificates.
+In short, the IdP issuer URL, for example <code class="docutils literal notranslate"><span class="pre">https://login.microsoftonline.com/common/v2.0</span></code>, is suffixed with <code class="docutils literal notranslate"><span class="pre">/.well-known/openid-configuration</span></code> and the <code class="docutils literal notranslate"><span class="pre">jwks_uri</span></code> field of the JSON document at that URL is the location of the JWKS document containing the certificates currently in use. In this example, it would be <a class="reference external" href="https://login.microsoftonline.com/common/discovery/v2.0/keys">https://login.microsoftonline.com/common/discovery/v2.0/keys</a>.</p>
+</div>
+<p>Before adding public token signing keys to a running CCF network, the IdP has to be stored as token issuer with a <code class="docutils literal notranslate"><span class="pre">set_jwt_issuer</span></code> proposal:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ cat issuer.json
+<span class="o">{</span>
+  <span class="s2">&quot;issuer&quot;</span>: <span class="s2">&quot;https://login.microsoftonline.com/common/v2.0&quot;</span>
+<span class="o">}</span>
+$ python -m ccf.proposal_generator set_jwt_issuer issuer.json
+</pre></div>
+</div>
+<p>Note that <code class="docutils literal notranslate"><span class="pre">issuer.json</span></code> has some additional optional fields for more advanced scenarios.
+See <a class="reference internal" href="#advanced-issuer-configuration"><span class="std std-ref">Advanced issuer configuration</span></a> for details.</p>
+<p>After this proposal is accepted, signing keys for an issuer can be updated with a <code class="docutils literal notranslate"><span class="pre">set_jwt_public_signing_keys</span></code> proposal:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ curl <span class="s2">&quot;https://login.microjsononline.com/common/discovery/v2.0/keys&quot;</span> -o jwks.json
+$ <span class="nv">ISSUER</span><span class="o">=</span><span class="s2">&quot;https://login.microsoftonline.com/common/v2.0&quot;</span>
+$ python -m ccf.proposal_generator set_jwt_public_signing_keys <span class="nv">$ISSUER</span> jwks.json
+</pre></div>
+</div>
+<p>If an issuer should not be used anymore, then a <code class="docutils literal notranslate"><span class="pre">remove_jwt_issuer</span></code> proposal can be used to remove both the issuer and its signing keys:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nv">ISSUER</span><span class="o">=</span><span class="s2">&quot;https://login.microsoftonline.com/common/v2.0&quot;</span>
+$ python -m ccf.proposal_generator remove_jwt_issuer <span class="nv">$ISSUER</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="validating-tokens">
+<h2>Validating tokens<a class="headerlink" href="#validating-tokens" title="Permalink to this headline">¶</a></h2>
+<p>Validating a token means checking its format, signature, and IdP- and app-specific claims.
+See <a class="reference external" href="https://github.com/microsoft/CCF/blob/master/samples/apps/forum/src/authentication.ts">samples/apps/forum/src/authentication.ts</a> for an example on how to do this in TypeScript.</p>
+<p>Token signing keys are stored in the <code class="docutils literal notranslate"><span class="pre">public:ccf.gov.jwt_public_signing_keys</span></code> kv map where the key is the key ID and the value the DER-encoded X.509 certificate. The key ID matches the <code class="docutils literal notranslate"><span class="pre">kid</span></code> field in the token header and can be used to retrieve the matching certificate for validation.</p>
+<p>If an application uses multiple token issuers, then the <code class="docutils literal notranslate"><span class="pre">public:ccf.gov.jwt_public_signing_key_issuer</span></code> kv map which maps key IDs to issuers can be used to determine the issuer that a key belongs to.</p>
+</div>
+<div class="section" id="advanced-issuer-configuration">
+<h2>Advanced issuer configuration<a class="headerlink" href="#advanced-issuer-configuration" title="Permalink to this headline">¶</a></h2>
+<p>CCF has special support for IdPs that issue tokens within SGX enclaves, for example MAA (<a class="reference external" href="https://docs.microsoft.com/en-us/azure/attestation/">Microsoft Azure Attestation</a>).
+The goal is to validate that a token has indeed been issued from an SGX enclave that has certain properties.
+CCF supports the approach taken by MAA where the token signing key and certificate are generated inside the enclave and the certificate embeds evidence from the enclave platform in an X.509 extension (see Open Enclave’s  <a class="reference external" href="https://openenclave.io/apidocs/v0.12/attester_8h_a2d7a05a906935c74a089d3b1240fad64.html#a2d7a05a906935c74a089d3b1240fad64">oe_get_attestation_certificate_with_evidence()</a> for details).
+In this model it is sufficient to validate the evidence of the signing certificates when storing them in CCF.
+After the signing certificates have been stored, token validation follows the same methods as described in earlier sections.</p>
+<p>CCF validates embedded SGX evidence if a key policy is given in the issuer metadata:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ cat issuer.json
+<span class="o">{</span>
+  <span class="s2">&quot;issuer&quot;</span>: <span class="s2">&quot;https://shareduks.uks.attest.azure.net&quot;</span>,
+  <span class="s2">&quot;key_filter&quot;</span>: <span class="s2">&quot;sgx&quot;</span>,
+  <span class="s2">&quot;key_policy&quot;</span>: <span class="o">{</span>
+    <span class="s2">&quot;sgx_claims&quot;</span>: <span class="o">{</span>
+      <span class="s2">&quot;signer_id&quot;</span>: <span class="s2">&quot;5e5410aaf99a32e32df2a97d579e65f8310f274816ec4f34cedeeb1be410a526&quot;</span>,
+      <span class="s2">&quot;attributes&quot;</span>: <span class="s2">&quot;0300000000000000&quot;</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+$ python -m ccf.proposal_generator set_jwt_issuer issuer.json
+</pre></div>
+</div>
+<p>All claims contained in <code class="docutils literal notranslate"><span class="pre">key_policy.sgx_claims</span></code> must be identical to the ones embedded in the certificate.
+Any attempt to add a certificate with mismatching claims in a <code class="docutils literal notranslate"><span class="pre">set_jwt_public_signing_keys</span></code> proposal for that issuer would result in failure.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>See Open Enclave’s <a class="reference external" href="https://openenclave.io/apidocs/v0.12/verifier_8h_a5ad1a6314d2fe5b3470cb3a25c4c39df.html#a5ad1a6314d2fe5b3470cb3a25c4c39df">oe_verify_evidence()</a> for a list of available claim names and their meaning. Note that all claim values must be given hex-encoded.</p>
+</div>
+<p>Some IdPs, like MAA, advertise a mix of SGX and non-SGX signing certificates.
+In this case, <code class="docutils literal notranslate"><span class="pre">key_filter</span></code> must be set to <code class="docutils literal notranslate"><span class="pre">sgx</span></code> such that only those certificates are stored which contain SGX evidence.</p>
+</div>
+</div>
+
+
+              </div>
+              
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="index.html" title="previous page">User Authentication</a>
+    <a class='right-next' id="next-link" href="cert.html" title="next page">Certificate Authentication</a>
+
+              </div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+
+    
+  <script src="../../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    <p>
+          &copy; Copyright 2018, Microsoft Research.<br/>
+        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.1.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

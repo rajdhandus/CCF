@@ -1,0 +1,476 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Running CCF Applications &#8212; CCF  documentation</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="End-to-end demo" href="demo.html" />
+    <link rel="prev" title="Build and Sign CCF Applications" href="build_app.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+    
+    <a class="navbar-brand" href="../index.html">
+      <img src="../_static/ccf.svg" class="logo" alt="logo">
+    </a>
+    
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navbar-menu" class="col-11 collapse navbar-collapse">
+      <ul id="navbar-main-elements" class="navbar-nav mr-auto">
+        
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../overview/index.html">Overview</a>
+        </li>
+        
+        <li class="nav-item active">
+            <a class="nav-link" href="index.html">Build Apps</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../use_apps/index.html">Use Apps</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../operations/index.html">Operations</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../governance/index.html">Governance</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../audit/index.html">Audit</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../contribute/index.html">Contribute</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../glossary.html">Glossary</a>
+        </li>
+        
+        
+      </ul>
+
+      <ul class="navbar-nav">
+        
+          <li class="nav-item">
+            <a class="nav-link" href="https://github.com/Microsoft/CCF" target="_blank" rel="noopener">
+              <span><i class="fab fa-github-square"></i></span>
+            </a>
+          </li>
+        
+        
+      </ul>
+    </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+          <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+<script>
+    function onVersionChange() {
+      window.location.href = document.getElementById("versions").value;
+    }
+
+    window.addEventListener("DOMContentLoaded",function(){
+        let selectedVersion = "main"
+        const thisURL = window.location.toString()
+        let indexOfVersion = thisURL.indexOf("ccf-")
+        if (indexOfVersion != -1) {
+            selectedVersion = thisURL.substring(indexOfVersion, thisURL.indexOf("/", indexOfVersion));
+        }
+        let sel = document.getElementById("versions");
+        if (sel != null) {
+            let opts = sel.options;
+            for (var opt, j = 0; opt = opts[j]; j++) {
+                if (opt.text == selectedVersion) {
+                    sel.selectedIndex = j;
+                    break;
+                }
+            }
+        }
+    }, false);
+</script>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+
+    <div class="bd-toc-item active">
+        
+
+        <ul class="nav bd-sidenav">
+            
+            
+            
+            
+            
+            
+            <li class="">
+                <a href="create_vm.html">Create Azure SGX VM</a>
+            </li>
+            
+            
+            
+            <li class="">
+                <a href="install_bin.html">Install CCF</a>
+            </li>
+            
+            
+            
+            <li class="">
+                <a href="build_setup.html">CCF Development Setup</a>
+            </li>
+            
+            
+            
+            <li class="">
+                <a href="example.html">C++ Application</a>
+            </li>
+            
+            
+            
+            <li class="">
+                <a href="js_app.html">JavaScript Application</a>
+            </li>
+            
+            
+            
+            <li class="">
+                <a href="build_app.html">Build and Sign CCF Applications</a>
+            </li>
+            
+            
+            
+            <li class="active">
+                <a href="">Running CCF Applications</a>
+            </li>
+            
+            
+            
+            <li class="">
+                <a href="demo.html">End-to-end demo</a>
+            </li>
+            
+            
+            
+            <li class="">
+                <a href="auth/index.html">User Authentication</a>
+            </li>
+            
+            
+            
+            <li class="">
+                <a href="kv/index.html">Key-Value Store</a>
+            </li>
+            
+            
+            
+            <li class="">
+                <a href="upgrading_app.html">Upgrade Your Application</a>
+            </li>
+            
+            
+            
+            <li class="">
+                <a href="api.html">Developer API</a>
+            </li>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+        </ul>
+
+        
+        <h6> Versions </h6>
+        <select name="versions" id="versions" class="custom-select custom-select-sm" style="width:50%" onchange="onVersionChange()">
+            <option value="run_app.html">main </option>
+            <option value="../../ccf-0.18.2/build_apps/run_app.html">ccf-0.18.2 </option>
+            <option value="../../ccf-0.18.1/build_apps/run_app.html">ccf-0.18.1 </option>
+            <option value="../../ccf-0.18.0/build_apps/run_app.html">ccf-0.18.0 </option>
+            <option value="../../ccf-0.17.2/build_apps/run_app.html">ccf-0.17.2 </option>
+            <option value="../../ccf-0.17.1/build_apps/run_app.html">ccf-0.17.1 </option>
+            <option value="../../ccf-0.17.0/build_apps/run_app.html">ccf-0.17.0 </option>
+            <option value="../../ccf-0.16.3/build_apps/run_app.html">ccf-0.16.3 </option>
+            <option value="../../ccf-0.16.2/build_apps/run_app.html">ccf-0.16.2 </option>
+            <option value="../../ccf-0.16.1/build_apps/run_app.html">ccf-0.16.1 </option>
+            <option value="../../ccf-0.16.0/build_apps/run_app.html">ccf-0.16.0 </option>
+            <option value="../../ccf-0.15.2/index.html">ccf-0.15.2 </option>
+            <option value="../../ccf-0.15.1/index.html">ccf-0.15.1 </option>
+            <option value="../../ccf-0.15.0/index.html">ccf-0.15.0 </option>
+            <option value="../../ccf-0.14.3/index.html">ccf-0.14.3 </option>
+            <option value="../../ccf-0.14.2/index.html">ccf-0.14.2 </option>
+            <option value="../../ccf-0.14.1/index.html">ccf-0.14.1 </option>
+            <option value="../../ccf-0.14.0/index.html">ccf-0.14.0 </option>
+            <option value="../../ccf-0.13.4/index.html">ccf-0.13.4 </option>
+            <option value="../../ccf-0.13.3/index.html">ccf-0.13.3 </option>
+            <option value="../../ccf-0.13.2/index.html">ccf-0.13.2 </option>
+            <option value="../../ccf-0.13.1/index.html">ccf-0.13.1 </option>
+            <option value="../../ccf-0.13.0/index.html">ccf-0.13.0 </option>
+            <option value="../../ccf-0.12.2/index.html">ccf-0.12.2 </option>
+            <option value="../../ccf-0.12.1/index.html">ccf-0.12.1 </option>
+            <option value="../../ccf-0.12.0/index.html">ccf-0.12.0 </option>
+            <option value="../../ccf-0.11.7/index.html">ccf-0.11.7 </option>
+            <option value="../../ccf-0.11.4/index.html">ccf-0.11.4 </option>
+            <option value="../../ccf-0.11.1/index.html">ccf-0.11.1 </option>
+        </select>
+        
+</nav>
+          </div>
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+              
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#recovering-a-service" class="nav-link">Recovering a Service</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#debugging" class="nav-link">Debugging</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#integration-tests" class="nav-link">Integration Tests</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#performance-tests" class="nav-link">Performance Tests</a>
+        </li>
+    
+    </ul>
+</nav>
+
+
+
+<div class="tocsection editthispage">
+    <a href="https://github.com/Microsoft/CCF/edit/main/doc/build_apps/run_app.rst">
+        <i class="fas fa-pencil-alt"></i> Edit this page
+    </a>
+</div>
+
+              
+          </div>
+          
+
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <div class="section" id="running-ccf-applications">
+<h1>Running CCF Applications<a class="headerlink" href="#running-ccf-applications" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Before starting a CCF sandbox environment, make sure that:</p>
+<ul class="simple">
+<li><p>The CCF runtime environment has successfully been setup (see <a class="reference internal" href="../operations/run_setup.html"><span class="doc">Setup CCF Runtime Environment</span></a>).</p></li>
+<li><p>CCF is installed (see <a class="reference internal" href="install_bin.html"><span class="doc">Install CCF</span></a>)</p></li>
+</ul>
+</div>
+<p>The quickest way to start a CCF sandbox is to use the <a class="reference external" href="https://github.com/microsoft/CCF/blob/main/tests/sandbox/sandbox.sh">sandbox.sh</a> test script, specifying the <a class="reference internal" href="index.html"><span class="doc">enclave image</span></a> to run.</p>
+<p>The script creates a new one node CCF test network running locally. All the governance requests required to open the network to users are automatically issued.</p>
+<p>For example, deploying the <code class="docutils literal notranslate"><span class="pre">liblogging</span></code> example application:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ /opt/ccf/bin/sandbox.sh --package ./liblogging.virtual.so
+Setting up Python environment...
+Python environment successfully setup
+<span class="o">[</span><span class="m">16</span>:14:05.294<span class="o">]</span> Starting <span class="m">1</span> CCF node...
+<span class="o">[</span><span class="m">16</span>:14:05.295<span class="o">]</span> Virtual mode enabled
+<span class="o">[</span><span class="m">16</span>:14:10.010<span class="o">]</span> Started CCF network with the following nodes:
+<span class="o">[</span><span class="m">16</span>:14:10.011<span class="o">]</span>   Node <span class="o">[</span><span class="m">0</span><span class="o">]</span> <span class="o">=</span> https://127.0.0.1:8000
+<span class="o">[</span><span class="m">16</span>:14:10.011<span class="o">]</span> You can now issue business transactions to the ./liblogging.virtual.so application.
+<span class="o">[</span><span class="m">16</span>:14:10.011<span class="o">]</span> Keys and certificates have been copied to the common folder: /data/src/CCF/build/workspace/sandbox_common
+<span class="o">[</span><span class="m">16</span>:14:10.011<span class="o">]</span> See https://microsoft.github.io/CCF/main/use_apps/issue_commands.html <span class="k">for</span> more information.
+<span class="o">[</span><span class="m">16</span>:14:10.011<span class="o">]</span> Press Ctrl+C to shutdown the network.
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">sandbox.sh</span></code> defaults to using CCF’s <cite>virtual</cite> mode, which does not require or make use of SGX. To load debug or release enclaves and make use of SGX, <code class="docutils literal notranslate"><span class="pre">--enclave-type</span></code> must be set to the right value, for example: <code class="docutils literal notranslate"><span class="pre">sandbox.sh</span> <span class="pre">--enclave-type</span> <span class="pre">release</span> <span class="pre">-p</span> <span class="pre">./liblogging.enclave.so.signed</span></code></p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">--verbose</span></code> argument can be used to display all commands issued by operators and members to start the network.</p></li>
+<li><p>Snapshots can be generated at regular intervals by the primary node of the service using the <code class="docutils literal notranslate"><span class="pre">--snapshot-tx-interval</span> <span class="pre">&lt;interval&gt;</span></code> option.</p></li>
+</ul>
+</div>
+<p>The log files (<code class="docutils literal notranslate"><span class="pre">out</span></code> and <code class="docutils literal notranslate"><span class="pre">err</span></code>) and ledger directory (<code class="docutils literal notranslate"><span class="pre">&lt;node_id&gt;.ledger</span></code>) for each CCF node can be found under <code class="docutils literal notranslate"><span class="pre">./workspace/sandbox_&lt;node_id&gt;</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The first time the command is run, a Python virtual environment will be created. This may take a few seconds. It will not be run the next time the <code class="docutils literal notranslate"><span class="pre">sandbox.sh</span></code> script is started.</p>
+</div>
+<p>In a different terminal, using the local IP address and port of the CCF nodes displayed by the command (e.g. <code class="docutils literal notranslate"><span class="pre">https://127.0.0.1:8000</span></code> for node <code class="docutils literal notranslate"><span class="pre">0</span></code>), it is then possible for users to <a class="reference internal" href="../use_apps/issue_commands.html#issuing-commands"><span class="std std-ref">issue business requests</span></a>.</p>
+<div class="section" id="recovering-a-service">
+<h2>Recovering a Service<a class="headerlink" href="#recovering-a-service" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">sandbox.sh</span></code> script can also be used to automatically recover a defunct network, as per the steps described <a class="reference internal" href="../governance/accept_recovery.html#accepting-recovery-and-submitting-shares"><span class="std std-ref">here</span></a>. The ledger to be recovered (<code class="docutils literal notranslate"><span class="pre">--ledger-dir</span></code>) and the directory containing the members and users identities (<code class="docutils literal notranslate"><span class="pre">--common-dir</span></code>) should be passed as arguments to the script.</p>
+<p>Additionally, if snapshots were generated by the defunct service (using the <code class="docutils literal notranslate"><span class="pre">--snapshot-tx-interval</span> <span class="pre">&lt;interval&gt;</span></code> option), the recovery procedure can be significantly sped up by re-starting from the latest available snapshot (<code class="docutils literal notranslate"><span class="pre">--snapshot-dir</span></code>).</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ cp -r ./workspace/sandbox_0/0.ledger .
+$ cp -r ./workspace/sandbox_0/snapshots . <span class="c1"># Optional, only if snapshots are available</span>
+$ /opt/ccf/bin/sandbox.sh -p ./liblogging.virtual.so --recover --ledger-dir <span class="m">0</span>.ledger --common-dir ./workspace/sandbox_common/ <span class="o">[</span>--snapshot-dir snapshots<span class="o">]</span>
+Setting up Python environment...
+Python environment successfully setup
+<span class="o">[</span><span class="m">16</span>:24:29.563<span class="o">]</span> Starting <span class="m">1</span> CCF node...
+<span class="o">[</span><span class="m">16</span>:24:29.563<span class="o">]</span> Recovering network from:
+<span class="o">[</span><span class="m">16</span>:24:29.563<span class="o">]</span>  - Common directory: ./workspace/sandbox_common/
+<span class="o">[</span><span class="m">16</span>:24:29.563<span class="o">]</span>  - Ledger: <span class="m">0</span>.ledger
+<span class="o">[</span><span class="m">16</span>:24:29.563<span class="o">]</span> No available snapshot to recover from. Entire transaction <span class="nb">history</span> will be replayed.
+<span class="o">[</span><span class="m">16</span>:24:32.885<span class="o">]</span> Started CCF network with the following nodes:
+<span class="o">[</span><span class="m">16</span>:24:32.885<span class="o">]</span>   Node <span class="o">[</span><span class="m">1</span><span class="o">]</span> <span class="o">=</span> https://127.0.0.1:8000
+<span class="o">[</span><span class="m">16</span>:24:32.885<span class="o">]</span> You can now issue business transactions to the liblogging.enclave.so.signed application.
+<span class="o">[</span><span class="m">16</span>:24:32.885<span class="o">]</span> Keys and certificates have been copied to the common folder: ./workspace/sandbox_common/
+<span class="o">[</span><span class="m">16</span>:24:32.885<span class="o">]</span> See https://microsoft.github.io/CCF/main/use_apps/issue_commands.html <span class="k">for</span> more information.
+<span class="o">[</span><span class="m">16</span>:24:32.885<span class="o">]</span> Press Ctrl+C to shutdown the network.
+</pre></div>
+</div>
+<p>The effects of transactions committed by the defunct network should then be recovered. Users can also <a class="reference internal" href="../use_apps/issue_commands.html#issuing-commands"><span class="std std-ref">issue new business requests</span></a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">--ledger-recovery-timeout</span></code> argument should be used to specify the maximum timeout (in seconds) that the script will wait for CCF to recover the ledger. Depending on the size of the ledger to recover, this timeout may have to be set to a large value.</p>
+</div>
+</div>
+<div class="section" id="debugging">
+<h2>Debugging<a class="headerlink" href="#debugging" title="Permalink to this headline">¶</a></h2>
+<p>To connect a debugger to a CCF node, the configuration passed to <code class="docutils literal notranslate"><span class="pre">oesign</span> <span class="pre">sign</span></code> must have debugging enabled  (<code class="docutils literal notranslate"><span class="pre">Debug=1</span></code>). This <cite>must</cite> be disabled for production enclaves, to ensure confidentiality is maintained. If using the <code class="docutils literal notranslate"><span class="pre">sign_app_library</span></code> function defined in <code class="docutils literal notranslate"><span class="pre">ccf_app.cmake</span></code>, two variants will be produced for each enclave. <code class="docutils literal notranslate"><span class="pre">name.enclave.so.debuggable</span></code> will have debugging enabled (meaning a debugger may be attached - the optimisation level is handled independently), while <code class="docutils literal notranslate"><span class="pre">name.enclave.so.signed</span></code> produces a final debugging-disabled enclave. The produced binaries are otherwise identical.</p>
+<p>Additionally, the <code class="docutils literal notranslate"><span class="pre">cchost</span></code> binary must be told that the enclave type is debug:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ cchost --enclave-file liblogging.enclave.so.debuggable --enclave-type debug <span class="o">[</span>args<span class="o">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="integration-tests">
+<h2>Integration Tests<a class="headerlink" href="#integration-tests" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">sandbox.sh</span></code> script can be a helpful element of infrastructure to execute Integration Tests against a CCF test network running a particular application.
+<a class="reference external" href="https://github.com/microsoft/CCF/blob/main/tests/test_install.sh">test_install.sh</a> is a good example of that, using the sandbox to run <a class="reference external" href="https://github.com/microsoft/CCF/blob/main/python/tutorial.py">tutorial.py</a> on a release package.</p>
+<p><code class="docutils literal notranslate"><span class="pre">test_install.sh</span></code> illustrates how to wait for the sandbox to be <a class="reference external" href="https://github.com/microsoft/CCF/blob/main/tests/test_install.sh#L33">ready</a> before issuing application transactions, how to shut it down cleanly,
+and how to trigger a recovery. Recovering a test network can be a useful way to inspect post-test application test.</p>
+</div>
+<div class="section" id="performance-tests">
+<h2>Performance Tests<a class="headerlink" href="#performance-tests" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">sandbox.sh</span></code> can be equally useful for performance testing, for example with a load testing tool such as <a class="reference external" href="https://github.com/tsenart/vegeta">vegeta</a>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ /opt/ccf/bin/sandbox.sh --package ./liblogging.virtual.so
+...
+<span class="o">[</span><span class="m">16</span>:14:10.011<span class="o">]</span>   Node <span class="o">[</span><span class="m">0</span><span class="o">]</span> <span class="o">=</span> https://127.0.0.1:8000
+...
+<span class="o">[</span><span class="m">16</span>:14:10.011<span class="o">]</span> Keys and certificates have been copied to the common folder: /data/src/CCF/build/workspace/sandbox_common
+...
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Extracted from the output of sandbox.sh, above.</span>
+$ <span class="nb">export</span> <span class="nv">SCDIR</span><span class="o">=</span>/data/src/CCF/build/workspace/sandbox_common
+$ <span class="nb">export</span> <span class="nv">VEGETA</span><span class="o">=</span>/opt/vegeta/vegeta
+$ <span class="nv">$VEGETA</span> attack --targets sample_targets.json
+                 --format json --duration 10s <span class="se">\</span>
+                 --cert <span class="nv">$SCDIR</span>/user0_cert.pem <span class="se">\</span>
+                 --key <span class="nv">$SCDIR</span>/user0_privk.pem <span class="se">\</span>
+                 --root-certs <span class="nv">$SCDIR</span>/networkcert.pem <span class="p">|</span> /opt/vegeta/vegeta report
+</pre></div>
+</div>
+<p>Where <code class="docutils literal notranslate"><span class="pre">sample_targets.json</span></code> is a file containing some sample requests to be sent as load testing, for example:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;method&quot;</span><span class="p">:</span> <span class="s2">&quot;POST&quot;</span><span class="p">,</span> <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;https://127.0.0.1:8000/app/log/private&quot;</span><span class="p">,</span> <span class="nt">&quot;header&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;Content-Type&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;application/json&quot;</span><span class="p">]},</span> <span class="nt">&quot;body&quot;</span><span class="p">:</span> <span class="s2">&quot;eyJpZCI6IDAsICJtc2ciOiAiUHJpdmF0ZSBtZXNzYWdlOiAwIn0=&quot;</span><span class="p">}</span>
+<span class="p">{</span><span class="nt">&quot;method&quot;</span><span class="p">:</span> <span class="s2">&quot;GET&quot;</span><span class="p">,</span> <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;https://127.0.0.1:8000/app/log/private?id=0&quot;</span><span class="p">,</span> <span class="nt">&quot;header&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;Content-Type&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;application/json&quot;</span><span class="p">]}}</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+              </div>
+              
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="build_app.html" title="previous page">Build and Sign CCF Applications</a>
+    <a class='right-next' id="next-link" href="demo.html" title="next page">End-to-end demo</a>
+
+              </div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    <p>
+          &copy; Copyright 2018, Microsoft Research.<br/>
+        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.1.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

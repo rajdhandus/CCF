@@ -1,0 +1,584 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TypeScript Application &#8212; CCF  documentation</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="TypeScript Application using tsoa" href="js_app_tsoa.html" />
+    <link rel="prev" title="JavaScript Application" href="js_app.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+    
+    <a class="navbar-brand" href="../index.html">
+      <img src="../_static/ccf.svg" class="logo" alt="logo">
+    </a>
+    
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navbar-menu" class="col-11 collapse navbar-collapse">
+      <ul id="navbar-main-elements" class="navbar-nav mr-auto">
+        
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../overview/index.html">Overview</a>
+        </li>
+        
+        <li class="nav-item active">
+            <a class="nav-link" href="index.html">Build Apps</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../use_apps/index.html">Use Apps</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../operations/index.html">Operations</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../governance/index.html">Governance</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../audit/index.html">Audit</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../contribute/index.html">Contribute</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../glossary.html">Glossary</a>
+        </li>
+        
+        
+      </ul>
+
+      <ul class="navbar-nav">
+        
+          <li class="nav-item">
+            <a class="nav-link" href="https://github.com/Microsoft/CCF" target="_blank" rel="noopener">
+              <span><i class="fab fa-github-square"></i></span>
+            </a>
+          </li>
+        
+        
+      </ul>
+    </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+          <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+<script>
+    function onVersionChange() {
+      window.location.href = document.getElementById("versions").value;
+    }
+
+    window.addEventListener("DOMContentLoaded",function(){
+        let selectedVersion = "main"
+        const thisURL = window.location.toString()
+        let indexOfVersion = thisURL.indexOf("ccf-")
+        if (indexOfVersion != -1) {
+            selectedVersion = thisURL.substring(indexOfVersion, thisURL.indexOf("/", indexOfVersion));
+        }
+        let sel = document.getElementById("versions");
+        if (sel != null) {
+            let opts = sel.options;
+            for (var opt, j = 0; opt = opts[j]; j++) {
+                if (opt.text == selectedVersion) {
+                    sel.selectedIndex = j;
+                    break;
+                }
+            }
+        }
+    }, false);
+</script>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+
+    <div class="bd-toc-item active">
+        
+
+        <ul class="nav bd-sidenav">
+            
+            
+            
+            
+            
+            
+            <li class="">
+                <a href="create_vm.html">Create Azure SGX VM</a>
+            </li>
+            
+            
+            
+            <li class="">
+                <a href="install_bin.html">Install CCF</a>
+            </li>
+            
+            
+            
+            <li class="">
+                <a href="build_setup.html">CCF Development Setup</a>
+            </li>
+            
+            
+            
+            <li class="">
+                <a href="example.html">C++ Application</a>
+            </li>
+            
+            
+            
+
+            <li class="active">
+                <a href="js_app.html">JavaScript Application</a>
+                <ul>
+                    
+                    <li class="active">
+                        <a href="">TypeScript Application</a>
+                    </li>
+                    
+                    <li class="">
+                        <a href="js_app_tsoa.html">TypeScript Application using tsoa</a>
+                    </li>
+                    
+                    <li class="active">
+                        <a href="js_app_bundle.html">JavaScript Application Bundle</a>
+                    </li>
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li class="">
+                <a href="build_app.html">Build and Sign CCF Applications</a>
+            </li>
+            
+            
+            
+            <li class="">
+                <a href="run_app.html">Running CCF Applications</a>
+            </li>
+            
+            
+            
+            <li class="">
+                <a href="demo.html">End-to-end demo</a>
+            </li>
+            
+            
+            
+            <li class="">
+                <a href="auth/index.html">User Authentication</a>
+            </li>
+            
+            
+            
+            <li class="">
+                <a href="kv/index.html">Key-Value Store</a>
+            </li>
+            
+            
+            
+            <li class="">
+                <a href="upgrading_app.html">Upgrade Your Application</a>
+            </li>
+            
+            
+            
+            <li class="">
+                <a href="api.html">Developer API</a>
+            </li>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+        </ul>
+
+        
+        <h6> Versions </h6>
+        <select name="versions" id="versions" class="custom-select custom-select-sm" style="width:50%" onchange="onVersionChange()">
+            <option value="../../main/build_apps/js_app_ts.html">main </option>
+            <option value="../../ccf-0.18.2/build_apps/js_app_ts.html">ccf-0.18.2 </option>
+            <option value="../../ccf-0.18.1/build_apps/js_app_ts.html">ccf-0.18.1 </option>
+            <option value="js_app_ts.html">ccf-0.18.0 </option>
+            <option value="../../ccf-0.17.2/build_apps/js_app_ts.html">ccf-0.17.2 </option>
+            <option value="../../ccf-0.17.1/build_apps/js_app_ts.html">ccf-0.17.1 </option>
+            <option value="../../ccf-0.17.0/build_apps/js_app_ts.html">ccf-0.17.0 </option>
+            <option value="../../ccf-0.16.3/build_apps/js_app_ts.html">ccf-0.16.3 </option>
+            <option value="../../ccf-0.16.2/build_apps/js_app_ts.html">ccf-0.16.2 </option>
+            <option value="../../ccf-0.16.1/build_apps/js_app_ts.html">ccf-0.16.1 </option>
+            <option value="../../ccf-0.16.0/build_apps/js_app_ts.html">ccf-0.16.0 </option>
+            <option value="../../ccf-0.15.2/index.html">ccf-0.15.2 </option>
+            <option value="../../ccf-0.15.1/index.html">ccf-0.15.1 </option>
+            <option value="../../ccf-0.15.0/index.html">ccf-0.15.0 </option>
+            <option value="../../ccf-0.14.3/index.html">ccf-0.14.3 </option>
+            <option value="../../ccf-0.14.2/index.html">ccf-0.14.2 </option>
+            <option value="../../ccf-0.14.1/index.html">ccf-0.14.1 </option>
+            <option value="../../ccf-0.14.0/index.html">ccf-0.14.0 </option>
+            <option value="../../ccf-0.13.4/index.html">ccf-0.13.4 </option>
+            <option value="../../ccf-0.13.3/index.html">ccf-0.13.3 </option>
+            <option value="../../ccf-0.13.2/index.html">ccf-0.13.2 </option>
+            <option value="../../ccf-0.13.1/index.html">ccf-0.13.1 </option>
+            <option value="../../ccf-0.13.0/index.html">ccf-0.13.0 </option>
+            <option value="../../ccf-0.12.2/index.html">ccf-0.12.2 </option>
+            <option value="../../ccf-0.12.1/index.html">ccf-0.12.1 </option>
+            <option value="../../ccf-0.12.0/index.html">ccf-0.12.0 </option>
+            <option value="../../ccf-0.11.7/index.html">ccf-0.11.7 </option>
+            <option value="../../ccf-0.11.4/index.html">ccf-0.11.4 </option>
+            <option value="../../ccf-0.11.1/index.html">ccf-0.11.1 </option>
+        </select>
+        
+</nav>
+          </div>
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+              
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#prerequisites" class="nav-link">Prerequisites</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#folder-layout" class="nav-link">Folder layout</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#endpoint-handlers" class="nav-link">Endpoint handlers</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#type-definitions" class="nav-link">Type definitions</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#metadata" class="nav-link">Metadata</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#conversion-to-an-app-bundle" class="nav-link">Conversion to an app bundle</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#deployment" class="nav-link">Deployment</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#a-note-on-commonjs-modules" class="nav-link">A note on CommonJS modules</a>
+        </li>
+    
+    </ul>
+</nav>
+
+
+
+<div class="tocsection editthispage">
+    <a href="https://github.com/Microsoft/CCF/edit/main/doc/build_apps/js_app_ts.rst">
+        <i class="fas fa-pencil-alt"></i> Edit this page
+    </a>
+</div>
+
+              
+          </div>
+          
+
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <div class="section" id="typescript-application">
+<h1>TypeScript Application<a class="headerlink" href="#typescript-application" title="Permalink to this headline">¶</a></h1>
+<p>This guide shows how to build a TypeScript application using Node.js and npm.</p>
+<p>The source code for the example app can be found in the
+<a class="reference external" href="https://github.com/microsoft/CCF/tree/master/tests/npm-app">tests/npm-app</a>
+folder of the CCF git repository.</p>
+<div class="section" id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
+<p>The following tools are assumed to be installed on the development machine:</p>
+<ul class="simple">
+<li><p>Node.js</p></li>
+<li><p>npm</p></li>
+</ul>
+</div>
+<div class="section" id="folder-layout">
+<h2>Folder layout<a class="headerlink" href="#folder-layout" title="Permalink to this headline">¶</a></h2>
+<p>The sample app has the following folder layout:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ tree --dirsfirst npm-app
+npm-app
+├── src
+│   ├── endpoints
+│   │   ├── all.ts
+│   │   ├── crypto.ts
+│   │   ├── partition.ts
+│   │   └── proto.ts
+│   └── types
+│       └── ccf.ts
+├── app.json
+├── package.json
+├── rollup.config.js
+└── tsconfig.json
+</pre></div>
+</div>
+<p>It contains these files:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">src/endpoints/*.ts</span></code>: <a class="reference internal" href="#endpoint-handlers"><span class="std std-ref">Endpoint handlers</span></a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">src/types/ccf.ts</span></code>: <a class="reference internal" href="#type-definitions"><span class="std std-ref">Type definitions</span></a> for CCF objects.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">app.json</span></code>: <a class="reference internal" href="#metadata"><span class="std std-ref">App metadata</span></a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">package.json</span></code>: Dependencies and build command.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rollup.config.js</span></code>: Rollup configuration, see <a class="reference internal" href="#conversion-to-an-app-bundle"><span class="std std-ref">Conversion to an app bundle</span></a> for more details.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tsconfig.json</span></code>: TypeScript compiler configuration.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Rollup requires exactly one entry-point module.
+The <code class="docutils literal notranslate"><span class="pre">src/endpoints/all.ts</span></code> module serves that purpose and re-exports all endpoint handlers
+from the other files in the same folder.
+Keeping endpoint handlers in separate modules and referencing those directly in <code class="docutils literal notranslate"><span class="pre">app.json</span></code>
+allows for fine-grained control over which other modules are loaded, per endpoint.
+This in turn may improve load time and/or memory consumption, for example if not all endpoints
+share the same npm package dependencies.</p>
+</div>
+</div>
+<div class="section" id="endpoint-handlers">
+<h2>Endpoint handlers<a class="headerlink" href="#endpoint-handlers" title="Permalink to this headline">¶</a></h2>
+<p>An endpoint handler, here named <code class="docutils literal notranslate"><span class="pre">abc</span></code>, has the following structure:</p>
+<div class="highlight-ts notranslate"><div class="highlight"><pre><span></span><span class="kd">interface</span> <span class="nx">AbcRequest</span> <span class="p">{</span>
+    <span class="p">...</span>
+<span class="p">}</span>
+
+<span class="kd">interface</span> <span class="nx">AbcResponse</span> <span class="p">{</span>
+    <span class="p">...</span>
+<span class="p">}</span>
+
+<span class="k">export</span> <span class="kd">function</span> <span class="nx">abc</span><span class="p">(</span><span class="nx">request</span>: <span class="kt">ccf.Request</span><span class="o">&lt;</span><span class="nx">AbcRequest</span><span class="o">&gt;</span><span class="p">)</span><span class="o">:</span> <span class="nx">ccf</span><span class="p">.</span><span class="nx">Response</span><span class="o">&lt;</span><span class="nx">AbcResponse</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="c1">// access request details</span>
+    <span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">request</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+
+    <span class="c1">// process request</span>
+    <span class="c1">// ...</span>
+
+    <span class="c1">// return response</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="nx">body</span>: <span class="kt">...</span><span class="p">,</span>
+        <span class="nx">headers</span>: <span class="kt">...</span><span class="p">,</span>
+        <span class="nx">statusCode</span>: <span class="kt">...</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">AbcRequest</span></code> and <code class="docutils literal notranslate"><span class="pre">AbcResponse</span></code> define the JSON schema of the request and response body, respectively.
+If an endpoint has no request or response body, the type parameters of <code class="docutils literal notranslate"><span class="pre">ccf.Request</span></code>/<code class="docutils literal notranslate"><span class="pre">ccf.Response</span></code> can be omitted.</p>
+<p>As an example, the <code class="docutils literal notranslate"><span class="pre">/partition</span></code> endpoint of the sample app is implemented as:</p>
+<div class="highlight-ts notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="o">*</span> <span class="kr">as</span> <span class="nx">_</span> <span class="nx">from</span> <span class="s2">&quot;lodash-es&quot;</span><span class="p">;</span>
+
+<span class="k">import</span> <span class="o">*</span> <span class="kr">as</span> <span class="nx">ccf</span> <span class="nx">from</span> <span class="s2">&quot;../types/ccf&quot;</span><span class="p">;</span>
+
+<span class="kd">type</span> <span class="nx">PartitionRequest</span> <span class="o">=</span> <span class="nx">any</span><span class="p">[];</span>
+<span class="kd">type</span> <span class="nx">PartitionResponse</span> <span class="o">=</span> <span class="p">[</span><span class="nx">any</span><span class="p">[],</span> <span class="nx">any</span><span class="p">[]];</span>
+
+<span class="k">export</span> <span class="kd">function</span> <span class="nx">partition</span><span class="p">(</span>
+  <span class="nx">request</span>: <span class="kt">ccf.Request</span><span class="o">&lt;</span><span class="nx">PartitionRequest</span><span class="o">&gt;</span>
+<span class="p">)</span><span class="o">:</span> <span class="nx">ccf</span><span class="p">.</span><span class="nx">Response</span><span class="o">&lt;</span><span class="nx">PartitionResponse</span><span class="o">&gt;</span> <span class="p">{</span>
+  <span class="c1">// Example from https://lodash.com.</span>
+  <span class="kd">let</span> <span class="nx">arr</span> <span class="o">=</span> <span class="nx">request</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+  <span class="k">return</span> <span class="p">{</span> <span class="nx">body</span>: <span class="kt">_.partition</span><span class="p">(</span><span class="nx">arr</span><span class="p">,</span> <span class="p">(</span><span class="nx">n</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">n</span> <span class="o">%</span> <span class="mf">2</span><span class="p">)</span> <span class="p">};</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Here, the request body is a JSON array with elements of arbitrary type,
+and the response body is an even/odd partitioning of those elements as nested JSON array.
+The example also shows how an external library, here <code class="docutils literal notranslate"><span class="pre">lodash</span></code>, is imported and used.</p>
+<p>See the <a class="reference internal" href="js_app_bundle.html#javascript-api"><span class="std std-ref">JavaScript API reference</span></a> for more details on the request and response object fields.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Even though request body schemas can be defined as part of the OpenAPI <a class="reference internal" href="#metadata"><span class="std std-ref">metadata</span></a>,
+CCF does not validate incoming request data against those schemas.
+It is up to the application to perform any necessary validation.</p>
+</div>
+</div>
+<div class="section" id="type-definitions">
+<h2>Type definitions<a class="headerlink" href="#type-definitions" title="Permalink to this headline">¶</a></h2>
+<p>CCF currently does not provide an npm package with TypeScript definitions
+for <a class="reference internal" href="js_app_bundle.html#javascript-api"><span class="std std-ref">CCF’s JavaScript API</span></a>.</p>
+<p>Instead, the definitions are part of the sample app in
+<a class="reference external" href="https://github.com/microsoft/CCF/tree/master/tests/npm-app/src/types/ccf.ts">src/types/ccf.ts</a>.
+See <a class="reference external" href="https://github.com/microsoft/CCF/tree/master/tests/npm-app/src/endpoints">src/endpoints</a>
+on how the types can be imported and used.</p>
+</div>
+<div class="section" id="metadata">
+<h2>Metadata<a class="headerlink" href="#metadata" title="Permalink to this headline">¶</a></h2>
+<p>App metadata is stored in an <code class="docutils literal notranslate"><span class="pre">app.json</span></code> file in the root of the app project.
+It is copied as-is to the <code class="docutils literal notranslate"><span class="pre">dist/</span></code> folder during the <a class="reference internal" href="#conversion-to-an-app-bundle"><span class="std std-ref">build step</span></a>.
+The file follows the <a class="reference internal" href="js_app_bundle.html#metadata"><span class="std std-ref">metadata format</span></a> used by app bundles.</p>
+<p>Note that module paths must be relative to the <code class="docutils literal notranslate"><span class="pre">dist/src/</span></code> folder and end with <code class="docutils literal notranslate"><span class="pre">.js</span></code> instead of <code class="docutils literal notranslate"><span class="pre">.ts</span></code>.</p>
+</div>
+<div class="section" id="conversion-to-an-app-bundle">
+<h2>Conversion to an app bundle<a class="headerlink" href="#conversion-to-an-app-bundle" title="Permalink to this headline">¶</a></h2>
+<p>Preparing the app for deployment means converting it to CCF’s native JavaScript application format, an <a class="reference internal" href="js_app_bundle.html#javascript-application-bundle"><span class="std std-ref">app bundle</span></a>.
+This involves the following steps:</p>
+<ul class="simple">
+<li><p>transform TypeScript into JavaScript,</p></li>
+<li><p>transform bare imports (<code class="docutils literal notranslate"><span class="pre">lodash</span></code>) into relative imports (<code class="docutils literal notranslate"><span class="pre">./node_modules/lodash/lodash.js</span></code>),</p></li>
+<li><p>transform old-style CommonJS modules into native JavaScript modules, and</p></li>
+<li><p>store all files according to the app bundle folder structure.</p></li>
+</ul>
+<p>For this, the sample app relies on the <a class="reference external" href="https://www.npmjs.com/package/typescript">TypeScript compiler</a> and
+<a class="reference external" href="https://rollupjs.org">rollup</a>. Rollup also offers tree shaking support
+to avoid deploying unused modules. See <code class="docutils literal notranslate"><span class="pre">package.json</span></code> and <code class="docutils literal notranslate"><span class="pre">rollup.config.js</span></code> for details.</p>
+<p>The conversion command is invoked with</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ npm run build
+</pre></div>
+</div>
+<p>The app bundle can now be found in the <code class="docutils literal notranslate"><span class="pre">dist/</span></code> folder and is ready to be deployed.</p>
+</div>
+<div class="section" id="deployment">
+<h2>Deployment<a class="headerlink" href="#deployment" title="Permalink to this headline">¶</a></h2>
+<p>After the app was converted to an app bundle, it can be wrapped into a proposal and deployed.
+See the <a class="reference internal" href="js_app_bundle.html#deployment"><span class="std std-ref">Deployment section of the app bundle page</span></a> for further details.</p>
+</div>
+<div class="section" id="a-note-on-commonjs-modules">
+<h2>A note on CommonJS modules<a class="headerlink" href="#a-note-on-commonjs-modules" title="Permalink to this headline">¶</a></h2>
+<p>The sample project uses the
+<a class="reference external" href="https://github.com/rollup/plugins/tree/master/packages/commonjs">&#64;rollup/plugin-commonjs</a>
+package to automatically convert npm packages with CommonJS modules to native JavaScript modules
+so that they can be used in CCF.</p>
+<p>For some packages this conversion may fail, for example when the package has circular module dependencies.
+If that is the case, try one of the following suggestions:</p>
+<ol class="arabic simple">
+<li><p>Check if there is a JavaScript module variant of the package and use that instead.
+These are also named ES or ECMAScript modules/packages.</p></li>
+<li><p>Check if there is a known work-around to fix the conversion issue.
+Chances are you are not the only one experiencing it.</p></li>
+<li><p>Check if the npm package contains a browser bundle and try to import that instead.
+For example, this works for protobuf.js: <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">protobuf</span> <span class="pre">from</span> <span class="pre">'protobufjs/dist/protobuf.js'</span></code>.</p></li>
+<li><p>Manually wrap a browser bundle of the package without using npm.
+This may be needed if the browser bundle is not part of the npm package, although this is uncommon.</p></li>
+</ol>
+<p>Manually wrapping a browser bundle (step 4) means copying the bundle source code in a module
+file and surrounding it with module boiler-plate. This may look something like:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">let</span> <span class="nx">exports</span> <span class="o">=</span> <span class="p">{},</span> <span class="nx">module</span> <span class="o">=</span> <span class="p">{</span><span class="nx">exports</span><span class="p">};</span>
+
+<span class="c1">// REPLACE this comment with the content of the bundle.</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>If the bundle uses only global exports instead of CommonJS/Node.js exports,
+then the module should look something like:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="c1">// REPLACE this comment with the content of the bundle.</span>
+
+<span class="c1">// Adjust this to match the globals of the package.</span>
+<span class="k">export</span> <span class="p">{</span><span class="nx">ExportA</span><span class="p">,</span> <span class="nx">ExportB</span><span class="p">};</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+              </div>
+              
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="js_app.html" title="previous page">JavaScript Application</a>
+    <a class='right-next' id="next-link" href="js_app_tsoa.html" title="next page">TypeScript Application using tsoa</a>
+
+              </div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    <p>
+          &copy; Copyright 2018, Microsoft Research.<br/>
+        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.1.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

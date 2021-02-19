@@ -1,0 +1,490 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Opening a Network &#8212; CCF  documentation</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Accepting Recovery and Submitting Shares" href="accept_recovery.html" />
+    <link rel="prev" title="Proposing and Voting for a Proposal" href="proposals.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+    
+    <a class="navbar-brand" href="../index.html">
+      <img src="../_static/ccf.svg" class="logo" alt="logo">
+    </a>
+    
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navbar-menu" class="col-11 collapse navbar-collapse">
+      <ul id="navbar-main-elements" class="navbar-nav mr-auto">
+        
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../concepts.html">Concepts</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../quickstart/index.html">Start Here</a>
+        </li>
+        
+        <li class="nav-item active">
+            <a class="nav-link" href="index.html">Governance</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../developers/index.html">Building Apps</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../operators/index.html">Operations</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../users/index.html">Using Apps</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../glossary.html">Glossary</a>
+        </li>
+        
+        
+      </ul>
+
+      <ul class="navbar-nav">
+        
+          <li class="nav-item">
+            <a class="nav-link" href="https://github.com/Microsoft/CCF" target="_blank" rel="noopener">
+              <span><i class="fab fa-github-square"></i></span>
+            </a>
+          </li>
+        
+        
+      </ul>
+    </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+          <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+<script>
+    function onVersionChange() {
+      window.location.href = document.getElementById("versions").value;
+    }
+
+    window.addEventListener("DOMContentLoaded",function(){
+        let selectedVersion = "main"
+        const thisURL = window.location.toString()
+        let indexOfVersion = thisURL.indexOf("ccf-")
+        if (indexOfVersion != -1) {
+            selectedVersion = thisURL.substring(indexOfVersion, thisURL.indexOf("/", indexOfVersion));
+        }
+        let sel = document.getElementById("versions");
+        if (sel != null) {
+            let opts = sel.options;
+            for (var opt, j = 0; opt = opts[j]; j++) {
+                if (opt.text == selectedVersion) {
+                    sel.selectedIndex = j;
+                    break;
+                }
+            }
+        }
+    }, false);
+</script>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+
+    <div class="bd-toc-item active">
+        
+
+        <ul class="nav bd-sidenav">
+            
+            
+            
+            
+            
+            
+            
+            
+            <li class="">
+                <a href="constitution.html">Constitution</a>
+            </li>
+            
+            
+            
+            <li class="">
+                <a href="proposals.html">Proposing and Voting for a Proposal</a>
+            </li>
+            
+            
+            
+            <li class="active">
+                <a href="">Opening a Network</a>
+            </li>
+            
+            
+            
+            <li class="">
+                <a href="accept_recovery.html">Accepting Recovery and Submitting Shares</a>
+            </li>
+            
+            
+            
+            <li class="">
+                <a href="common_member_operations.html">Common Governance Operations</a>
+            </li>
+            
+            
+            
+            <li class="">
+                <a href="adding_member.html">Adding New Members</a>
+            </li>
+            
+            
+            
+            <li class="">
+                <a href="member_rpc_api.html">Member RPC API</a>
+            </li>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+        </ul>
+
+        
+        <h6> Versions </h6>
+        <select name="versions" id="versions" class="custom-select custom-select-sm" style="width:50%" onchange="onVersionChange()">
+            <option value="../../main/index.html">main </option>
+            <option value="../../ccf-0.18.2/index.html">ccf-0.18.2 </option>
+            <option value="../../ccf-0.18.1/index.html">ccf-0.18.1 </option>
+            <option value="../../ccf-0.18.0/index.html">ccf-0.18.0 </option>
+            <option value="../../ccf-0.17.2/index.html">ccf-0.17.2 </option>
+            <option value="../../ccf-0.17.1/index.html">ccf-0.17.1 </option>
+            <option value="../../ccf-0.17.0/index.html">ccf-0.17.0 </option>
+            <option value="../../ccf-0.16.3/index.html">ccf-0.16.3 </option>
+            <option value="../../ccf-0.16.2/index.html">ccf-0.16.2 </option>
+            <option value="../../ccf-0.16.1/index.html">ccf-0.16.1 </option>
+            <option value="../../ccf-0.16.0/index.html">ccf-0.16.0 </option>
+            <option value="../../ccf-0.15.2/members/open_network.html">ccf-0.15.2 </option>
+            <option value="../../ccf-0.15.1/members/open_network.html">ccf-0.15.1 </option>
+            <option value="../../ccf-0.15.0/members/open_network.html">ccf-0.15.0 </option>
+            <option value="../../ccf-0.14.3/members/open_network.html">ccf-0.14.3 </option>
+            <option value="../../ccf-0.14.2/members/open_network.html">ccf-0.14.2 </option>
+            <option value="../../ccf-0.14.1/members/open_network.html">ccf-0.14.1 </option>
+            <option value="../../ccf-0.14.0/members/open_network.html">ccf-0.14.0 </option>
+            <option value="open_network.html">ccf-0.13.4 </option>
+            <option value="../../ccf-0.13.3/members/open_network.html">ccf-0.13.3 </option>
+            <option value="../../ccf-0.13.2/members/open_network.html">ccf-0.13.2 </option>
+            <option value="../../ccf-0.13.1/members/open_network.html">ccf-0.13.1 </option>
+            <option value="../../ccf-0.13.0/members/open_network.html">ccf-0.13.0 </option>
+            <option value="../../ccf-0.12.2/members/open_network.html">ccf-0.12.2 </option>
+            <option value="../../ccf-0.12.1/members/open_network.html">ccf-0.12.1 </option>
+            <option value="../../ccf-0.12.0/members/open_network.html">ccf-0.12.0 </option>
+            <option value="../../ccf-0.11.7/members/open_network.html">ccf-0.11.7 </option>
+            <option value="../../ccf-0.11.4/members/open_network.html">ccf-0.11.4 </option>
+            <option value="../../ccf-0.11.1/members/open_network.html">ccf-0.11.1 </option>
+        </select>
+        
+</nav>
+          </div>
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+              
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#adding-users" class="nav-link">Adding Users</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#user-data" class="nav-link">User Data</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#registering-the-lua-application" class="nav-link">Registering the Lua Application</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#opening-the-network" class="nav-link">Opening the Network</a>
+        </li>
+    
+    </ul>
+</nav>
+
+
+
+<div class="tocsection editthispage">
+    <a href="https://github.com/Microsoft/CCF/edit/main/doc/members/open_network.rst">
+        <i class="fas fa-pencil-alt"></i> Edit this page
+    </a>
+</div>
+
+              
+          </div>
+          
+
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <div class="section" id="opening-a-network">
+<h1>Opening a Network<a class="headerlink" href="#opening-a-network" title="Permalink to this headline">¶</a></h1>
+<p>This sections assumes that a set of nodes has already been started by <a class="reference internal" href="../glossary.html#term-Operators"><span class="xref std std-term">Operators</span></a>. See <a class="reference internal" href="../operators/start_network.html#starting-a-new-network"><span class="std std-ref">Starting a New Network</span></a>.</p>
+<div class="section" id="adding-users">
+<h2>Adding Users<a class="headerlink" href="#adding-users" title="Permalink to this headline">¶</a></h2>
+<p>Once a CCF network is successfully started and an acceptable number of nodes have joined, members should vote to open the network to <a class="reference internal" href="../glossary.html#term-Users"><span class="xref std std-term">Users</span></a>. First, <a class="reference internal" href="../users/index.html#using-apps"><span class="std std-ref">the identities of trusted users should be generated</span></a>.</p>
+<p>Then, the certificates of trusted users should be registered in CCF via the member governance interface. For example, the first member may decide to make a proposal to add a new user (here, <code class="docutils literal notranslate"><span class="pre">user_cert</span></code> is the PEM certificate of the user – see <a class="reference internal" href="../developers/cryptography.html#cryptography"><span class="std std-ref">Cryptography</span></a> for a list of supported algorithms):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ cat add_user.json
+<span class="o">{</span>
+    <span class="s2">&quot;parameter&quot;</span>: <span class="o">[</span>&lt;cert of proposed new user&gt;<span class="o">]</span>,
+    <span class="s2">&quot;script&quot;</span>: <span class="o">{</span>
+        <span class="s2">&quot;text&quot;</span>: <span class="s2">&quot;tables, user_cert = ...; return Calls:call(\&quot;new_user\&quot;, user_cert)&quot;</span>
+<span class="o">}</span>
+
+$ ./scurl.sh https://&lt;ccf-node-address&gt;/gov/proposals --cacert network_cert --key member0_privk --cert member0_cert --data-binary @add_user.json -H <span class="s2">&quot;content-type: application/json&quot;</span>
+<span class="o">{</span>
+    <span class="s2">&quot;proposal_id&quot;</span>: <span class="m">5</span>,
+    <span class="s2">&quot;proposer_id&quot;</span>: <span class="m">0</span>,
+    <span class="s2">&quot;state&quot;</span>: <span class="s2">&quot;OPEN&quot;</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>Other members are then allowed to vote for the proposal, using the proposal id returned to the proposer member (here <code class="docutils literal notranslate"><span class="pre">5</span></code>). They may submit an unconditional approval, or their vote may query the current state and the proposed actions. These votes <cite>must</cite> be signed.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ cat vote_accept.json
+<span class="o">{</span>
+    <span class="s2">&quot;ballot&quot;</span>: <span class="o">{</span>
+        <span class="s2">&quot;text&quot;</span>: <span class="s2">&quot;return true&quot;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+$ ./scurl.sh https://&lt;ccf-node-address&gt;/gov/proposals/5/votes --cacert network_cert --key member1_privk --cert member1_cert --data-binary @vote_accept.json -H <span class="s2">&quot;content-type: application/json&quot;</span>
+<span class="o">{</span>
+    <span class="s2">&quot;proposal_id&quot;</span>: <span class="m">5</span>,
+    <span class="s2">&quot;proposer_id&quot;</span>: <span class="m">0</span>,
+    <span class="s2">&quot;state&quot;</span>: <span class="s2">&quot;OPEN&quot;</span>
+<span class="o">}</span>
+
+$ cat vote_conditional.json
+<span class="o">{</span>
+    <span class="s2">&quot;ballot&quot;</span>: <span class="o">{</span>
+        <span class="s2">&quot;text&quot;</span>: <span class="s2">&quot;tables, calls = ...; return (#calls == 1 and calls[1].func == \&quot;new_user\&quot;)&quot;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+$ ./scurl.sh https://&lt;ccf-node-address&gt;/gov/proposals/5/votes --cacert network_cert --key member2_privk --cert member2_cert --data-binary @vote_conditional.json -H <span class="s2">&quot;content-type: application/json&quot;</span>
+<span class="o">{</span>
+    <span class="s2">&quot;proposal_id&quot;</span>: <span class="m">5</span>,
+    <span class="s2">&quot;proposer_id&quot;</span>: <span class="m">0</span>,
+    <span class="s2">&quot;state&quot;</span>: <span class="s2">&quot;ACCEPTED&quot;</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>The user is successfully added once a the proposal has received enough votes under the rules of the <a class="reference internal" href="../glossary.html#term-Constitution"><span class="xref std std-term">Constitution</span></a> (indicated by the response body showing a transition to state <code class="docutils literal notranslate"><span class="pre">ACCEPTED</span></code>).</p>
+<p>The user can then make user RPCs, for example <code class="docutils literal notranslate"><span class="pre">user_id</span></code> to retrieve the unique caller ID assigned to them by CCF:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ curl https://&lt;ccf-node-address&gt;/app/user_id --cacert network_cert --key new_user_privk --cert new_user_cert
+<span class="o">{</span>
+    <span class="s2">&quot;caller_id&quot;</span>: <span class="m">4</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="user-data">
+<h2>User Data<a class="headerlink" href="#user-data" title="Permalink to this headline">¶</a></h2>
+<p>For each user, CCF also stores arbitrary user-data in a JSON object. This can only be written to by members, subject to the standard proposal-vote governance mechanism, via the <code class="docutils literal notranslate"><span class="pre">set_user_data</span></code> action. This lets members define initial metadata for certain users; for example to grant specific privileges, associate a human-readable name, or categorise the users. This user-data can then be read (but not written) by user-facing endpoints.</p>
+<p>For example, the <code class="docutils literal notranslate"><span class="pre">/log/private/admin_only</span></code> endpoint in the C++ logging sample app uses user-data to restrict who is permitted to call it:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Check caller&#39;s user-data for required permissions</span>
+<span class="k">auto</span> <span class="n">users_view</span> <span class="o">=</span> <span class="n">ctx</span><span class="p">.</span><span class="n">tx</span><span class="p">.</span><span class="n">get_view</span><span class="p">(</span><span class="n">nwt</span><span class="p">.</span><span class="n">users</span><span class="p">);</span>
+<span class="k">const</span> <span class="k">auto</span> <span class="n">user_opt</span> <span class="o">=</span> <span class="n">users_view</span><span class="o">-&gt;</span><span class="n">get</span><span class="p">(</span><span class="n">ctx</span><span class="p">.</span><span class="n">caller_id</span><span class="p">);</span>
+<span class="k">const</span> <span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span> <span class="n">user_data</span> <span class="o">=</span> <span class="n">user_opt</span><span class="p">.</span><span class="n">has_value</span><span class="p">()</span> <span class="o">?</span>
+  <span class="n">user_opt</span><span class="o">-&gt;</span><span class="nl">user_data</span> <span class="p">:</span>
+  <span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span><span class="p">(</span><span class="k">nullptr</span><span class="p">);</span>
+<span class="k">const</span> <span class="k">auto</span> <span class="n">is_admin_it</span> <span class="o">=</span> <span class="n">user_data</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="s">&quot;isAdmin&quot;</span><span class="p">);</span>
+
+<span class="c1">// Exit if this user has no user data, or the user data is not an</span>
+<span class="c1">// object with isAdmin field, or the value of this field is not true</span>
+<span class="k">if</span> <span class="p">(</span>
+  <span class="o">!</span><span class="n">user_data</span><span class="p">.</span><span class="n">is_object</span><span class="p">()</span> <span class="o">||</span> <span class="n">is_admin_it</span> <span class="o">==</span> <span class="n">user_data</span><span class="p">.</span><span class="n">end</span><span class="p">()</span> <span class="o">||</span>
+  <span class="o">!</span><span class="n">is_admin_it</span><span class="p">.</span><span class="n">value</span><span class="p">().</span><span class="n">get</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;</span><span class="p">())</span>
+<span class="p">{</span>
+  <span class="k">return</span> <span class="n">ccf</span><span class="o">::</span><span class="n">make_error</span><span class="p">(</span>
+    <span class="n">HTTP_STATUS_FORBIDDEN</span><span class="p">,</span> <span class="s">&quot;Only admins may access this endpoint&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Members configure this permission with <code class="docutils literal notranslate"><span class="pre">set_user_data</span></code> proposals:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ cat set_user_data_proposal.json
+<span class="o">{</span>
+    <span class="s2">&quot;script&quot;</span>: <span class="o">{</span>
+        <span class="s2">&quot;text&quot;</span>: <span class="s2">&quot;tables, args = ...; return Calls:call(\&quot;set_user_data\&quot;, args)&quot;</span>
+    <span class="o">}</span>,
+    <span class="s2">&quot;parameter&quot;</span>: <span class="o">{</span>
+        <span class="s2">&quot;user_id&quot;</span>: <span class="m">0</span>,
+        <span class="s2">&quot;user_data&quot;</span>: <span class="o">{</span>
+            <span class="s2">&quot;isAdmin&quot;</span>: <span class="nb">true</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>Once this proposal is accepted, user 0 is able to use this endpoint:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ curl https://&lt;ccf-node-address&gt;/app/log/private/admin_only --key user0_privk.pem --cert user0_cert.pem --cacert networkcert.pem -X POST --data-binary <span class="s1">&#39;{&quot;id&quot;: 42, &quot;msg&quot;: &quot;hello world&quot;}&#39;</span> -H <span class="s2">&quot;Content-type: application/json&quot;</span> -i
+HTTP/1.1 <span class="m">200</span> OK
+
+<span class="nb">true</span>
+</pre></div>
+</div>
+<p>All other users have empty or non-matching user-data, so will receive a HTTP error if they attempt to access it:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ curl https://&lt;ccf-node-address&gt;/app/log/private/admin_only --key user1_privk.pem --cert user1_cert.pem --cacert networkcert.pem -X POST --data-binary <span class="s1">&#39;{&quot;id&quot;: 42, &quot;msg&quot;: &quot;hello world&quot;}&#39;</span> -H <span class="s2">&quot;Content-type: application/json&quot;</span> -i
+HTTP/1.1 <span class="m">403</span> Forbidden
+
+Only admins may access this endpoint
+</pre></div>
+</div>
+</div>
+<div class="section" id="registering-the-lua-application">
+<h2>Registering the Lua Application<a class="headerlink" href="#registering-the-lua-application" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This section only applies when deploying Lua applications (i.e. using the <code class="docutils literal notranslate"><span class="pre">liblua_generic.enclave.so.signed</span></code> enclave library). For C++ applications, this step should be skipped.</p>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ cat set_lua_app.json
+<span class="o">{</span>
+    <span class="s2">&quot;parameter&quot;</span>: <span class="s2">&quot;&lt;proposed lua app&gt;&quot;</span>,
+    <span class="s2">&quot;script&quot;</span>: <span class="o">{</span>
+        <span class="s2">&quot;text&quot;</span>: <span class="s2">&quot;tables, app = ...; return Calls:call(\&quot;set_lua_app\&quot;, app)&quot;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+$ ./scurl.sh https://&lt;ccf-node-address&gt;/gov/proposals --cacert network_cert --key member0_privk --cert member0_cert --data-binary @set_lua_app.json -H <span class="s2">&quot;content-type: application/json&quot;</span>
+<span class="o">{</span>
+    <span class="s2">&quot;proposal_id&quot;</span>: <span class="m">7</span>,
+    <span class="s2">&quot;proposer_id&quot;</span>: <span class="m">0</span>,
+    <span class="s2">&quot;state&quot;</span>: <span class="s2">&quot;OPEN&quot;</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>Other members are then able to vote for the proposal using the returned proposal id (here <code class="docutils literal notranslate"><span class="pre">7</span></code>).</p>
+<p>The Lua application is successfully registered once the proposal has received enough votes under the rules of the <a class="reference internal" href="../glossary.html#term-Constitution"><span class="xref std std-term">Constitution</span></a>. At this point, the endpoints specified in the app script are callable by users under the <code class="docutils literal notranslate"><span class="pre">/app</span></code> path prefix.</p>
+</div>
+<div class="section" id="opening-the-network">
+<h2>Opening the Network<a class="headerlink" href="#opening-the-network" title="Permalink to this headline">¶</a></h2>
+<p>Once users are added to the opening network, members should create a proposal to open the network:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ cat open_network.json
+<span class="o">{</span>
+    <span class="s2">&quot;script&quot;</span>: <span class="o">{</span>
+        <span class="s2">&quot;text&quot;</span>: <span class="s2">&quot;return Calls:call(\&quot;open_network\&quot;)&quot;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+$ ./scurl.sh https://&lt;ccf-node-address&gt;/gov/proposals --cacert network_cert --key member0_privk --cert member0_cert --data-binary @open_network.json -H <span class="s2">&quot;content-type: application/json&quot;</span>
+<span class="o">{</span>
+    <span class="s2">&quot;proposal_id&quot;</span>: <span class="m">10</span>,
+    <span class="s2">&quot;proposer_id&quot;</span>: <span class="m">0</span>,
+    <span class="s2">&quot;state&quot;</span>: <span class="s2">&quot;OPEN&quot;</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>Other members are then able to vote for the proposal using the returned proposal id (here <code class="docutils literal notranslate"><span class="pre">10</span></code>).</p>
+<p>Once the proposal has received enough votes under the rules of the <a class="reference internal" href="../glossary.html#term-Constitution"><span class="xref std std-term">Constitution</span></a> (<code class="docutils literal notranslate"><span class="pre">&quot;result&quot;:true</span></code>), the network is opened to users (see <a class="reference internal" href="../developers/example.html#example-application"><span class="std std-ref">Example Application</span></a> for a simple business logic and transactions). It is only then that users are able to execute transactions on the business logic defined by the enclave file (<code class="docutils literal notranslate"><span class="pre">--enclave-file</span></code> option to <code class="docutils literal notranslate"><span class="pre">cchost</span></code>).</p>
+</div>
+</div>
+
+
+              </div>
+              
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="proposals.html" title="previous page">Proposing and Voting for a Proposal</a>
+    <a class='right-next' id="next-link" href="accept_recovery.html" title="next page">Accepting Recovery and Submitting Shares</a>
+
+              </div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    <p>
+          &copy; Copyright 2018, Microsoft Research.<br/>
+        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.1.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

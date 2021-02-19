@@ -1,0 +1,429 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ledger and Snapshots &#8212; CCF  documentation</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Disaster Recovery" href="recovery.html" />
+    <link rel="prev" title="Running a CCF Service" href="start_network.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+    
+    <a class="navbar-brand" href="../index.html">
+      <img src="../_static/ccf.svg" class="logo" alt="logo">
+    </a>
+    
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navbar-menu" class="col-11 collapse navbar-collapse">
+      <ul id="navbar-main-elements" class="navbar-nav mr-auto">
+        
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../overview/index.html">Overview</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../build_apps/index.html">Build Apps</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../use_apps/index.html">Use Apps</a>
+        </li>
+        
+        <li class="nav-item active">
+            <a class="nav-link" href="index.html">Operations</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../governance/index.html">Governance</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../audit/index.html">Audit</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../contribute/index.html">Contribute</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../glossary.html">Glossary</a>
+        </li>
+        
+        
+      </ul>
+
+      <ul class="navbar-nav">
+        
+          <li class="nav-item">
+            <a class="nav-link" href="https://github.com/Microsoft/CCF" target="_blank" rel="noopener">
+              <span><i class="fab fa-github-square"></i></span>
+            </a>
+          </li>
+        
+        
+      </ul>
+    </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+          <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+<script>
+    function onVersionChange() {
+      window.location.href = document.getElementById("versions").value;
+    }
+
+    window.addEventListener("DOMContentLoaded",function(){
+        let selectedVersion = "main"
+        const thisURL = window.location.toString()
+        let indexOfVersion = thisURL.indexOf("ccf-")
+        if (indexOfVersion != -1) {
+            selectedVersion = thisURL.substring(indexOfVersion, thisURL.indexOf("/", indexOfVersion));
+        }
+        let sel = document.getElementById("versions");
+        if (sel != null) {
+            let opts = sel.options;
+            for (var opt, j = 0; opt = opts[j]; j++) {
+                if (opt.text == selectedVersion) {
+                    sel.selectedIndex = j;
+                    break;
+                }
+            }
+        }
+    }, false);
+</script>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+
+    <div class="bd-toc-item active">
+        
+
+        <ul class="nav bd-sidenav">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <li class="">
+                <a href="run_setup.html">Setup CCF Runtime Environment</a>
+            </li>
+            
+            
+            
+            <li class="">
+                <a href="start_network.html">Running a CCF Service</a>
+            </li>
+            
+            
+            
+            <li class="active">
+                <a href="">Ledger and Snapshots</a>
+            </li>
+            
+            
+            
+            <li class="">
+                <a href="recovery.html">Disaster Recovery</a>
+            </li>
+            
+            
+            
+            <li class="">
+                <a href="node_output.html">Node Output</a>
+            </li>
+            
+            
+            
+            <li class="">
+                <a href="resource_usage.html">Resource Usage</a>
+            </li>
+            
+            
+            
+            <li class="">
+                <a href="operator_rpc_api.html">Operator RPC API</a>
+            </li>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+        </ul>
+
+        
+        <h6> Versions </h6>
+        <select name="versions" id="versions" class="custom-select custom-select-sm" style="width:50%" onchange="onVersionChange()">
+            <option value="../../main/operations/ledger_snapshot.html">main </option>
+            <option value="../../ccf-0.18.2/operations/ledger_snapshot.html">ccf-0.18.2 </option>
+            <option value="../../ccf-0.18.1/operations/ledger_snapshot.html">ccf-0.18.1 </option>
+            <option value="../../ccf-0.18.0/operations/ledger_snapshot.html">ccf-0.18.0 </option>
+            <option value="../../ccf-0.17.2/operations/ledger_snapshot.html">ccf-0.17.2 </option>
+            <option value="ledger_snapshot.html">ccf-0.17.1 </option>
+            <option value="../../ccf-0.17.0/operations/ledger_snapshot.html">ccf-0.17.0 </option>
+            <option value="../../ccf-0.16.3/operations/ledger_snapshot.html">ccf-0.16.3 </option>
+            <option value="../../ccf-0.16.2/operations/ledger_snapshot.html">ccf-0.16.2 </option>
+            <option value="../../ccf-0.16.1/operations/ledger_snapshot.html">ccf-0.16.1 </option>
+            <option value="../../ccf-0.16.0/operations/ledger_snapshot.html">ccf-0.16.0 </option>
+            <option value="../../ccf-0.15.2/index.html">ccf-0.15.2 </option>
+            <option value="../../ccf-0.15.1/index.html">ccf-0.15.1 </option>
+            <option value="../../ccf-0.15.0/index.html">ccf-0.15.0 </option>
+            <option value="../../ccf-0.14.3/index.html">ccf-0.14.3 </option>
+            <option value="../../ccf-0.14.2/index.html">ccf-0.14.2 </option>
+            <option value="../../ccf-0.14.1/index.html">ccf-0.14.1 </option>
+            <option value="../../ccf-0.14.0/index.html">ccf-0.14.0 </option>
+            <option value="../../ccf-0.13.4/index.html">ccf-0.13.4 </option>
+            <option value="../../ccf-0.13.3/index.html">ccf-0.13.3 </option>
+            <option value="../../ccf-0.13.2/index.html">ccf-0.13.2 </option>
+            <option value="../../ccf-0.13.1/index.html">ccf-0.13.1 </option>
+            <option value="../../ccf-0.13.0/index.html">ccf-0.13.0 </option>
+            <option value="../../ccf-0.12.2/index.html">ccf-0.12.2 </option>
+            <option value="../../ccf-0.12.1/index.html">ccf-0.12.1 </option>
+            <option value="../../ccf-0.12.0/index.html">ccf-0.12.0 </option>
+            <option value="../../ccf-0.11.7/index.html">ccf-0.11.7 </option>
+            <option value="../../ccf-0.11.4/index.html">ccf-0.11.4 </option>
+            <option value="../../ccf-0.11.1/index.html">ccf-0.11.1 </option>
+        </select>
+        
+</nav>
+          </div>
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+              
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#ledger" class="nav-link">Ledger</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#file-layout" class="nav-link">File Layout</a>
+        </li>
+    
+            </ul>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#snapshots" class="nav-link">Snapshots</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#snapshot-generation" class="nav-link">Snapshot Generation</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#join-recover-from-snapshot" class="nav-link">Join/Recover From Snapshot</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#historical-transactions" class="nav-link">Historical Transactions</a>
+        </li>
+    
+            </ul>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#best-practices" class="nav-link">Best Practices</a>
+        </li>
+    
+    </ul>
+</nav>
+
+
+
+<div class="tocsection editthispage">
+    <a href="https://github.com/Microsoft/CCF/edit/main/doc/operations/ledger_snapshot.rst">
+        <i class="fas fa-pencil-alt"></i> Edit this page
+    </a>
+</div>
+
+              
+          </div>
+          
+
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <div class="section" id="ledger-and-snapshots">
+<h1>Ledger and Snapshots<a class="headerlink" href="#ledger-and-snapshots" title="Permalink to this headline">¶</a></h1>
+<p>The ledger and snapshot files written by CCF nodes to disk should be managed by operators to allow for safe backup of the service and application state as well as fast join and recovery procedures. This section describes how these files are generated and how operators should manage them effectively.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>See the <a class="reference internal" href="../audit/index.html"><span class="doc">Audit</span></a> section to read about offline ledger auditability.</p>
+</div>
+<div class="section" id="ledger">
+<h2>Ledger<a class="headerlink" href="#ledger" title="Permalink to this headline">¶</a></h2>
+<p>The ledger is the persistent replicated append-only record of the transactions that have been executed by the CCF service. It is written by the primary node when a transaction is executed and replicated to all backups which maintain their own duplicated copy. Each node in a network creates and maintains its own local copy of the ledger. Committed entries are always identical between <a class="reference internal" href="../overview/consensus.html#cft-consensus-protocol"><span class="std std-ref">a majority</span></a> of nodes, but a node may be more or less up to date, and uncommitted entries may differ.</p>
+<p>On each node, the ledger is written to disk in a directory specified by the <code class="docutils literal notranslate"><span class="pre">--ledger-dir</span></code> command line argument to <code class="docutils literal notranslate"><span class="pre">cchost</span></code>.</p>
+<p>It is also possible to specify an optional <cite>read-only</cite> ledger directory <code class="docutils literal notranslate"><span class="pre">--read-only-ledger-dir</span></code> to <code class="docutils literal notranslate"><span class="pre">cchost</span></code>. This enables CCF to have access to historical transactions, for example after joining from a snapshot (see <a class="reference internal" href="#historical-transactions"><span class="std std-ref">Historical Transactions</span></a>). Note that only committed ledger files (those whose name ends with <code class="docutils literal notranslate"><span class="pre">.committed</span></code>) can be read from this directory.</p>
+<div class="section" id="file-layout">
+<h3>File Layout<a class="headerlink" href="#file-layout" title="Permalink to this headline">¶</a></h3>
+<p>The ledger growths as transactions mutate CCF’s key-value store. The ledger is split into multiple files (or chunks) written by a node in the directory specified by the <code class="docutils literal notranslate"><span class="pre">--ledger-dir</span></code> command line argument to <code class="docutils literal notranslate"><span class="pre">cchost</span></code>. Even though there are multiple ledger files on disk, there is only one unique <cite>logical</cite> ledger file for the lifetime of a CCF service (and across recoveries). The <cite>logical</cite> ledger can be reconstituted by parsing the ledger files in sequence, based on the sequence number included in their file names.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The size of each ledger file is controlled by the <code class="docutils literal notranslate"><span class="pre">--ledger-chunk-bytes</span></code> command line argument to <code class="docutils literal notranslate"><span class="pre">cchost</span></code>.</p>
+</div>
+<p>Ledger files containing only committed entries are named <code class="docutils literal notranslate"><span class="pre">ledger_&lt;start_seqno&gt;-&lt;end_seqno&gt;.committed</span></code>, with <code class="docutils literal notranslate"><span class="pre">&lt;start_seqno&gt;</span></code> and <code class="docutils literal notranslate"><span class="pre">&lt;end_seqno&gt;</span></code> the sequence number of the first and last transaction in the ledger, respectively. These files are closed and immutable and it is safe to replicate them to backup storage. They are identical across nodes, provided <code class="docutils literal notranslate"><span class="pre">--ledger-chunk-bytes</span></code> has been set to the same value.</p>
+<p>Ledger files that still contain some uncommitted entries are named <code class="docutils literal notranslate"><span class="pre">ledger_&lt;start_seqno&gt;-&lt;end_seqno&gt;</span></code> or <code class="docutils literal notranslate"><span class="pre">ledger_&lt;start_seqno&gt;</span></code> for the most recent one. These files are typically held open by the <code class="docutils literal notranslate"><span class="pre">cchost</span></code> process, which may modify their content, or even erase them completely. Uncommitted ledger files may differ arbitrarily across nodes.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Removing <cite>uncommitted</cite> ledger files from the <code class="docutils literal notranslate"><span class="pre">--ledger-dir</span></code> ledger directory may cause a node to crash. It is however safe to move <cite>committed</cite> ledger files to another directory, accessible to a CCF node via the <code class="docutils literal notranslate"><span class="pre">--read-only-ledger-dir</span></code> command line argument.</p>
+</div>
+<p>It is important to note that while all entries stored in ledger files ending in <code class="docutils literal notranslate"><span class="pre">.committed</span></code> are committed, not all committed entries are stored in such a file at any given time. A number of them are typically in the in-progress files, waiting to be flushed to a <code class="docutils literal notranslate"><span class="pre">.committed</span></code> file once the size threshold (<code class="docutils literal notranslate"><span class="pre">--ledger-chunk-bytes</span></code>) is met.</p>
+<p>The listing below is an example of what a ledger directory may look like:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ cchost --ledger-dir <span class="nv">$LEDGER_DIR</span> ...
+$ ls -la <span class="nv">$LEDGER_DIR</span>
+-rw-rw-r-- <span class="m">1</span> user user <span class="m">1</span>.6M Jan <span class="m">31</span> <span class="m">14</span>:00 ledger_1-7501.committed
+...
+-rw-rw-r-- <span class="m">1</span> user user <span class="m">1</span>.1M Jan <span class="m">31</span> <span class="m">14</span>:00 ledger_92502-97520.committed
+-rw-rw-r-- <span class="m">1</span> user user 553K Jan <span class="m">31</span> <span class="m">14</span>:00 ledger_97521 <span class="c1"># File still in progress</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="snapshots">
+<h2>Snapshots<a class="headerlink" href="#snapshots" title="Permalink to this headline">¶</a></h2>
+<p>When a node is added to an existing service, the entire transaction history is automatically replicated to this new node. Similarly, on recovery, the transaction history since the creation of the service has to be replayed. Depending on the number of historical transactions, adding a node/recovering a service can take some non-negligible period of time, preventing the new node to quickly take part in the consensus and compromising the availability of the service.</p>
+<p>To avoid this, it is possible for a new node to be added (or a service to be recovered) from an existing snapshot of the recent CCF state. In this case, only historical transactions between the sequence number at which the snapshot was taken and the latest state will be replicated.</p>
+<div class="section" id="snapshot-generation">
+<h3>Snapshot Generation<a class="headerlink" href="#snapshot-generation" title="Permalink to this headline">¶</a></h3>
+<p>Snapshots are generated at regular intervals by the current primary node and stored under the directory specified via the <code class="docutils literal notranslate"><span class="pre">--snapshot-dir</span></code> CLI option (defaults to <code class="docutils literal notranslate"><span class="pre">snapshots/</span></code>). The transaction interval at which snapshots are generated is specified via the <code class="docutils literal notranslate"><span class="pre">--snapshot-tx-interval</span></code> CLI option (defaults to a new snapshot generated every <code class="docutils literal notranslate"><span class="pre">10,000</span></code> committed transactions).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Because the generation of a snapshot requires a new ledger chunk to be created (see <a class="reference internal" href="#file-layout"><span class="std std-ref">File Layout</span></a>), all nodes in the network must be started with the same <code class="docutils literal notranslate"><span class="pre">--snapshot-tx-interval</span></code> value.</p>
+</div>
+<p>To guarantee that the identity of the primary node that generated the snapshot can be verified offline, the SHA-256 digest of the snapshot (i.e. evidence) is recorded in the <code class="docutils literal notranslate"><span class="pre">public:ccf.gov.snapshot_evidence</span></code> table. The snapshot evidence will be signed by the primary node on the next signature transaction (see <a class="reference internal" href="start_network.html#signature-interval"><span class="std std-ref">Signature Interval</span></a>).</p>
+<p>Committed snapshot files are named <code class="docutils literal notranslate"><span class="pre">snapshot_&lt;seqno&gt;_&lt;evidence_seqno&gt;.commited_&lt;evidence_commit_seqno&gt;</span></code>, with <code class="docutils literal notranslate"><span class="pre">&lt;seqno&gt;</span></code> the sequence number of the state of the key-value store at which they were generated, <code class="docutils literal notranslate"><span class="pre">&lt;evidence_seqno&gt;</span></code> the sequence number at which the snapshot evidence was recorded and <code class="docutils literal notranslate"><span class="pre">&lt;evidence_commit_seqno&gt;</span></code> the sequence number at which the snapsot evidence was committed.</p>
+<p>Uncommitted snapshot files, i.e. those whose evidence has not yet been committed, are named <code class="docutils literal notranslate"><span class="pre">snapshot_&lt;seqno&gt;_&lt;evidence_seqno&gt;</span></code>. These files will be ignored by CCF when joining or recovering a service as no evidence can attest of their validity.</p>
+</div>
+<div class="section" id="join-recover-from-snapshot">
+<h3>Join/Recover From Snapshot<a class="headerlink" href="#join-recover-from-snapshot" title="Permalink to this headline">¶</a></h3>
+<p>Once a snapshot has been generated by the primary, operators can copy or mount the snapshot directory to the new node directory before it is started. On start-up, the new node will automatically resume from the latest committed snapshot file in the <code class="docutils literal notranslate"><span class="pre">--snapshot-dir</span></code> directory. If no snapshot file is found, all historical transactions will be replicated to that node.</p>
+<p>To validate the snapshot a node is added from, the node first replays the transactions in the ledger following the snapshot until the proof that the snapshot was committed by the service to join is found. This process requires operators to copy the ledger suffix to the node’s ledger directory. The validation procedure is generally quick and the node will automatically join the service one the snapshot has been validated. On recovery, the snapshot is automatically verified as part of the usual ledger recovery procedure.</p>
+<p>For example, if a node is added using the <code class="docutils literal notranslate"><span class="pre">snapshot_1000_1250.committed_1300</span></code> snapshot file, operators should copy the ledger files containing all the sequence numbers between <code class="docutils literal notranslate"><span class="pre">1000</span></code> to <code class="docutils literal notranslate"><span class="pre">1300</span></code> to the directories specified by <code class="docutils literal notranslate"><span class="pre">--ledger-dir</span></code> (or <code class="docutils literal notranslate"><span class="pre">--read-only</span> <span class="pre">ledger-dir</span></code>). This would involve copying the ledger files following the snapshot sequence number <code class="docutils literal notranslate"><span class="pre">1000</span></code> until the evidence commit sequence number <code class="docutils literal notranslate"><span class="pre">1300</span></code>, e.g. <code class="docutils literal notranslate"><span class="pre">ledger_1001-1200.committed</span></code> and <code class="docutils literal notranslate"><span class="pre">ledger_1201-1500.committed</span></code>, to the joining node’s ledger directory.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the snapshot to join/recover from is recent, it is likely that the evidence for that snapshot is included in the latest <cite>uncommitted</cite> ledger file. In this case, the corresponding ledger file(s) should be copied to the node’s main ledger directory (as specified by <code class="docutils literal notranslate"><span class="pre">--ledger-dir</span></code>) before start-up.</p>
+</div>
+</div>
+<div class="section" id="historical-transactions">
+<h3>Historical Transactions<a class="headerlink" href="#historical-transactions" title="Permalink to this headline">¶</a></h3>
+<p>Nodes that started from a snapshot can still process historical queries if the historical ledger files (i.e. the ledger files preceding the snapshot) are made accessible to the node via the <code class="docutils literal notranslate"><span class="pre">--read-only-ledger-dir</span></code> option to <code class="docutils literal notranslate"><span class="pre">cchost</span></code>. Although the read-only ledger directory must be specified to the node on start-up, the historical ledger files can be copied to this directory <cite>after</cite> the node is started.</p>
+</div>
+</div>
+<div class="section" id="best-practices">
+<h2>Best Practices<a class="headerlink" href="#best-practices" title="Permalink to this headline">¶</a></h2>
+<p>It is recommended for operators to backup the ledger and snapshot files as soon as they become committed (i.e. <code class="docutils literal notranslate"><span class="pre">.committed</span></code> included in file name). While a majority of nodes will eventually have an identical copy of the ledger, the ledger file should be the most up-to-date on the current primary node. Snapshot files are only generated by the current primary node. As such, monitoring the directories specified by <code class="docutils literal notranslate"><span class="pre">--ledger-dir</span></code> and <code class="docutils literal notranslate"><span class="pre">--snapshot-dir</span></code> for the <cite>current</cite> primary node allows operators to retrieve the latest ledger and snapshot files.</p>
+<p>A low value for <code class="docutils literal notranslate"><span class="pre">--ledger-chunk-bytes</span></code> means that smaller ledger files are generated and can thus be backed up by operators more regularly, at the cost of having to manage a large number of ledger files.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Uncommitted ledger files (which are likely to contain committed transactions) can also be used on join/recovery, as long as they are copied to the node’s <code class="docutils literal notranslate"><span class="pre">--ledger-dir</span></code> directory.</p>
+</div>
+<p>Similarly, a low value for <code class="docutils literal notranslate"><span class="pre">--snapshot-tx-interval</span></code> means that snapshots are generated often and that join/recovery time will be short, at the cost of additional workload of the primary node for snapshot generation.</p>
+</div>
+</div>
+
+
+              </div>
+              
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="start_network.html" title="previous page">Running a CCF Service</a>
+    <a class='right-next' id="next-link" href="recovery.html" title="next page">Disaster Recovery</a>
+
+              </div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    <p>
+          &copy; Copyright 2018, Microsoft Research.<br/>
+        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.1.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

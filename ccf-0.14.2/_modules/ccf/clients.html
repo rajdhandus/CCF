@@ -1,0 +1,1003 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ccf.clients &#8212; CCF  documentation</title>
+    
+  <link rel="stylesheet" href="../../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+    
+    <a class="navbar-brand" href="../../index.html">
+      <img src="../../_static/ccf.svg" class="logo" alt="logo">
+    </a>
+    
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navbar-menu" class="col-11 collapse navbar-collapse">
+      <ul id="navbar-main-elements" class="navbar-nav mr-auto">
+        
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../../concepts.html">Overview</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../../developers/index.html">Build Apps</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../../users/index.html">Use Apps</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../../operators/index.html">Operations</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../../members/index.html">Governance</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../../audit/index.html">Audit</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../../glossary.html">Glossary</a>
+        </li>
+        
+        
+      </ul>
+
+      <ul class="navbar-nav">
+        
+          <li class="nav-item">
+            <a class="nav-link" href="https://github.com/Microsoft/CCF" target="_blank" rel="noopener">
+              <span><i class="fab fa-github-square"></i></span>
+            </a>
+          </li>
+        
+        
+      </ul>
+    </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+          <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+<script>
+    function onVersionChange() {
+      window.location.href = document.getElementById("versions").value;
+    }
+
+    window.addEventListener("DOMContentLoaded",function(){
+        let selectedVersion = "main"
+        const thisURL = window.location.toString()
+        let indexOfVersion = thisURL.indexOf("ccf-")
+        if (indexOfVersion != -1) {
+            selectedVersion = thisURL.substring(indexOfVersion, thisURL.indexOf("/", indexOfVersion));
+        }
+        let sel = document.getElementById("versions");
+        if (sel != null) {
+            let opts = sel.options;
+            for (var opt, j = 0; opt = opts[j]; j++) {
+                if (opt.text == selectedVersion) {
+                    sel.selectedIndex = j;
+                    break;
+                }
+            }
+        }
+    }, false);
+</script>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+
+    <div class="bd-toc-item active">
+        
+
+        <ul class="nav bd-sidenav">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+        </ul>
+
+        
+        <h6> Versions </h6>
+        <select name="versions" id="versions" class="custom-select custom-select-sm" style="width:50%" onchange="onVersionChange()">
+            <option value="../../../main/index.html">main </option>
+            <option value="../../../ccf-0.18.2/index.html">ccf-0.18.2 </option>
+            <option value="../../../ccf-0.18.1/index.html">ccf-0.18.1 </option>
+            <option value="../../../ccf-0.18.0/index.html">ccf-0.18.0 </option>
+            <option value="../../../ccf-0.17.2/index.html">ccf-0.17.2 </option>
+            <option value="../../../ccf-0.17.1/index.html">ccf-0.17.1 </option>
+            <option value="../../../ccf-0.17.0/index.html">ccf-0.17.0 </option>
+            <option value="../../../ccf-0.16.3/index.html">ccf-0.16.3 </option>
+            <option value="../../../ccf-0.16.2/index.html">ccf-0.16.2 </option>
+            <option value="../../../ccf-0.16.1/index.html">ccf-0.16.1 </option>
+            <option value="../../../ccf-0.16.0/index.html">ccf-0.16.0 </option>
+            <option value="../../../ccf-0.15.2/index.html">ccf-0.15.2 </option>
+            <option value="../../../ccf-0.15.1/index.html">ccf-0.15.1 </option>
+            <option value="../../../ccf-0.15.0/index.html">ccf-0.15.0 </option>
+            <option value="../../../ccf-0.14.3/index.html">ccf-0.14.3 </option>
+            <option value="clients.html">ccf-0.14.2 </option>
+            <option value="../../../ccf-0.14.1/index.html">ccf-0.14.1 </option>
+            <option value="../../../ccf-0.14.0/index.html">ccf-0.14.0 </option>
+            <option value="../../../ccf-0.13.4/index.html">ccf-0.13.4 </option>
+            <option value="../../../ccf-0.13.3/index.html">ccf-0.13.3 </option>
+            <option value="../../../ccf-0.13.2/index.html">ccf-0.13.2 </option>
+            <option value="../../../ccf-0.13.1/index.html">ccf-0.13.1 </option>
+            <option value="../../../ccf-0.13.0/index.html">ccf-0.13.0 </option>
+            <option value="../../../ccf-0.12.2/index.html">ccf-0.12.2 </option>
+            <option value="../../../ccf-0.12.1/index.html">ccf-0.12.1 </option>
+            <option value="../../../ccf-0.12.0/index.html">ccf-0.12.0 </option>
+            <option value="../../../ccf-0.11.7/index.html">ccf-0.11.7 </option>
+            <option value="../../../ccf-0.11.4/index.html">ccf-0.11.4 </option>
+            <option value="../../../ccf-0.11.1/index.html">ccf-0.11.1 </option>
+        </select>
+        
+</nav>
+          </div>
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+              
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+    </ul>
+</nav>
+
+
+              
+          </div>
+          
+
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <h1>Source code for ccf.clients</h1><div class="highlight"><pre>
+<span></span><span class="c1"># Copyright (c) Microsoft Corporation. All rights reserved.</span>
+<span class="c1"># Licensed under the Apache 2.0 License.</span>
+<span class="kn">import</span> <span class="nn">abc</span>
+<span class="kn">import</span> <span class="nn">contextlib</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">subprocess</span>
+<span class="kn">import</span> <span class="nn">tempfile</span>
+<span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
+<span class="kn">from</span> <span class="nn">http.client</span> <span class="kn">import</span> <span class="n">HTTPResponse</span>
+<span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">BytesIO</span>
+<span class="kn">from</span> <span class="nn">requests.adapters</span> <span class="kn">import</span> <span class="n">HTTPAdapter</span>
+<span class="kn">from</span> <span class="nn">urllib3.util.ssl_</span> <span class="kn">import</span> <span class="n">create_urllib3_context</span>  <span class="c1"># type: ignore</span>
+<span class="kn">from</span> <span class="nn">cryptography</span> <span class="kn">import</span> <span class="n">x509</span>
+<span class="kn">from</span> <span class="nn">cryptography.hazmat.backends</span> <span class="kn">import</span> <span class="n">default_backend</span>
+<span class="kn">import</span> <span class="nn">struct</span>
+<span class="kn">import</span> <span class="nn">base64</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Union</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Any</span>
+
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">from</span> <span class="nn">loguru</span> <span class="kn">import</span> <span class="n">logger</span> <span class="k">as</span> <span class="n">LOG</span>  <span class="c1"># type: ignore</span>
+<span class="kn">from</span> <span class="nn">requests_http_signature</span> <span class="kn">import</span> <span class="n">HTTPSignatureAuth</span>  <span class="c1"># type: ignore</span>
+<span class="kn">import</span> <span class="nn">websocket</span>  <span class="c1"># type: ignore</span>
+
+<span class="kn">import</span> <span class="nn">ccf.commit</span>
+<span class="kn">from</span> <span class="nn">ccf.log_capture</span> <span class="kn">import</span> <span class="n">flush_info</span>
+
+
+<span class="n">loguru_tag_regex</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">?&lt;/?((?:[fb]g\s)?[^&lt;&gt;\s]*)&gt;&quot;</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">escape_loguru_tags</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">loguru_tag_regex</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="k">lambda</span> <span class="n">match</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\\</span><span class="si">{</span><span class="n">match</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">truncate</span><span class="p">(</span><span class="n">string</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">max_len</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">128</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">string</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">max_len</span><span class="p">:</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">string</span><span class="p">[:</span> <span class="n">max_len</span><span class="p">]</span><span class="si">}</span><span class="s2"> + </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">string</span><span class="p">)</span> <span class="o">-</span> <span class="n">max_len</span><span class="si">}</span><span class="s2"> chars&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">string</span>
+
+
+<span class="n">CCF_TX_SEQNO_HEADER</span> <span class="o">=</span> <span class="s2">&quot;x-ccf-tx-seqno&quot;</span>
+<span class="n">CCF_TX_VIEW_HEADER</span> <span class="o">=</span> <span class="s2">&quot;x-ccf-tx-view&quot;</span>
+<span class="c1"># Deprecated, will be removed</span>
+<span class="n">CCF_GLOBAL_COMMIT_HEADER</span> <span class="o">=</span> <span class="s2">&quot;x-ccf-global-commit&quot;</span>
+
+<span class="n">DEFAULT_CONNECTION_TIMEOUT_SEC</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">DEFAULT_REQUEST_TIMEOUT_SEC</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">DEFAULT_COMMIT_TIMEOUT_SEC</span> <span class="o">=</span> <span class="mi">3</span>
+
+<span class="n">CONTENT_TYPE_TEXT</span> <span class="o">=</span> <span class="s2">&quot;text/plain&quot;</span>
+<span class="n">CONTENT_TYPE_JSON</span> <span class="o">=</span> <span class="s2">&quot;application/json&quot;</span>
+<span class="n">CONTENT_TYPE_BINARY</span> <span class="o">=</span> <span class="s2">&quot;application/octet-stream&quot;</span>
+
+
+<span class="nd">@dataclass</span>
+<span class="k">class</span> <span class="nc">Request</span><span class="p">:</span>
+    <span class="c1">#: Resource path (with optional query string)</span>
+    <span class="n">path</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="c1">#: Body of request</span>
+    <span class="n">body</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">dict</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">]]</span>
+    <span class="c1">#: HTTP verb</span>
+    <span class="n">http_verb</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="c1">#: HTTP headers</span>
+    <span class="n">headers</span><span class="p">:</span> <span class="nb">dict</span>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">string</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;&lt;cyan&gt;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">http_verb</span><span class="si">}</span><span class="s2">&lt;/&gt; &lt;green&gt;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="si">}</span><span class="s2">&lt;/&gt;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">headers</span><span class="p">:</span>
+            <span class="n">string</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot; </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">headers</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">body</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">string</span> <span class="o">+=</span> <span class="sa">f</span><span class="s1">&#39; </span><span class="si">{</span><span class="n">truncate</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span>
+
+        <span class="k">return</span> <span class="n">string</span>
+
+
+<span class="k">def</span> <span class="nf">int_or_none</span><span class="p">(</span><span class="n">v</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">if</span> <span class="n">v</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="kc">None</span>
+
+
+<span class="k">class</span> <span class="nc">FakeSocket</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bs</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">file</span> <span class="o">=</span> <span class="n">BytesIO</span><span class="p">(</span><span class="n">bs</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">makefile</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">file</span>
+
+
+<span class="k">class</span> <span class="nc">ResponseBody</span><span class="p">(</span><span class="n">abc</span><span class="o">.</span><span class="n">ABC</span><span class="p">):</span>
+    <span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
+    <span class="k">def</span> <span class="nf">data</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
+        <span class="k">pass</span>
+
+    <span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
+    <span class="k">def</span> <span class="nf">text</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">pass</span>
+
+    <span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
+    <span class="k">def</span> <span class="nf">json</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">())</span>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">text</span><span class="p">()</span>
+        <span class="k">except</span> <span class="ne">UnicodeDecodeError</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="fm">__repr__</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">repr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">())</span>
+
+
+<span class="k">class</span> <span class="nc">RequestsResponseBody</span><span class="p">(</span><span class="n">ResponseBody</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">:</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_response</span> <span class="o">=</span> <span class="n">response</span>
+
+    <span class="k">def</span> <span class="nf">data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_response</span><span class="o">.</span><span class="n">content</span>
+
+    <span class="k">def</span> <span class="nf">text</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_response</span><span class="o">.</span><span class="n">text</span>
+
+    <span class="k">def</span> <span class="nf">json</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+
+<span class="k">class</span> <span class="nc">RawResponseBody</span><span class="p">(</span><span class="n">ResponseBody</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_data</span> <span class="o">=</span> <span class="n">data</span>
+
+    <span class="k">def</span> <span class="nf">data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span>
+
+    <span class="k">def</span> <span class="nf">text</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">json</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="Response"><a class="viewcode-back" href="../../users/python_api.html#ccf.clients.Response">[docs]</a><span class="nd">@dataclass</span>
+<span class="k">class</span> <span class="nc">Response</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Response to request sent via :py:class:`ccf.clients.CCFClient`</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1">#: Response HTTP status code</span>
+    <span class="n">status_code</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="c1">#: Response body</span>
+    <span class="n">body</span><span class="p">:</span> <span class="n">ResponseBody</span>
+    <span class="c1">#: CCF sequence number</span>
+    <span class="n">seqno</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
+    <span class="c1">#: CCF consensus view</span>
+    <span class="n">view</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
+    <span class="c1">#: CCF global commit sequence number (deprecated)</span>
+    <span class="n">global_commit</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
+    <span class="c1">#: Response HTTP headers</span>
+    <span class="n">headers</span><span class="p">:</span> <span class="nb">dict</span>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">versioned</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">view</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">seqno</span><span class="p">)</span> <span class="o">!=</span> <span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="n">status_color</span> <span class="o">=</span> <span class="s2">&quot;red&quot;</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">status_code</span> <span class="o">/</span> <span class="mi">100</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span> <span class="k">else</span> <span class="s2">&quot;green&quot;</span>
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;&lt;</span><span class="si">{</span><span class="n">status_color</span><span class="si">}</span><span class="s2">&gt;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">status_code</span><span class="si">}</span><span class="s2">&lt;/&gt; &quot;</span>
+            <span class="o">+</span> <span class="p">(</span><span class="sa">f</span><span class="s2">&quot;@&lt;magenta&gt;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">view</span><span class="si">}</span><span class="s2">.</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">seqno</span><span class="si">}</span><span class="s2">&lt;/&gt; &quot;</span> <span class="k">if</span> <span class="n">versioned</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+            <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot;&lt;yellow&gt;</span><span class="si">{</span><span class="n">escape_loguru_tags</span><span class="p">(</span><span class="n">truncate</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="p">)))</span><span class="si">}</span><span class="s2">&lt;/&gt;&quot;</span>
+        <span class="p">)</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">from_requests_response</span><span class="p">(</span><span class="n">rr</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Response</span><span class="p">(</span>
+            <span class="n">status_code</span><span class="o">=</span><span class="n">rr</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span>
+            <span class="n">body</span><span class="o">=</span><span class="n">RequestsResponseBody</span><span class="p">(</span><span class="n">rr</span><span class="p">),</span>
+            <span class="n">seqno</span><span class="o">=</span><span class="n">int_or_none</span><span class="p">(</span><span class="n">rr</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">CCF_TX_SEQNO_HEADER</span><span class="p">)),</span>
+            <span class="n">view</span><span class="o">=</span><span class="n">int_or_none</span><span class="p">(</span><span class="n">rr</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">CCF_TX_VIEW_HEADER</span><span class="p">)),</span>
+            <span class="n">global_commit</span><span class="o">=</span><span class="n">int_or_none</span><span class="p">(</span><span class="n">rr</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">CCF_GLOBAL_COMMIT_HEADER</span><span class="p">)),</span>
+            <span class="n">headers</span><span class="o">=</span><span class="n">rr</span><span class="o">.</span><span class="n">headers</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">from_raw</span><span class="p">(</span><span class="n">raw</span><span class="p">):</span>
+        <span class="n">sock</span> <span class="o">=</span> <span class="n">FakeSocket</span><span class="p">(</span><span class="n">raw</span><span class="p">)</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">HTTPResponse</span><span class="p">(</span><span class="n">sock</span><span class="p">)</span>
+        <span class="n">response</span><span class="o">.</span><span class="n">begin</span><span class="p">()</span>
+        <span class="n">raw_body</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">raw</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">Response</span><span class="p">(</span>
+            <span class="n">response</span><span class="o">.</span><span class="n">status</span><span class="p">,</span>
+            <span class="n">body</span><span class="o">=</span><span class="n">RawResponseBody</span><span class="p">(</span><span class="n">raw_body</span><span class="p">),</span>
+            <span class="n">seqno</span><span class="o">=</span><span class="n">int_or_none</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">getheader</span><span class="p">(</span><span class="n">CCF_TX_SEQNO_HEADER</span><span class="p">)),</span>
+            <span class="n">view</span><span class="o">=</span><span class="n">int_or_none</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">getheader</span><span class="p">(</span><span class="n">CCF_TX_VIEW_HEADER</span><span class="p">)),</span>
+            <span class="n">global_commit</span><span class="o">=</span><span class="n">int_or_none</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">getheader</span><span class="p">(</span><span class="n">CCF_GLOBAL_COMMIT_HEADER</span><span class="p">)),</span>
+            <span class="n">headers</span><span class="o">=</span><span class="n">response</span><span class="o">.</span><span class="n">headers</span><span class="p">,</span>
+        <span class="p">)</span></div>
+
+
+<span class="k">def</span> <span class="nf">human_readable_size</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">suffixes</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;KB&quot;</span><span class="p">,</span> <span class="s2">&quot;MB&quot;</span><span class="p">,</span> <span class="s2">&quot;GB&quot;</span><span class="p">)</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="n">n</span> <span class="o">&gt;=</span> <span class="mi">1024</span> <span class="ow">and</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">suffixes</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">n</span> <span class="o">/=</span> <span class="mf">1024.0</span>
+        <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">n</span><span class="si">:</span><span class="s2">,.2f</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">suffixes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+
+
+<div class="viewcode-block" id="CCFConnectionException"><a class="viewcode-back" href="../../users/python_api.html#ccf.clients.CCFConnectionException">[docs]</a><span class="k">class</span> <span class="nc">CCFConnectionException</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Exception raised if a :py:class:`ccf.clients.CCFClient` instance cannot successfully establish</span>
+<span class="sd">    a connection with a target CCF node.</span>
+<span class="sd">    &quot;&quot;&quot;</span></div>
+
+
+<span class="k">def</span> <span class="nf">get_curve</span><span class="p">(</span><span class="n">ca_file</span><span class="p">):</span>
+    <span class="c1"># Auto detect EC curve to use based on server CA</span>
+    <span class="n">ca_bytes</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">ca_file</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="n">x509</span><span class="o">.</span><span class="n">load_pem_x509_certificate</span><span class="p">(</span><span class="n">ca_bytes</span><span class="p">,</span> <span class="n">default_backend</span><span class="p">())</span><span class="o">.</span><span class="n">public_key</span><span class="p">()</span><span class="o">.</span><span class="n">curve</span>
+    <span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">unpack_seqno_or_view</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+    <span class="p">(</span><span class="n">value</span><span class="p">,)</span> <span class="o">=</span> <span class="n">struct</span><span class="o">.</span><span class="n">unpack</span><span class="p">(</span><span class="s2">&quot;&lt;q&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">value</span> <span class="o">==</span> <span class="o">-</span><span class="n">sys</span><span class="o">.</span><span class="n">maxsize</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    <span class="k">return</span> <span class="n">value</span>
+
+
+<span class="k">class</span> <span class="nc">CurlClient</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This client uses Curl to send HTTP requests to CCF, and logs all Curl commands it runs.</span>
+<span class="sd">    These commands could also be run manually, or used by another client tool.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="p">,</span> <span class="n">ca</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cert</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">host</span> <span class="o">=</span> <span class="n">host</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">port</span> <span class="o">=</span> <span class="n">port</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ca</span> <span class="o">=</span> <span class="n">ca</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cert</span> <span class="o">=</span> <span class="n">cert</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">key</span> <span class="o">=</span> <span class="n">key</span>
+
+        <span class="n">ca_curve</span> <span class="o">=</span> <span class="n">get_curve</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ca</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">ca_curve</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;secp256k1&quot;</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;CurlClient cannot perform TLS handshake with </span><span class="si">{</span><span class="n">ca_curve</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> ECDH curve. &quot;</span>
+                <span class="s2">&quot;Use RequestClient class instead.&quot;</span>
+            <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">request</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">signed</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">DEFAULT_REQUEST_TIMEOUT_SEC</span><span class="p">):</span>
+        <span class="k">with</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">NamedTemporaryFile</span><span class="p">()</span> <span class="k">as</span> <span class="n">nf</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">signed</span><span class="p">:</span>
+                <span class="n">cmd</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;scurl.sh&quot;</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">cmd</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;curl&quot;</span><span class="p">]</span>
+
+            <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;https://</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">host</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">port</span><span class="si">}{</span><span class="n">request</span><span class="o">.</span><span class="n">path</span><span class="si">}</span><span class="s2">&quot;</span>
+
+            <span class="n">cmd</span> <span class="o">+=</span> <span class="p">[</span>
+                <span class="n">url</span><span class="p">,</span>
+                <span class="s2">&quot;-X&quot;</span><span class="p">,</span>
+                <span class="n">request</span><span class="o">.</span><span class="n">http_verb</span><span class="p">,</span>
+                <span class="s2">&quot;-i&quot;</span><span class="p">,</span>
+                <span class="sa">f</span><span class="s2">&quot;-m </span><span class="si">{</span><span class="n">timeout</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+            <span class="p">]</span>
+
+            <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">body</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">body</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">and</span> <span class="n">request</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;@&quot;</span><span class="p">):</span>
+                    <span class="c1"># Request is already a file path - pass it directly</span>
+                    <span class="n">cmd</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;--data-binary&quot;</span><span class="p">,</span> <span class="n">request</span><span class="o">.</span><span class="n">body</span><span class="p">])</span>
+                    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;.json&quot;</span><span class="p">):</span>
+                        <span class="n">content_type</span> <span class="o">=</span> <span class="n">CONTENT_TYPE_JSON</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">content_type</span> <span class="o">=</span> <span class="n">CONTENT_TYPE_BINARY</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="c1"># Write request body to temp file</span>
+                    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">body</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+                        <span class="n">msg_bytes</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">encode</span><span class="p">()</span>
+                        <span class="n">content_type</span> <span class="o">=</span> <span class="n">CONTENT_TYPE_TEXT</span>
+                    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">body</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">):</span>
+                        <span class="n">msg_bytes</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">body</span>
+                        <span class="n">content_type</span> <span class="o">=</span> <span class="n">CONTENT_TYPE_BINARY</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">msg_bytes</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">body</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">()</span>
+                        <span class="n">content_type</span> <span class="o">=</span> <span class="n">CONTENT_TYPE_JSON</span>
+                    <span class="n">LOG</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Writing request body: </span><span class="si">{</span><span class="n">truncate</span><span class="p">(</span><span class="n">msg_bytes</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                    <span class="n">nf</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">msg_bytes</span><span class="p">)</span>
+                    <span class="n">nf</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
+                    <span class="n">cmd</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;--data-binary&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;@</span><span class="si">{</span><span class="n">nf</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">])</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="s2">&quot;content-type&quot;</span> <span class="ow">in</span> <span class="n">request</span><span class="o">.</span><span class="n">headers</span><span class="p">:</span>
+                    <span class="n">request</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s2">&quot;content-type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">content_type</span>
+
+            <span class="c1"># Set requested headers first - so they take precedence over defaults</span>
+            <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">request</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="n">cmd</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;-H&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">v</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">])</span>
+
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">ca</span><span class="p">:</span>
+                <span class="n">cmd</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;--cacert&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ca</span><span class="p">])</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">key</span><span class="p">:</span>
+                <span class="n">cmd</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;--key&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">key</span><span class="p">])</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">cert</span><span class="p">:</span>
+                <span class="n">cmd</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;--cert&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">cert</span><span class="p">])</span>
+
+            <span class="n">LOG</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Running: </span><span class="si">{</span><span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">cmd</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="n">rc</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="n">capture_output</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">check</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">rc</span><span class="o">.</span><span class="n">returncode</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">rc</span><span class="o">.</span><span class="n">returncode</span> <span class="o">==</span> <span class="mi">60</span><span class="p">:</span>  <span class="c1"># PEER_FAILED_VERIFICATION</span>
+                    <span class="k">raise</span> <span class="n">CCFConnectionException</span>
+                <span class="k">if</span> <span class="n">rc</span><span class="o">.</span><span class="n">returncode</span> <span class="o">==</span> <span class="mi">28</span><span class="p">:</span>  <span class="c1"># OPERATION_TIMEDOUT</span>
+                    <span class="k">raise</span> <span class="ne">TimeoutError</span>
+                <span class="n">LOG</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">rc</span><span class="o">.</span><span class="n">stderr</span><span class="p">)</span>
+                <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Curl failed with return code </span><span class="si">{</span><span class="n">rc</span><span class="o">.</span><span class="n">returncode</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+            <span class="k">return</span> <span class="n">Response</span><span class="o">.</span><span class="n">from_raw</span><span class="p">(</span><span class="n">rc</span><span class="o">.</span><span class="n">stdout</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">TlsAdapter</span><span class="p">(</span><span class="n">HTTPAdapter</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Support for secp256k1 as node and network identity curve.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ca_file</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ca_curve</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="n">ca_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ca_curve</span> <span class="o">=</span> <span class="n">get_curve</span><span class="p">(</span><span class="n">ca_file</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+
+    <span class="c1"># pylint: disable=signature-differs</span>
+    <span class="k">def</span> <span class="nf">init_poolmanager</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">ca_curve</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">context</span> <span class="o">=</span> <span class="n">create_urllib3_context</span><span class="p">()</span>
+            <span class="n">context</span><span class="o">.</span><span class="n">set_ecdh_curve</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ca_curve</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+            <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;ssl_context&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">context</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">TlsAdapter</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">init_poolmanager</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">HTTPSignatureAuth_AlwaysDigest</span><span class="p">(</span><span class="n">HTTPSignatureAuth</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Support for HTTP signatures with empty body.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">add_digest</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+        <span class="c1"># Add digest of empty body, never leave it blank</span>
+        <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">body</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="s2">&quot;digest&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">headers</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;digest&quot;</span><span class="p">)</span>
+            <span class="n">digest</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">hasher_constructor</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">digest</span><span class="p">()</span>
+            <span class="n">request</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s2">&quot;Digest&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;SHA-256=&quot;</span> <span class="o">+</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64encode</span><span class="p">(</span><span class="n">digest</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">super</span><span class="p">(</span><span class="n">HTTPSignatureAuth_AlwaysDigest</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">add_digest</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">RequestClient</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    CCF default client and wrapper around Python Requests, handling HTTP signatures.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">host</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">port</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="n">ca</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">cert</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">key</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">host</span> <span class="o">=</span> <span class="n">host</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">port</span> <span class="o">=</span> <span class="n">port</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ca</span> <span class="o">=</span> <span class="n">ca</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cert</span> <span class="o">=</span> <span class="n">cert</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">key</span> <span class="o">=</span> <span class="n">key</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">session</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">verify</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ca</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">cert</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">key</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">cert</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cert</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">key</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="s2">&quot;https://&quot;</span><span class="p">,</span> <span class="n">TlsAdapter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ca</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">request</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">request</span><span class="p">:</span> <span class="n">Request</span><span class="p">,</span>
+        <span class="n">signed</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">timeout</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">DEFAULT_REQUEST_TIMEOUT_SEC</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="n">extra_headers</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">extra_headers</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">headers</span><span class="p">)</span>
+
+        <span class="n">auth_value</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="n">signed</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">key</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Cannot sign request if client has no key&quot;</span><span class="p">)</span>
+
+            <span class="n">auth_value</span> <span class="o">=</span> <span class="n">HTTPSignatureAuth_AlwaysDigest</span><span class="p">(</span>
+                <span class="n">algorithm</span><span class="o">=</span><span class="s2">&quot;ecdsa-sha256&quot;</span><span class="p">,</span>
+                <span class="n">key</span><span class="o">=</span><span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">key</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">(),</span>
+                <span class="c1"># key_id needs to be specified but is unused</span>
+                <span class="n">key_id</span><span class="o">=</span><span class="s2">&quot;tls&quot;</span><span class="p">,</span>
+                <span class="n">headers</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;(request-target)&quot;</span><span class="p">,</span> <span class="s2">&quot;Digest&quot;</span><span class="p">,</span> <span class="s2">&quot;Content-Length&quot;</span><span class="p">],</span>
+            <span class="p">)</span>
+
+        <span class="n">request_body</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">body</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">body</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">and</span> <span class="n">request</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;@&quot;</span><span class="p">):</span>
+                <span class="c1"># Request is a file path - read contents</span>
+                <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">body</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+                    <span class="n">request_body</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+                <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;.json&quot;</span><span class="p">):</span>
+                    <span class="n">content_type</span> <span class="o">=</span> <span class="n">CONTENT_TYPE_JSON</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">content_type</span> <span class="o">=</span> <span class="n">CONTENT_TYPE_BINARY</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">body</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+                <span class="n">request_body</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">encode</span><span class="p">()</span>
+                <span class="n">content_type</span> <span class="o">=</span> <span class="n">CONTENT_TYPE_TEXT</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">body</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">):</span>
+                <span class="n">request_body</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">body</span>
+                <span class="n">content_type</span> <span class="o">=</span> <span class="n">CONTENT_TYPE_BINARY</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">request_body</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">body</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">()</span>
+                <span class="n">content_type</span> <span class="o">=</span> <span class="n">CONTENT_TYPE_JSON</span>
+
+            <span class="k">if</span> <span class="ow">not</span> <span class="s2">&quot;content-type&quot;</span> <span class="ow">in</span> <span class="n">request</span><span class="o">.</span><span class="n">headers</span><span class="p">:</span>
+                <span class="n">extra_headers</span><span class="p">[</span><span class="s2">&quot;content-type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">content_type</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">request</span><span class="p">(</span>
+                <span class="n">request</span><span class="o">.</span><span class="n">http_verb</span><span class="p">,</span>
+                <span class="n">url</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;https://</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">host</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">port</span><span class="si">}{</span><span class="n">request</span><span class="o">.</span><span class="n">path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                <span class="n">auth</span><span class="o">=</span><span class="n">auth_value</span><span class="p">,</span>
+                <span class="n">headers</span><span class="o">=</span><span class="n">extra_headers</span><span class="p">,</span>
+                <span class="n">allow_redirects</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">,</span>
+                <span class="n">data</span><span class="o">=</span><span class="n">request_body</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="k">except</span> <span class="n">requests</span><span class="o">.</span><span class="n">exceptions</span><span class="o">.</span><span class="n">ReadTimeout</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">TimeoutError</span> <span class="kn">from</span> <span class="nn">exc</span>
+        <span class="k">except</span> <span class="n">requests</span><span class="o">.</span><span class="n">exceptions</span><span class="o">.</span><span class="n">SSLError</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">CCFConnectionException</span> <span class="kn">from</span> <span class="nn">exc</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Request client failed with unexpected error&quot;</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">exc</span>
+
+        <span class="k">return</span> <span class="n">Response</span><span class="o">.</span><span class="n">from_requests_response</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">WSClient</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    CCF WebSocket client implementation.</span>
+
+<span class="sd">    Note: Client signatures over WebSocket are not supported by CCF.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">host</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">port</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="n">ca</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">cert</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">key</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">host</span> <span class="o">=</span> <span class="n">host</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">port</span> <span class="o">=</span> <span class="n">port</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ca</span> <span class="o">=</span> <span class="n">ca</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cert</span> <span class="o">=</span> <span class="n">cert</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">key</span> <span class="o">=</span> <span class="n">key</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ws</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="n">ca_curve</span> <span class="o">=</span> <span class="n">get_curve</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ca</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">ca_curve</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;secp256k1&quot;</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;WSClient cannot perform TLS handshake with </span><span class="si">{</span><span class="n">ca_curve</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> ECDH curve. &quot;</span>
+                <span class="s2">&quot;Use RequestClient class instead.&quot;</span>
+            <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">request</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">request</span><span class="p">:</span> <span class="n">Request</span><span class="p">,</span>
+        <span class="n">signed</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">timeout</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">DEFAULT_REQUEST_TIMEOUT_SEC</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="k">if</span> <span class="n">signed</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;Client signatures over WebSocket are not supported by CCF&quot;</span>
+            <span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">ws</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">LOG</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Creating WSS connection&quot;</span><span class="p">)</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">ws</span> <span class="o">=</span> <span class="n">websocket</span><span class="o">.</span><span class="n">create_connection</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;wss://</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">host</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">port</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                    <span class="n">sslopt</span><span class="o">=</span><span class="p">{</span>
+                        <span class="s2">&quot;certfile&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">cert</span><span class="p">,</span>
+                        <span class="s2">&quot;keyfile&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">key</span><span class="p">,</span>
+                        <span class="s2">&quot;ca_certs&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">ca</span><span class="p">,</span>
+                    <span class="p">},</span>
+                    <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">,</span>
+                <span class="p">)</span>
+            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">CCFConnectionException</span> <span class="kn">from</span> <span class="nn">exc</span>
+
+        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">ws</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">body</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="n">payload</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">encode</span><span class="p">()</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">body</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">):</span>
+            <span class="n">payload</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">body</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">payload</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">body</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">()</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">path</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">()</span>
+        <span class="n">header</span> <span class="o">=</span> <span class="n">struct</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="s2">&quot;&lt;h&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">path</span><span class="p">))</span> <span class="o">+</span> <span class="n">path</span>
+        <span class="c1"># FIN, no RSV, BIN, UNMASKED every time, because it&#39;s all we support right now</span>
+        <span class="n">frame</span> <span class="o">=</span> <span class="n">websocket</span><span class="o">.</span><span class="n">ABNF</span><span class="p">(</span>
+            <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">websocket</span><span class="o">.</span><span class="n">ABNF</span><span class="o">.</span><span class="n">OPCODE_BINARY</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">header</span> <span class="o">+</span> <span class="n">payload</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ws</span><span class="o">.</span><span class="n">send_frame</span><span class="p">(</span><span class="n">frame</span><span class="p">)</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ws</span><span class="o">.</span><span class="n">recv_frame</span><span class="p">()</span><span class="o">.</span><span class="n">data</span>
+        <span class="p">(</span><span class="n">status_code</span><span class="p">,)</span> <span class="o">=</span> <span class="n">struct</span><span class="o">.</span><span class="n">unpack</span><span class="p">(</span><span class="s2">&quot;&lt;h&quot;</span><span class="p">,</span> <span class="n">out</span><span class="p">[:</span><span class="mi">2</span><span class="p">])</span>
+        <span class="n">seqno</span> <span class="o">=</span> <span class="n">unpack_seqno_or_view</span><span class="p">(</span><span class="n">out</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">10</span><span class="p">])</span>
+        <span class="n">view</span> <span class="o">=</span> <span class="n">unpack_seqno_or_view</span><span class="p">(</span><span class="n">out</span><span class="p">[</span><span class="mi">10</span><span class="p">:</span><span class="mi">18</span><span class="p">])</span>
+        <span class="n">global_commit</span> <span class="o">=</span> <span class="n">unpack_seqno_or_view</span><span class="p">(</span><span class="n">out</span><span class="p">[</span><span class="mi">18</span><span class="p">:</span><span class="mi">26</span><span class="p">])</span>
+        <span class="n">payload</span> <span class="o">=</span> <span class="n">out</span><span class="p">[</span><span class="mi">26</span><span class="p">:]</span>
+        <span class="n">body</span> <span class="o">=</span> <span class="n">RawResponseBody</span><span class="p">(</span><span class="n">payload</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">Response</span><span class="p">(</span><span class="n">status_code</span><span class="p">,</span> <span class="n">body</span><span class="p">,</span> <span class="n">seqno</span><span class="p">,</span> <span class="n">view</span><span class="p">,</span> <span class="n">global_commit</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">{})</span>
+
+
+<div class="viewcode-block" id="CCFClient"><a class="viewcode-back" href="../../users/python_api.html#ccf.clients.CCFClient">[docs]</a><span class="k">class</span> <span class="nc">CCFClient</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Client used to connect securely and issue requests to a given CCF node.</span>
+
+<span class="sd">    This is a very thin wrapper around Python Requests with TLS with added:</span>
+
+<span class="sd">    - Retry logic when connecting to nodes that are joining the network</span>
+<span class="sd">    - Support for HTTP signatures (https://tools.ietf.org/html/draft-cavage-http-signatures-12).</span>
+
+<span class="sd">    Note: Experimental support for WebSocket is also available by setting the ``ws`` parameter to ``True``.</span>
+
+<span class="sd">    :param str host: RPC IP address or domain name of node to connect to.</span>
+<span class="sd">    :param int port: RPC port number of node to connect to.</span>
+<span class="sd">    :param str ca: Path to CCF network certificate.</span>
+<span class="sd">    :param str cert: Path to client certificate (optional).</span>
+<span class="sd">    :param str key: Path to client private key (optional).</span>
+<span class="sd">    :param int connection_timeout: Maximum time to wait for successful connection establishment before giving up.</span>
+<span class="sd">    :param str description: Message to print on each request emitted with this client.</span>
+<span class="sd">    :param bool ws: Use WebSocket client (experimental).</span>
+
+<span class="sd">    A :py:exc:`CCFConnectionException` exception is raised if the connection is not established successfully within ``connection_timeout`` seconds.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">client_impl</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">CurlClient</span><span class="p">,</span> <span class="n">WSClient</span><span class="p">,</span> <span class="n">RequestClient</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">host</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">port</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="n">ca</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">cert</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">key</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">connection_timeout</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">DEFAULT_CONNECTION_TIMEOUT_SEC</span><span class="p">,</span>
+        <span class="n">description</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">ws</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">connection_timeout</span> <span class="o">=</span> <span class="n">connection_timeout</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="n">description</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;[</span><span class="si">{</span><span class="n">host</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">port</span><span class="si">}</span><span class="s2">]&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_connected</span> <span class="o">=</span> <span class="kc">False</span>
+
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;CURL_CLIENT&quot;</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">client_impl</span> <span class="o">=</span> <span class="n">CurlClient</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="p">,</span> <span class="n">ca</span><span class="p">,</span> <span class="n">cert</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;WEBSOCKETS_CLIENT&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">ws</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">client_impl</span> <span class="o">=</span> <span class="n">WSClient</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="p">,</span> <span class="n">ca</span><span class="p">,</span> <span class="n">cert</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">client_impl</span> <span class="o">=</span> <span class="n">RequestClient</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="p">,</span> <span class="n">ca</span><span class="p">,</span> <span class="n">cert</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_response</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">:</span> <span class="n">Response</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Response</span><span class="p">:</span>
+        <span class="n">LOG</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">response</span>
+
+    <span class="k">def</span> <span class="nf">_call</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">body</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">dict</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">http_verb</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;POST&quot;</span><span class="p">,</span>
+        <span class="n">headers</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">dict</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">signed</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">timeout</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">DEFAULT_REQUEST_TIMEOUT_SEC</span><span class="p">,</span>
+        <span class="n">log_capture</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Response</span><span class="p">:</span>
+        <span class="n">description</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">description</span><span class="p">:</span>
+            <span class="n">description</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">description</span><span class="si">}{</span><span class="n">signed</span> <span class="o">*</span> <span class="s1">&#39;s&#39;</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">description</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
+
+        <span class="k">if</span> <span class="n">headers</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">headers</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">Request</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">body</span><span class="p">,</span> <span class="n">http_verb</span><span class="p">,</span> <span class="n">headers</span><span class="p">)</span>
+
+        <span class="n">flush_info</span><span class="p">([</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">description</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">r</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">],</span> <span class="n">log_capture</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client_impl</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">signed</span><span class="p">,</span> <span class="n">timeout</span><span class="p">)</span>
+        <span class="n">flush_info</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">response</span><span class="p">)],</span> <span class="n">log_capture</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">response</span>
+
+<div class="viewcode-block" id="CCFClient.call"><a class="viewcode-back" href="../../users/python_api.html#ccf.clients.CCFClient.call">[docs]</a>    <span class="k">def</span> <span class="nf">call</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">body</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">dict</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">http_verb</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;POST&quot;</span><span class="p">,</span>
+        <span class="n">headers</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">dict</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">signed</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">timeout</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">DEFAULT_REQUEST_TIMEOUT_SEC</span><span class="p">,</span>
+        <span class="n">log_capture</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Response</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Issues one request, synchronously, and returns the response.</span>
+
+<span class="sd">        :param str path: URI of the targeted resource. Must begin with &#39;/&#39;</span>
+<span class="sd">        :param body: Request body (optional).</span>
+<span class="sd">        :type body: str or dict or bytes</span>
+<span class="sd">        :param str http_verb: HTTP verb (e.g. &quot;POST&quot; or &quot;GET&quot;).</span>
+<span class="sd">        :param dict headers: HTTP request headers (optional).</span>
+<span class="sd">        :param bool signed: Sign request with client private key.</span>
+<span class="sd">        :param int timeout: Maximum time to wait for a response before giving up.</span>
+<span class="sd">        :param list log_capture: Rather than emit to default handler, capture log lines to list (optional).</span>
+
+<span class="sd">        :return: :py:class:`ccf.clients.Response`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">path</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;URL path &#39;</span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2">&#39; is invalid, must start with /&quot;</span><span class="p">)</span>
+
+        <span class="n">logs</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_connected</span><span class="p">:</span>
+            <span class="n">r</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_call</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">body</span><span class="p">,</span> <span class="n">http_verb</span><span class="p">,</span> <span class="n">headers</span><span class="p">,</span> <span class="n">signed</span><span class="p">,</span> <span class="n">timeout</span><span class="p">,</span> <span class="n">logs</span><span class="p">)</span>
+            <span class="n">flush_info</span><span class="p">(</span><span class="n">logs</span><span class="p">,</span> <span class="n">log_capture</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">r</span>
+
+        <span class="n">end_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection_timeout</span>
+        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">logs</span> <span class="o">=</span> <span class="p">[]</span>
+                <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_call</span><span class="p">(</span>
+                    <span class="n">path</span><span class="p">,</span> <span class="n">body</span><span class="p">,</span> <span class="n">http_verb</span><span class="p">,</span> <span class="n">headers</span><span class="p">,</span> <span class="n">signed</span><span class="p">,</span> <span class="n">timeout</span><span class="p">,</span> <span class="n">logs</span>
+                <span class="p">)</span>
+                <span class="c1"># Only the first request gets this timeout logic - future calls</span>
+                <span class="c1"># call _call</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">is_connected</span> <span class="o">=</span> <span class="kc">True</span>
+                <span class="n">flush_info</span><span class="p">(</span><span class="n">logs</span><span class="p">,</span> <span class="n">log_capture</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+                <span class="k">return</span> <span class="n">response</span>
+            <span class="k">except</span> <span class="p">(</span><span class="n">CCFConnectionException</span><span class="p">,</span> <span class="ne">TimeoutError</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="c1"># If the initial connection fails (e.g. due to node certificate</span>
+                <span class="c1"># not yet being endorsed by the network) sleep briefly and try again</span>
+                <span class="k">if</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">&gt;</span> <span class="n">end_time</span><span class="p">:</span>
+                    <span class="n">flush_info</span><span class="p">(</span><span class="n">logs</span><span class="p">,</span> <span class="n">log_capture</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+                    <span class="k">raise</span> <span class="n">CCFConnectionException</span><span class="p">(</span>
+                        <span class="sa">f</span><span class="s2">&quot;Connection still failing after </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">connection_timeout</span><span class="si">}</span><span class="s2">s&quot;</span>
+                    <span class="p">)</span> <span class="kn">from</span> <span class="nn">e</span>
+                <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CCFClient.get"><a class="viewcode-back" href="../../users/python_api.html#ccf.clients.CCFClient.get">[docs]</a>    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Response</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Issue ``GET`` request.</span>
+<span class="sd">        See :py:meth:`ccf.clients.CCFClient.call`.</span>
+
+<span class="sd">        :return: :py:class:`ccf.clients.Response`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="s2">&quot;http_verb&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;&quot;http_verb&quot; should not be specified&#39;</span><span class="p">)</span>
+
+        <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;http_verb&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;GET&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CCFClient.post"><a class="viewcode-back" href="../../users/python_api.html#ccf.clients.CCFClient.post">[docs]</a>    <span class="k">def</span> <span class="nf">post</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Response</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Issue ``POST`` request.</span>
+<span class="sd">        See :py:meth:`ccf.clients.CCFClient.call`.</span>
+
+<span class="sd">        :return: :py:class:`ccf.clients.Response`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="s2">&quot;http_verb&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;&quot;http_verb&quot; should not be specified&#39;</span><span class="p">)</span>
+
+        <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;http_verb&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;POST&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CCFClient.put"><a class="viewcode-back" href="../../users/python_api.html#ccf.clients.CCFClient.put">[docs]</a>    <span class="k">def</span> <span class="nf">put</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Response</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Issue ``PUT`` request.</span>
+<span class="sd">        See :py:meth:`ccf.clients.CCFClient.call`.</span>
+
+<span class="sd">        :return: :py:class:`ccf.clients.Response`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="s2">&quot;http_verb&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;&quot;http_verb&quot; should not be specified&#39;</span><span class="p">)</span>
+
+        <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;http_verb&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;PUT&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CCFClient.delete"><a class="viewcode-back" href="../../users/python_api.html#ccf.clients.CCFClient.delete">[docs]</a>    <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Response</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Issue ``DELETE`` request.</span>
+<span class="sd">        See :py:meth:`ccf.clients.CCFClient.call`.</span>
+
+<span class="sd">        :return: :py:class:`ccf.clients.Response`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="s2">&quot;http_verb&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;&quot;http_verb&quot; should not be specified&#39;</span><span class="p">)</span>
+
+        <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;http_verb&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;DELETE&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CCFClient.head"><a class="viewcode-back" href="../../users/python_api.html#ccf.clients.CCFClient.head">[docs]</a>    <span class="k">def</span> <span class="nf">head</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Response</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Issue ``HEAD`` request.</span>
+<span class="sd">        See :py:meth:`ccf.clients.CCFClient.call`.</span>
+
+<span class="sd">        :return: :py:class:`ccf.clients.Response`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="s2">&quot;http_verb&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;&quot;http_verb&quot; should not be specified&#39;</span><span class="p">)</span>
+
+        <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;http_verb&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;HEAD&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CCFClient.wait_for_commit"><a class="viewcode-back" href="../../users/python_api.html#ccf.clients.CCFClient.wait_for_commit">[docs]</a>    <span class="k">def</span> <span class="nf">wait_for_commit</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">:</span> <span class="n">Response</span><span class="p">,</span> <span class="n">timeout</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">DEFAULT_COMMIT_TIMEOUT_SEC</span>
+    <span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Given a :py:class:`ccf.clients.Response`, this functions waits</span>
+<span class="sd">        for the associated sequence number and view to be committed by the CCF network.</span>
+
+<span class="sd">        The client will poll the ``/node/tx`` endpoint until ``COMMITTED`` is returned.</span>
+
+<span class="sd">        :param ccf.clients.Response response: Response returned by :py:meth:`ccf.clients.CCFClient.call`</span>
+<span class="sd">        :param int timeout: Maximum time (secs) to wait for commit before giving up.</span>
+
+<span class="sd">        A ``TimeoutError`` exception is raised if the transaction is not committed within ``timeout`` seconds.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">seqno</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">response</span><span class="o">.</span><span class="n">view</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Response seqno and view should not be None&quot;</span><span class="p">)</span>
+
+        <span class="n">ccf</span><span class="o">.</span><span class="n">commit</span><span class="o">.</span><span class="n">wait_for_commit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="o">.</span><span class="n">seqno</span><span class="p">,</span> <span class="n">response</span><span class="o">.</span><span class="n">view</span><span class="p">,</span> <span class="n">timeout</span><span class="p">)</span></div></div>
+
+
+<span class="nd">@contextlib</span><span class="o">.</span><span class="n">contextmanager</span>
+<span class="k">def</span> <span class="nf">client</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">yield</span> <span class="n">CCFClient</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+
+              </div>
+              
+              
+              <div class='prev-next-bottom'>
+                
+
+              </div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+
+    
+  <script src="../../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    <p>
+          &copy; Copyright 2018, Microsoft Research.<br/>
+        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.1.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

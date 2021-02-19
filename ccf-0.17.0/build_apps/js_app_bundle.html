@@ -1,0 +1,610 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Application Bundle &#8212; CCF  documentation</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Build and Sign CCF Applications" href="build_app.html" />
+    <link rel="prev" title="TypeScript Application using tsoa" href="js_app_tsoa.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+    
+    <a class="navbar-brand" href="../index.html">
+      <img src="../_static/ccf.svg" class="logo" alt="logo">
+    </a>
+    
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navbar-menu" class="col-11 collapse navbar-collapse">
+      <ul id="navbar-main-elements" class="navbar-nav mr-auto">
+        
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../overview/index.html">Overview</a>
+        </li>
+        
+        <li class="nav-item active">
+            <a class="nav-link" href="index.html">Build Apps</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../use_apps/index.html">Use Apps</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../operations/index.html">Operations</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../governance/index.html">Governance</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../audit/index.html">Audit</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../contribute/index.html">Contribute</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../glossary.html">Glossary</a>
+        </li>
+        
+        
+      </ul>
+
+      <ul class="navbar-nav">
+        
+          <li class="nav-item">
+            <a class="nav-link" href="https://github.com/Microsoft/CCF" target="_blank" rel="noopener">
+              <span><i class="fab fa-github-square"></i></span>
+            </a>
+          </li>
+        
+        
+      </ul>
+    </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+          <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+<script>
+    function onVersionChange() {
+      window.location.href = document.getElementById("versions").value;
+    }
+
+    window.addEventListener("DOMContentLoaded",function(){
+        let selectedVersion = "main"
+        const thisURL = window.location.toString()
+        let indexOfVersion = thisURL.indexOf("ccf-")
+        if (indexOfVersion != -1) {
+            selectedVersion = thisURL.substring(indexOfVersion, thisURL.indexOf("/", indexOfVersion));
+        }
+        let sel = document.getElementById("versions");
+        if (sel != null) {
+            let opts = sel.options;
+            for (var opt, j = 0; opt = opts[j]; j++) {
+                if (opt.text == selectedVersion) {
+                    sel.selectedIndex = j;
+                    break;
+                }
+            }
+        }
+    }, false);
+</script>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+
+    <div class="bd-toc-item active">
+        
+
+        <ul class="nav bd-sidenav">
+            
+            
+            
+            
+            
+            
+            <li class="">
+                <a href="create_vm.html">Create Azure SGX VM</a>
+            </li>
+            
+            
+            
+            <li class="">
+                <a href="install_bin.html">Install CCF</a>
+            </li>
+            
+            
+            
+            <li class="">
+                <a href="build_setup.html">CCF Development Setup</a>
+            </li>
+            
+            
+            
+            <li class="">
+                <a href="example.html">C++ Application</a>
+            </li>
+            
+            
+            
+
+            <li class="active">
+                <a href="js_app.html">JavaScript Application</a>
+                <ul>
+                    
+                    <li class="">
+                        <a href="js_app_ts.html">TypeScript Application</a>
+                    </li>
+                    
+                    <li class="">
+                        <a href="js_app_tsoa.html">TypeScript Application using tsoa</a>
+                    </li>
+                    
+                    <li class="active">
+                        <a href="">JavaScript Application Bundle</a>
+                    </li>
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li class="">
+                <a href="build_app.html">Build and Sign CCF Applications</a>
+            </li>
+            
+            
+            
+            <li class="">
+                <a href="run_app.html">Running CCF Applications</a>
+            </li>
+            
+            
+            
+            <li class="">
+                <a href="demo.html">End-to-end demo</a>
+            </li>
+            
+            
+            
+            <li class="">
+                <a href="auth/index.html">User Authentication</a>
+            </li>
+            
+            
+            
+            <li class="">
+                <a href="kv/index.html">Key-Value Store</a>
+            </li>
+            
+            
+            
+            <li class="">
+                <a href="upgrading_app.html">Upgrade Your Application</a>
+            </li>
+            
+            
+            
+            <li class="">
+                <a href="api.html">Developer API</a>
+            </li>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+        </ul>
+
+        
+        <h6> Versions </h6>
+        <select name="versions" id="versions" class="custom-select custom-select-sm" style="width:50%" onchange="onVersionChange()">
+            <option value="../../main/build_apps/js_app_bundle.html">main </option>
+            <option value="../../ccf-0.18.2/build_apps/js_app_bundle.html">ccf-0.18.2 </option>
+            <option value="../../ccf-0.18.1/build_apps/js_app_bundle.html">ccf-0.18.1 </option>
+            <option value="../../ccf-0.18.0/build_apps/js_app_bundle.html">ccf-0.18.0 </option>
+            <option value="../../ccf-0.17.2/build_apps/js_app_bundle.html">ccf-0.17.2 </option>
+            <option value="../../ccf-0.17.1/build_apps/js_app_bundle.html">ccf-0.17.1 </option>
+            <option value="js_app_bundle.html">ccf-0.17.0 </option>
+            <option value="../../ccf-0.16.3/build_apps/js_app_bundle.html">ccf-0.16.3 </option>
+            <option value="../../ccf-0.16.2/build_apps/js_app_bundle.html">ccf-0.16.2 </option>
+            <option value="../../ccf-0.16.1/build_apps/js_app_bundle.html">ccf-0.16.1 </option>
+            <option value="../../ccf-0.16.0/build_apps/js_app_bundle.html">ccf-0.16.0 </option>
+            <option value="../../ccf-0.15.2/index.html">ccf-0.15.2 </option>
+            <option value="../../ccf-0.15.1/index.html">ccf-0.15.1 </option>
+            <option value="../../ccf-0.15.0/index.html">ccf-0.15.0 </option>
+            <option value="../../ccf-0.14.3/index.html">ccf-0.14.3 </option>
+            <option value="../../ccf-0.14.2/index.html">ccf-0.14.2 </option>
+            <option value="../../ccf-0.14.1/index.html">ccf-0.14.1 </option>
+            <option value="../../ccf-0.14.0/index.html">ccf-0.14.0 </option>
+            <option value="../../ccf-0.13.4/index.html">ccf-0.13.4 </option>
+            <option value="../../ccf-0.13.3/index.html">ccf-0.13.3 </option>
+            <option value="../../ccf-0.13.2/index.html">ccf-0.13.2 </option>
+            <option value="../../ccf-0.13.1/index.html">ccf-0.13.1 </option>
+            <option value="../../ccf-0.13.0/index.html">ccf-0.13.0 </option>
+            <option value="../../ccf-0.12.2/index.html">ccf-0.12.2 </option>
+            <option value="../../ccf-0.12.1/index.html">ccf-0.12.1 </option>
+            <option value="../../ccf-0.12.0/index.html">ccf-0.12.0 </option>
+            <option value="../../ccf-0.11.7/index.html">ccf-0.11.7 </option>
+            <option value="../../ccf-0.11.4/index.html">ccf-0.11.4 </option>
+            <option value="../../ccf-0.11.1/index.html">ccf-0.11.1 </option>
+        </select>
+        
+</nav>
+          </div>
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+              
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#folder-layout" class="nav-link">Folder Layout</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#metadata" class="nav-link">Metadata</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#javascript-api" class="nav-link">JavaScript API</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#globals" class="nav-link">Globals</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#endpoint-handlers" class="nav-link">Endpoint handlers</a>
+        </li>
+    
+            </ul>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#deployment" class="nav-link">Deployment</a>
+        </li>
+    
+    </ul>
+</nav>
+
+
+
+<div class="tocsection editthispage">
+    <a href="https://github.com/Microsoft/CCF/edit/main/doc/build_apps/js_app_bundle.rst">
+        <i class="fas fa-pencil-alt"></i> Edit this page
+    </a>
+</div>
+
+              
+          </div>
+          
+
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <div class="section" id="javascript-application-bundle">
+<h1>JavaScript Application Bundle<a class="headerlink" href="#javascript-application-bundle" title="Permalink to this headline">¶</a></h1>
+<p>The native format for JavaScript applications in CCF is a JavaScript application bundle, or short app bundle.
+A bundle can be wrapped directly into a governance proposal for deployment.</p>
+<p>This page documents the components of a bundle and the JavaScript API available for developing endpoints.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Modern JavaScript app development typically makes use of
+<a class="reference external" href="https://nodejs.org/">Node.js</a>,
+<a class="reference external" href="https://www.npmjs.com/">npm</a>, and
+<a class="reference external" href="https://www.typescriptlang.org/">TypeScript</a>.
+CCF provides multiple example apps built with these tools.
+They involve a <cite>build</cite> step that generates an app bundle suitable for CCF.
+See the following pages for more details:</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="js_app_ts.html">TypeScript Application</a></li>
+<li class="toctree-l1"><a class="reference internal" href="js_app_tsoa.html">TypeScript Application using tsoa</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="folder-layout">
+<h2>Folder Layout<a class="headerlink" href="#folder-layout" title="Permalink to this headline">¶</a></h2>
+<p>A bundle has the following folder structure:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ tree --dirsfirst my-app
+my-app
+├── src
+│   └── app.js
+└── app.json
+</pre></div>
+</div>
+<p>It consists of <a class="reference internal" href="#metadata"><span class="std std-ref">metadata</span></a> (<code class="docutils literal notranslate"><span class="pre">app.json</span></code>) and one or more <a class="reference internal" href="#javascript-api"><span class="std std-ref">JavaScript modules</span></a> (<code class="docutils literal notranslate"><span class="pre">src/</span></code>).
+JavaScript modules can <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import">import</a> other modules using relative path names.</p>
+<p>You can find an example app bundle in the
+<a class="reference external" href="https://github.com/microsoft/CCF/tree/master/tests/js-app-bundle">tests/js-app-bundle</a>
+folder of the CCF git repository.</p>
+</div>
+<div class="section" id="metadata">
+<h2>Metadata<a class="headerlink" href="#metadata" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">app.json</span></code> file of an app bundle has the following structure:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span>{
+  &quot;endpoints&quot;: {
+    &quot;/foo&quot;: {
+      &quot;post&quot;: {
+        &quot;js_module&quot;: &quot;app.js&quot;,
+        &quot;js_function&quot;: &quot;foo_post&quot;,
+        &quot;forwarding_required&quot;: &quot;never&quot;,
+        &quot;execute_outside_consensus&quot;: &quot;never&quot;,
+        &quot;require_client_signature&quot;: false,
+        &quot;require_client_identity&quot;: true,
+        &quot;readonly&quot;: true,
+        &quot;openapi&quot;: {
+          ...
+        }
+      },
+      ...
+    },
+    ...
+  }
+}
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">&quot;endpoints&quot;</span></code> contains endpoint descriptions nested by REST API URL and HTTP method.
+Each endpoint object contains the following information:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;js_module&quot;</span></code>: The path to the module containing the endpoint handler, relative to the <code class="docutils literal notranslate"><span class="pre">src/</span></code> folder.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;js_function&quot;</span></code>: The name of the endpoint handler function.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;forwarding_required&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;execute_outside_consensus&quot;</span></code>,
+<code class="docutils literal notranslate"><span class="pre">&quot;require_client_signature&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;require_client_identity&quot;`</span></code>,
+<code class="docutils literal notranslate"><span class="pre">&quot;readonly&quot;</span></code>: Request execution policies, see <strong>TODO</strong>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;openapi&quot;</span></code>:  An <a class="reference external" href="https://swagger.io/specification/#operation-object">OpenAPI Operation Object</a>
+without <a class="reference external" href="https://swagger.io/specification/#reference-object">references</a>.</p></li>
+</ul>
+<p>You can find an example metadata file at
+<a class="reference external" href="https://github.com/microsoft/CCF/tree/master/tests/js-app-bundle/app.json">tests/js-app-bundle/app.json</a>
+in the CCF git repository.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>See the <a class="reference internal" href="js_app_tsoa.html#typescript-application-using-tsoa"><span class="std std-ref">tsoa-based app example</span></a> on how to generate OpenAPI definitions with TypeScript.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>CCF currently ignores all fields except <code class="docutils literal notranslate"><span class="pre">&quot;js_module&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;js_function&quot;</span></code>.
+This will be addressed in the near future, see
+<a class="reference external" href="https://github.com/microsoft/CCF/issues/1460">#1460</a> and <a class="reference external" href="https://github.com/microsoft/CCF/issues/1565">#1565</a>.</p>
+</div>
+</div>
+<div class="section" id="javascript-api">
+<h2>JavaScript API<a class="headerlink" href="#javascript-api" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="globals">
+<h3>Globals<a class="headerlink" href="#globals" title="Permalink to this headline">¶</a></h3>
+<p>JavaScript provides a set of built-in
+<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects">global functions, objects, and values</a>.</p>
+<p>CCF provides the following additional globals:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">tables</span></code>:
+Provides access to the Key-Value Store of the network.
+<code class="docutils literal notranslate"><span class="pre">tables</span></code> is an object that maps table names to <code class="docutils literal notranslate"><span class="pre">Table</span></code> objects.
+A <code class="docutils literal notranslate"><span class="pre">Table</span></code> object has <code class="docutils literal notranslate"><span class="pre">get(k)</span></code>/<code class="docutils literal notranslate"><span class="pre">put(k,v)</span></code>/<code class="docutils literal notranslate"><span class="pre">remove(k)</span></code> functions.
+Keys and values currently have to be strings, although this will change in the near future.</p>
+<p>Example: <code class="docutils literal notranslate"><span class="pre">tables['msg'].put('123',</span> <span class="pre">'Hello</span> <span class="pre">world!')</span></code></p>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/API">Web APIs</a> are not available.</p>
+</div>
+</div>
+<div class="section" id="endpoint-handlers">
+<h3>Endpoint handlers<a class="headerlink" href="#endpoint-handlers" title="Permalink to this headline">¶</a></h3>
+<p>An endpoint handler is an exported function that receives a <code class="docutils literal notranslate"><span class="pre">Request</span></code> object, returns a <code class="docutils literal notranslate"><span class="pre">Response</span></code> object,
+and is referenced in the <code class="docutils literal notranslate"><span class="pre">app.json</span></code> file of the app bundle (see above).</p>
+<p>A <code class="docutils literal notranslate"><span class="pre">Request</span></code> object has the following fields:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">headers</span></code>: An object mapping lower-case HTTP header names to their values.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">params</span></code>: An object mapping URL path parameter names to their values.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">query</span></code>: The query string of the requested URL.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">body</span></code>: An object with <code class="docutils literal notranslate"><span class="pre">text()</span></code>/<code class="docutils literal notranslate"><span class="pre">json()</span></code>/<code class="docutils literal notranslate"><span class="pre">arrayBuffer()</span></code> functions to access the
+request body in various ways.</p></li>
+</ul>
+<p>A <code class="docutils literal notranslate"><span class="pre">Response</span></code> object can contain the following fields (all optional):</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">statusCode</span></code>: The HTTP status code to return (default <code class="docutils literal notranslate"><span class="pre">200</span></code>, or <code class="docutils literal notranslate"><span class="pre">500</span></code> if an exception is raised).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">headers</span></code>: An object mapping lower-case HTTP header names to their values.
+The type of <code class="docutils literal notranslate"><span class="pre">body</span></code> determines the default value of the <code class="docutils literal notranslate"><span class="pre">content-type</span></code> header, see below.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">body</span></code>: Either
+a <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a> (<code class="docutils literal notranslate"><span class="pre">text/plain</span></code>),
+an <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">ArrayBuffer</a> (<code class="docutils literal notranslate"><span class="pre">application/octet-stream</span></code>),
+a <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray">TypedArray</a> (<code class="docutils literal notranslate"><span class="pre">application/octet-stream</span></code>),
+or as fall-back any <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify">JSON-serializable</a> value (<code class="docutils literal notranslate"><span class="pre">application/json</span></code>).
+The content type in parentheses is the default and can be overridden in <code class="docutils literal notranslate"><span class="pre">headers</span></code>.</p></li>
+</ul>
+<p>See the following handler from the example app bundle in the
+<a class="reference external" href="https://github.com/microsoft/CCF/tree/master/tests/js-app-bundle">tests/js-app-bundle</a>
+folder of the CCF git repository.
+It validates the request body and returns the result of a mathematical operation:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">compute_impl</span><span class="p">(</span><span class="nx">op</span><span class="p">,</span> <span class="nx">left</span><span class="p">,</span> <span class="nx">right</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">result</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">op</span> <span class="o">==</span> <span class="s2">&quot;add&quot;</span><span class="p">)</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">left</span> <span class="o">+</span> <span class="nx">right</span><span class="p">;</span>
+  <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">op</span> <span class="o">==</span> <span class="s2">&quot;sub&quot;</span><span class="p">)</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">left</span> <span class="o">-</span> <span class="nx">right</span><span class="p">;</span>
+  <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">op</span> <span class="o">==</span> <span class="s2">&quot;mul&quot;</span><span class="p">)</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">left</span> <span class="o">*</span> <span class="nx">right</span><span class="p">;</span>
+  <span class="k">else</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="nx">statusCode</span><span class="o">:</span> <span class="mf">400</span><span class="p">,</span>
+      <span class="nx">body</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">error</span><span class="o">:</span> <span class="s2">&quot;unknown op&quot;</span><span class="p">,</span>
+      <span class="p">},</span>
+    <span class="p">};</span>
+  <span class="p">}</span>
+
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="nx">body</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">result</span><span class="o">:</span> <span class="nx">result</span><span class="p">,</span>
+    <span class="p">},</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="k">export</span> <span class="kd">function</span> <span class="nx">compute</span><span class="p">(</span><span class="nx">request</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">body</span> <span class="o">=</span> <span class="nx">request</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">body</span><span class="p">.</span><span class="nx">left</span> <span class="o">!=</span> <span class="s2">&quot;number&quot;</span> <span class="o">||</span> <span class="k">typeof</span> <span class="nx">body</span><span class="p">.</span><span class="nx">right</span> <span class="o">!=</span> <span class="s2">&quot;number&quot;</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="nx">statusCode</span><span class="o">:</span> <span class="mf">400</span><span class="p">,</span>
+      <span class="nx">body</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">error</span><span class="o">:</span> <span class="s2">&quot;invalid operand type&quot;</span><span class="p">,</span>
+      <span class="p">},</span>
+    <span class="p">};</span>
+  <span class="p">}</span>
+
+  <span class="k">return</span> <span class="nx">compute_impl</span><span class="p">(</span><span class="nx">body</span><span class="p">.</span><span class="nx">op</span><span class="p">,</span> <span class="nx">body</span><span class="p">.</span><span class="nx">left</span><span class="p">,</span> <span class="nx">body</span><span class="p">.</span><span class="nx">right</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">export</span> <span class="kd">function</span> <span class="nx">compute2</span><span class="p">(</span><span class="nx">request</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">params</span> <span class="o">=</span> <span class="nx">request</span><span class="p">.</span><span class="nx">params</span><span class="p">;</span>
+
+  <span class="c1">// Type of params is always string. Try to parse as float</span>
+  <span class="kd">let</span> <span class="nx">left</span> <span class="o">=</span> <span class="nb">parseFloat</span><span class="p">(</span><span class="nx">params</span><span class="p">.</span><span class="nx">left</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nb">isNaN</span><span class="p">(</span><span class="nx">left</span><span class="p">))</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="nx">statusCode</span><span class="o">:</span> <span class="mf">400</span><span class="p">,</span>
+      <span class="nx">body</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">error</span><span class="o">:</span> <span class="s2">&quot;left operand is not a parseable number&quot;</span><span class="p">,</span>
+      <span class="p">},</span>
+    <span class="p">};</span>
+  <span class="p">}</span>
+
+  <span class="kd">let</span> <span class="nx">right</span> <span class="o">=</span> <span class="nb">parseFloat</span><span class="p">(</span><span class="nx">params</span><span class="p">.</span><span class="nx">right</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nb">isNaN</span><span class="p">(</span><span class="nx">right</span><span class="p">))</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="nx">statusCode</span><span class="o">:</span> <span class="mf">400</span><span class="p">,</span>
+      <span class="nx">body</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">error</span><span class="o">:</span> <span class="s2">&quot;right operand is not a parseable number&quot;</span><span class="p">,</span>
+      <span class="p">},</span>
+    <span class="p">};</span>
+  <span class="p">}</span>
+
+  <span class="k">return</span> <span class="nx">compute_impl</span><span class="p">(</span><span class="nx">params</span><span class="p">.</span><span class="nx">op</span><span class="p">,</span> <span class="nx">left</span><span class="p">,</span> <span class="nx">right</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>See the <a class="reference internal" href="js_app_tsoa.html#typescript-application-using-tsoa"><span class="std std-ref">tsoa-based app example</span></a> on how to automatically validate
+JSON request data using TypeScript types.</p>
+</div>
+</div>
+</div>
+<div class="section" id="deployment">
+<h2>Deployment<a class="headerlink" href="#deployment" title="Permalink to this headline">¶</a></h2>
+<p>An app bundle can be wrapped into a governance proposal with the Python client for deployment:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ python -m ccf.proposal_generator deploy_js_app my-app/
+SUCCESS <span class="p">|</span> Writing proposal to ./deploy_js_app_proposal.json
+SUCCESS <span class="p">|</span> Wrote vote to ./deploy_js_app_vote_for.json
+</pre></div>
+</div>
+<p>Once <a class="reference internal" href="../governance/proposals.html#submitting-a-new-proposal"><span class="std std-ref">submitted and accepted</span></a>, a <code class="docutils literal notranslate"><span class="pre">deploy_js_app</span></code> proposal atomically (re-)deploys the complete JavaScript application.
+Any existing application endpoints and JavaScript modules are removed.</p>
+</div>
+</div>
+
+
+              </div>
+              
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="js_app_tsoa.html" title="previous page">TypeScript Application using tsoa</a>
+    <a class='right-next' id="next-link" href="build_app.html" title="next page">Build and Sign CCF Applications</a>
+
+              </div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    <p>
+          &copy; Copyright 2018, Microsoft Research.<br/>
+        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.1.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

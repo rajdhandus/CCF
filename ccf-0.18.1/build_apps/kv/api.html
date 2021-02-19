@@ -1,0 +1,665 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Key-Value Store API &#8212; CCF  documentation</title>
+    
+  <link rel="stylesheet" href="../../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Upgrade Your Application" href="../upgrading_app.html" />
+    <link rel="prev" title="KV Serialisation" href="kv_serialisation.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+    
+    <a class="navbar-brand" href="../../index.html">
+      <img src="../../_static/ccf.svg" class="logo" alt="logo">
+    </a>
+    
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navbar-menu" class="col-11 collapse navbar-collapse">
+      <ul id="navbar-main-elements" class="navbar-nav mr-auto">
+        
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../../overview/index.html">Overview</a>
+        </li>
+        
+        <li class="nav-item active">
+            <a class="nav-link" href="../index.html">Build Apps</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../../use_apps/index.html">Use Apps</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../../operations/index.html">Operations</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../../governance/index.html">Governance</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../../audit/index.html">Audit</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../../contribute/index.html">Contribute</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../../glossary.html">Glossary</a>
+        </li>
+        
+        
+      </ul>
+
+      <ul class="navbar-nav">
+        
+          <li class="nav-item">
+            <a class="nav-link" href="https://github.com/Microsoft/CCF" target="_blank" rel="noopener">
+              <span><i class="fab fa-github-square"></i></span>
+            </a>
+          </li>
+        
+        
+      </ul>
+    </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+          <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+<script>
+    function onVersionChange() {
+      window.location.href = document.getElementById("versions").value;
+    }
+
+    window.addEventListener("DOMContentLoaded",function(){
+        let selectedVersion = "main"
+        const thisURL = window.location.toString()
+        let indexOfVersion = thisURL.indexOf("ccf-")
+        if (indexOfVersion != -1) {
+            selectedVersion = thisURL.substring(indexOfVersion, thisURL.indexOf("/", indexOfVersion));
+        }
+        let sel = document.getElementById("versions");
+        if (sel != null) {
+            let opts = sel.options;
+            for (var opt, j = 0; opt = opts[j]; j++) {
+                if (opt.text == selectedVersion) {
+                    sel.selectedIndex = j;
+                    break;
+                }
+            }
+        }
+    }, false);
+</script>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+
+    <div class="bd-toc-item active">
+        
+
+        <ul class="nav bd-sidenav">
+            
+            
+            
+            
+            
+            
+            <li class="">
+                <a href="../create_vm.html">Create Azure SGX VM</a>
+            </li>
+            
+            
+            
+            <li class="">
+                <a href="../install_bin.html">Install CCF</a>
+            </li>
+            
+            
+            
+            <li class="">
+                <a href="../build_setup.html">CCF Development Setup</a>
+            </li>
+            
+            
+            
+            <li class="">
+                <a href="../example.html">C++ Application</a>
+            </li>
+            
+            
+            
+            <li class="">
+                <a href="../js_app.html">JavaScript Application</a>
+            </li>
+            
+            
+            
+            <li class="">
+                <a href="../build_app.html">Build and Sign CCF Applications</a>
+            </li>
+            
+            
+            
+            <li class="">
+                <a href="../run_app.html">Running CCF Applications</a>
+            </li>
+            
+            
+            
+            <li class="">
+                <a href="../demo.html">End-to-end demo</a>
+            </li>
+            
+            
+            
+            <li class="">
+                <a href="../auth/index.html">User Authentication</a>
+            </li>
+            
+            
+            
+
+            <li class="active">
+                <a href="index.html">Key-Value Store</a>
+                <ul>
+                    
+                    <li class="">
+                        <a href="kv_how_to.html">Key-Value Store How-To</a>
+                    </li>
+                    
+                    <li class="">
+                        <a href="kv_serialisation.html">KV Serialisation</a>
+                    </li>
+                    
+                    <li class="active">
+                        <a href="">Key-Value Store API</a>
+                    </li>
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li class="">
+                <a href="../upgrading_app.html">Upgrade Your Application</a>
+            </li>
+            
+            
+            
+            <li class="">
+                <a href="../api.html">Developer API</a>
+            </li>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+        </ul>
+
+        
+        <h6> Versions </h6>
+        <select name="versions" id="versions" class="custom-select custom-select-sm" style="width:50%" onchange="onVersionChange()">
+            <option value="../../../main/build_apps/kv/api.html">main </option>
+            <option value="../../../ccf-0.18.2/build_apps/kv/api.html">ccf-0.18.2 </option>
+            <option value="api.html">ccf-0.18.1 </option>
+            <option value="../../../ccf-0.18.0/build_apps/kv/api.html">ccf-0.18.0 </option>
+            <option value="../../../ccf-0.17.2/build_apps/kv/api.html">ccf-0.17.2 </option>
+            <option value="../../../ccf-0.17.1/build_apps/kv/api.html">ccf-0.17.1 </option>
+            <option value="../../../ccf-0.17.0/build_apps/kv/api.html">ccf-0.17.0 </option>
+            <option value="../../../ccf-0.16.3/build_apps/kv/api.html">ccf-0.16.3 </option>
+            <option value="../../../ccf-0.16.2/build_apps/kv/api.html">ccf-0.16.2 </option>
+            <option value="../../../ccf-0.16.1/build_apps/kv/api.html">ccf-0.16.1 </option>
+            <option value="../../../ccf-0.16.0/build_apps/kv/api.html">ccf-0.16.0 </option>
+            <option value="../../../ccf-0.15.2/index.html">ccf-0.15.2 </option>
+            <option value="../../../ccf-0.15.1/index.html">ccf-0.15.1 </option>
+            <option value="../../../ccf-0.15.0/index.html">ccf-0.15.0 </option>
+            <option value="../../../ccf-0.14.3/index.html">ccf-0.14.3 </option>
+            <option value="../../../ccf-0.14.2/index.html">ccf-0.14.2 </option>
+            <option value="../../../ccf-0.14.1/index.html">ccf-0.14.1 </option>
+            <option value="../../../ccf-0.14.0/index.html">ccf-0.14.0 </option>
+            <option value="../../../ccf-0.13.4/index.html">ccf-0.13.4 </option>
+            <option value="../../../ccf-0.13.3/index.html">ccf-0.13.3 </option>
+            <option value="../../../ccf-0.13.2/index.html">ccf-0.13.2 </option>
+            <option value="../../../ccf-0.13.1/index.html">ccf-0.13.1 </option>
+            <option value="../../../ccf-0.13.0/index.html">ccf-0.13.0 </option>
+            <option value="../../../ccf-0.12.2/index.html">ccf-0.12.2 </option>
+            <option value="../../../ccf-0.12.1/index.html">ccf-0.12.1 </option>
+            <option value="../../../ccf-0.12.0/index.html">ccf-0.12.0 </option>
+            <option value="../../../ccf-0.11.7/index.html">ccf-0.11.7 </option>
+            <option value="../../../ccf-0.11.4/index.html">ccf-0.11.4 </option>
+            <option value="../../../ccf-0.11.1/index.html">ccf-0.11.1 </option>
+        </select>
+        
+</nav>
+          </div>
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+              
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#store" class="nav-link">Store</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#map" class="nav-link">Map</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#transaction" class="nav-link">Transaction</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#handle" class="nav-link">Handle</a>
+        </li>
+    
+    </ul>
+</nav>
+
+
+
+<div class="tocsection editthispage">
+    <a href="https://github.com/Microsoft/CCF/edit/main/doc/build_apps/kv/api.rst">
+        <i class="fas fa-pencil-alt"></i> Edit this page
+    </a>
+</div>
+
+              
+          </div>
+          
+
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <div class="section" id="key-value-store-api">
+<h1>Key-Value Store API<a class="headerlink" href="#key-value-store-api" title="Permalink to this headline">¶</a></h1>
+<p>This page presents the API that a CCF application must use to access and mutate the replicated key-value store.</p>
+<p>A CCF application should store its data in one or more <a class="reference internal" href="#_CPPv4N2kv3MapE" title="kv::Map"><code class="xref cpp cpp-type docutils literal notranslate"><span class="pre">kv::Map</span></code></a>. The name, type, and serialisation of these maps is under the application’s control. Each invocation of an <a class="reference internal" href="../api.html#_CPPv4N3ccf16EndpointRegistry8EndpointE" title="ccf::EndpointRegistry::Endpoint"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">ccf::EndpointRegistry::Endpoint</span></code></a> is given a <a class="reference internal" href="#_CPPv4N2kv2TxE" title="kv::Tx"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">kv::Tx</span></code></a> transaction object, through which it can read and write to its <a class="reference internal" href="#_CPPv4N2kv3MapE" title="kv::Map"><code class="xref cpp cpp-type docutils literal notranslate"><span class="pre">kv::Map</span></code></a>.</p>
+<div class="section" id="store">
+<h2>Store<a class="headerlink" href="#store" title="Permalink to this headline">¶</a></h2>
+<dl class="cpp class">
+<dt id="_CPPv4N2kv5StoreE">
+<span id="_CPPv3N2kv5StoreE"></span><span id="_CPPv2N2kv5StoreE"></span><span id="kv::Store"></span><span class="target" id="classkv_1_1Store"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">Store</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">kv</span><span class="pre">::</span><span class="pre">AbstractStore</span><span class="pre">,</span> <em class="property"><span class="pre">public</span></em> <span class="pre">kv</span><span class="pre">::</span><span class="pre">StoreState</span><span class="pre">,</span> <em class="property"><span class="pre">public</span></em> <span class="pre">kv</span><span class="pre">::</span><span class="pre">ExecutionWrapperStore</span><a class="headerlink" href="#_CPPv4N2kv5StoreE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="map">
+<h2>Map<a class="headerlink" href="#map" title="Permalink to this headline">¶</a></h2>
+<dl class="cpp type">
+<dt id="_CPPv4N2kv7VersionE">
+<span id="_CPPv3N2kv7VersionE"></span><span id="_CPPv2N2kv7VersionE"></span><span class="target" id="kv__types_8h_1a75828f8e4b8183362032501cf54d798d"></span><em class="property"><span class="pre">using</span> </em><code class="sig-prename descclassname"><span class="pre">kv</span><code class="sig-prename descclassname"><span class="pre">::</span></code></code><code class="sig-name descname"><span class="pre">Version</span></code> <span class="pre">=</span> <span class="pre">int64_t</span><a class="headerlink" href="#_CPPv4N2kv7VersionE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N2kv9NoVersionE">
+<span id="_CPPv3N2kv9NoVersionE"></span><span id="_CPPv2N2kv9NoVersionE"></span><span id="kv::NoVersion__VersionC"></span><span class="target" id="kv__types_8h_1a11bba90e680b375096d99579821c264a"></span><em class="property"><span class="pre">static</span></em> <em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4N2kv7VersionE" title="kv::Version"><span class="pre">Version</span></a> <code class="sig-prename descclassname"><span class="pre">kv</span><code class="sig-prename descclassname"><span class="pre">::</span></code></code><code class="sig-name descname"><span class="pre">NoVersion</span></code> <span class="pre">=</span> <span class="pre">std</span><span class="pre">::</span><span class="pre">numeric_limits</span><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4N2kv7VersionE" title="kv::Version"><span class="pre">Version</span></a><span class="pre">&gt;</span><span class="pre">::</span><span class="pre">min</span><span class="pre">(</span><span class="pre">)</span><a class="headerlink" href="#_CPPv4N2kv9NoVersionE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp class">
+<dt id="_CPPv4I0000EN2kv8TypedMapE">
+<span id="_CPPv3I0000EN2kv8TypedMapE"></span><span id="_CPPv2I0000EN2kv8TypedMapE"></span><span class="pre">template&lt;</span><span class="pre">typename</span> <code class="sig-name descname"><span class="pre">K</span></code><span class="pre">,</span> <span class="pre">typename</span> <code class="sig-name descname"><span class="pre">V</span></code><span class="pre">,</span> <span class="pre">typename</span> <code class="sig-name descname"><span class="pre">KSerialiser</span></code><span class="pre">,</span> <span class="pre">typename</span> <code class="sig-name descname"><span class="pre">VSerialiser</span></code><span class="pre">&gt;</span><br /><span class="target" id="classkv_1_1TypedMap"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">TypedMap</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">kv</span><span class="pre">::</span><span class="pre">NamedMap</span><a class="headerlink" href="#_CPPv4I0000EN2kv8TypedMapE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Defines the schema of a table within the <code class="docutils literal notranslate"><a class="reference internal" href="#classkv_1_1Store"><span class="std std-ref"><span class="pre">kv::Store</span></span></a></code>, exposing associated types.</p>
+<p>K defines the type of the Key which indexes each entry, while V is the type of the Value associated with a given Key. KSerialiser and VSerialiser determine how each K and V are serialised and deserialised, so they may be written to the ledger and replicated by the consensus algorithm. Note that equality is always evaluated on the serialised form; if unequal Ks produce the same serialisation, they will coincide within this table. Serialisers which leverage existing msgpack or JSON serialisation are provided by CCF. </p>
+</dd></dl>
+
+<dl class="cpp type">
+<dt id="_CPPv4N2kv3MapE">
+<span id="_CPPv3N2kv3MapE"></span><span id="_CPPv2N2kv3MapE"></span><span class="target" id="map_8h_1ad598fe605cf9cab8a6783f64ed7e0fb0"></span><em class="property"><span class="pre">using</span> </em><code class="sig-prename descclassname"><span class="pre">kv</span><code class="sig-prename descclassname"><span class="pre">::</span></code></code><code class="sig-name descname"><span class="pre">Map</span></code> <span class="pre">=</span> <span class="pre">MsgPackSerialisedMap</span><span class="pre">&lt;</span><span class="pre">K</span><span class="pre">,</span> <span class="pre">V</span><span class="pre">&gt;</span><a class="headerlink" href="#_CPPv4N2kv3MapE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Short name for default-serialised maps, using msgpack serialisers. Support for custom types can be added through the MSGPACK_DEFINE macro </p>
+</dd></dl>
+
+</div>
+<div class="section" id="transaction">
+<h2>Transaction<a class="headerlink" href="#transaction" title="Permalink to this headline">¶</a></h2>
+<dl class="cpp class">
+<dt id="_CPPv4N2kv10ReadOnlyTxE">
+<span id="_CPPv3N2kv10ReadOnlyTxE"></span><span id="_CPPv2N2kv10ReadOnlyTxE"></span><span id="kv::ReadOnlyTx"></span><span class="target" id="classkv_1_1ReadOnlyTx"></span><em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">kv</span><code class="sig-prename descclassname"><span class="pre">::</span></code></code><code class="sig-name descname"><span class="pre">ReadOnlyTx</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">kv</span><span class="pre">::</span><span class="pre">BaseTx</span><a class="headerlink" href="#_CPPv4N2kv10ReadOnlyTxE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Used to create read-only handles for accessing a Map.</p>
+<p>Acquiring a handle will create the map in the KV if it does not yet exist. The returned handles can view state written by previous transactions, and any additional modifications made in this transaction. </p>
+<p>Subclassed by <a class="reference internal" href="#classkv_1_1Tx"><span class="std std-ref">kv::Tx</span></a></p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="cpp function">
+<dt id="_CPPv4I0EN2kv10ReadOnlyTx2roEPN1M14ReadOnlyHandleER1M">
+<span id="_CPPv3I0EN2kv10ReadOnlyTx2roER1M"></span><span id="_CPPv2I0EN2kv10ReadOnlyTx2roER1M"></span><span class="pre">template&lt;</span><span class="pre">class</span> <code class="sig-name descname"><span class="pre">M</span></code><span class="pre">&gt;</span><br /><span class="target" id="classkv_1_1ReadOnlyTx_1a87878de65aa971fff9f55b3539013de7"></span><em class="property"><span class="pre">inline</span></em> <a class="reference internal" href="#_CPPv4I0EN2kv10ReadOnlyTx2roEPN1M14ReadOnlyHandleER1M" title="kv::ReadOnlyTx::ro::M"><span class="pre">M</span></a><span class="pre">::</span><span class="pre">ReadOnlyHandle</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">ro</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4I0EN2kv10ReadOnlyTx2roEPN1M14ReadOnlyHandleER1M" title="kv::ReadOnlyTx::ro::M"><span class="pre">M</span></a> <span class="pre">&amp;</span><em><span class="pre">m</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I0EN2kv10ReadOnlyTx2roEPN1M14ReadOnlyHandleER1M" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get a read-only handle from a map instance.</p>
+<p><dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">m</span></code>: Map instance </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4I0EN2kv10ReadOnlyTx2roEPN1M14ReadOnlyHandleERKNSt6stringE">
+<span id="_CPPv3I0EN2kv10ReadOnlyTx2roERKNSt6stringE"></span><span id="_CPPv2I0EN2kv10ReadOnlyTx2roERKNSt6stringE"></span><span class="pre">template&lt;</span><span class="pre">class</span> <code class="sig-name descname"><span class="pre">M</span></code><span class="pre">&gt;</span><br /><span class="target" id="classkv_1_1ReadOnlyTx_1adf59b6f40b7ea6eb59d5521a7e926f86"></span><em class="property"><span class="pre">inline</span></em> <a class="reference internal" href="#_CPPv4I0EN2kv10ReadOnlyTx2roEPN1M14ReadOnlyHandleERKNSt6stringE" title="kv::ReadOnlyTx::ro::M"><span class="pre">M</span></a><span class="pre">::</span><span class="pre">ReadOnlyHandle</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">ro</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <span class="pre">std</span><span class="pre">::</span><span class="pre">string</span> <span class="pre">&amp;</span><em><span class="pre">map_name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I0EN2kv10ReadOnlyTx2roEPN1M14ReadOnlyHandleERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get a read-only handle by map name. Map type must be specified as explicit template parameter.</p>
+<p><dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">map_name</span></code>: Name of map </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp class">
+<dt id="_CPPv4N2kv2TxE">
+<span id="_CPPv3N2kv2TxE"></span><span id="_CPPv2N2kv2TxE"></span><span id="kv::Tx"></span><span class="target" id="classkv_1_1Tx"></span><em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">kv</span><code class="sig-prename descclassname"><span class="pre">::</span></code></code><code class="sig-name descname"><span class="pre">Tx</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">kv</span><span class="pre">::</span><a class="reference internal" href="#_CPPv4N2kv10ReadOnlyTxE" title="kv::ReadOnlyTx"><span class="pre">ReadOnlyTx</span></a><a class="headerlink" href="#_CPPv4N2kv2TxE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Used to create writeable handles for accessing a Map.</p>
+<p>Acquiring a handle will create the map in the KV if it does not yet exist. Any writes made by the returned handles will be visible to all other handles created by this transaction. They will only be visible to other transactions after this transaction has completed and been applied. For type-safety, prefer restricted handles returned by <code class="docutils literal notranslate"><span class="pre">ro</span></code> or <code class="docutils literal notranslate"><span class="pre">wo</span></code> where possible, rather than the general <code class="docutils literal notranslate"><span class="pre">rw</span></code>.</p>
+<p><dl class="simple">
+<dt><strong>See</strong></dt><dd><p><a class="reference internal" href="#classkv_1_1ReadOnlyTx"><span class="std std-ref">kv::ReadOnlyTx</span></a> </p>
+</dd>
+</dl>
+</p>
+<p>Subclassed by kv::ReservedTx</p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="cpp function">
+<dt id="_CPPv4I0EN2kv2Tx2rwEPN1M6HandleER1M">
+<span id="_CPPv3I0EN2kv2Tx2rwER1M"></span><span id="_CPPv2I0EN2kv2Tx2rwER1M"></span><span class="pre">template&lt;</span><span class="pre">class</span> <code class="sig-name descname"><span class="pre">M</span></code><span class="pre">&gt;</span><br /><span class="target" id="classkv_1_1Tx_1a71853c9aa8eabe63f34c84dd7272fdf1"></span><em class="property"><span class="pre">inline</span></em> <a class="reference internal" href="#_CPPv4I0EN2kv2Tx2rwEPN1M6HandleER1M" title="kv::Tx::rw::M"><span class="pre">M</span></a><span class="pre">::</span><span class="pre">Handle</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">rw</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4I0EN2kv2Tx2rwEPN1M6HandleER1M" title="kv::Tx::rw::M"><span class="pre">M</span></a> <span class="pre">&amp;</span><em><span class="pre">m</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I0EN2kv2Tx2rwEPN1M6HandleER1M" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get a read-write handle from a map instance.</p>
+<p>This handle can be used for both reads and writes.</p>
+<p><dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">m</span></code>: Map instance </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4I0EN2kv2Tx2rwEPN1M6HandleERKNSt6stringE">
+<span id="_CPPv3I0EN2kv2Tx2rwERKNSt6stringE"></span><span id="_CPPv2I0EN2kv2Tx2rwERKNSt6stringE"></span><span class="pre">template&lt;</span><span class="pre">class</span> <code class="sig-name descname"><span class="pre">M</span></code><span class="pre">&gt;</span><br /><span class="target" id="classkv_1_1Tx_1a92f060cea524933639539e25a6219043"></span><em class="property"><span class="pre">inline</span></em> <a class="reference internal" href="#_CPPv4I0EN2kv2Tx2rwEPN1M6HandleERKNSt6stringE" title="kv::Tx::rw::M"><span class="pre">M</span></a><span class="pre">::</span><span class="pre">Handle</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">rw</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <span class="pre">std</span><span class="pre">::</span><span class="pre">string</span> <span class="pre">&amp;</span><em><span class="pre">map_name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I0EN2kv2Tx2rwEPN1M6HandleERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get a read-write handle by map name. Map type must be specified as explicit template parameter.</p>
+<p><dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">map_name</span></code>: Name of map </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4I0EN2kv2Tx2woEPN1M15WriteOnlyHandleER1M">
+<span id="_CPPv3I0EN2kv2Tx2woER1M"></span><span id="_CPPv2I0EN2kv2Tx2woER1M"></span><span class="pre">template&lt;</span><span class="pre">class</span> <code class="sig-name descname"><span class="pre">M</span></code><span class="pre">&gt;</span><br /><span class="target" id="classkv_1_1Tx_1a87fb774767dc10a6c38a3e5a007b4722"></span><em class="property"><span class="pre">inline</span></em> <a class="reference internal" href="#_CPPv4I0EN2kv2Tx2woEPN1M15WriteOnlyHandleER1M" title="kv::Tx::wo::M"><span class="pre">M</span></a><span class="pre">::</span><span class="pre">WriteOnlyHandle</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">wo</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4I0EN2kv2Tx2woEPN1M15WriteOnlyHandleER1M" title="kv::Tx::wo::M"><span class="pre">M</span></a> <span class="pre">&amp;</span><em><span class="pre">m</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I0EN2kv2Tx2woEPN1M15WriteOnlyHandleER1M" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get a write-only handle from a map instance.</p>
+<p><dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">m</span></code>: Map instance </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4I0EN2kv2Tx2woEPN1M15WriteOnlyHandleERKNSt6stringE">
+<span id="_CPPv3I0EN2kv2Tx2woERKNSt6stringE"></span><span id="_CPPv2I0EN2kv2Tx2woERKNSt6stringE"></span><span class="pre">template&lt;</span><span class="pre">class</span> <code class="sig-name descname"><span class="pre">M</span></code><span class="pre">&gt;</span><br /><span class="target" id="classkv_1_1Tx_1a3c865138a2138f493b297fa4b9de46ad"></span><em class="property"><span class="pre">inline</span></em> <a class="reference internal" href="#_CPPv4I0EN2kv2Tx2woEPN1M15WriteOnlyHandleERKNSt6stringE" title="kv::Tx::wo::M"><span class="pre">M</span></a><span class="pre">::</span><span class="pre">WriteOnlyHandle</span> <span class="pre">*</span><code class="sig-name descname"><span class="pre">wo</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <span class="pre">std</span><span class="pre">::</span><span class="pre">string</span> <span class="pre">&amp;</span><em><span class="pre">map_name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I0EN2kv2Tx2woEPN1M15WriteOnlyHandleERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get a read-write handle by map name. Map type must be specified as explicit template parameter.</p>
+<p><dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">map_name</span></code>: Name of map </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="handle">
+<h2>Handle<a class="headerlink" href="#handle" title="Permalink to this headline">¶</a></h2>
+<dl class="cpp class">
+<dt id="_CPPv4I0000EN2kv17ReadableMapHandleE">
+<span id="_CPPv3I0000EN2kv17ReadableMapHandleE"></span><span id="_CPPv2I0000EN2kv17ReadableMapHandleE"></span><span class="pre">template&lt;</span><span class="pre">typename</span> <code class="sig-name descname"><span class="pre">K</span></code><span class="pre">,</span> <span class="pre">typename</span> <code class="sig-name descname"><span class="pre">V</span></code><span class="pre">,</span> <span class="pre">typename</span> <code class="sig-name descname"><span class="pre">KSerialiser</span></code><span class="pre">,</span> <span class="pre">typename</span> <code class="sig-name descname"><span class="pre">VSerialiser</span></code><span class="pre">&gt;</span><br /><span class="target" id="classkv_1_1ReadableMapHandle"></span><em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">kv</span><code class="sig-prename descclassname"><span class="pre">::</span></code></code><code class="sig-name descname"><span class="pre">ReadableMapHandle</span></code><a class="headerlink" href="#_CPPv4I0000EN2kv17ReadableMapHandleE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Grants read access to a <code class="docutils literal notranslate"><span class="pre">kv::Map</span></code>, as part of a <code class="docutils literal notranslate"><a class="reference internal" href="#classkv_1_1Tx"><span class="std std-ref"><span class="pre">kv::Tx</span></span></a></code>. </p>
+<p>Subclassed by <a class="reference internal" href="#classkv_1_1MapHandle"><span class="std std-ref">kv::MapHandle&lt; K, V, KSerialiser, VSerialiser &gt;</span></a></p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="cpp function">
+<dt id="_CPPv4N2kv17ReadableMapHandle3getERK1K">
+<span id="_CPPv3N2kv17ReadableMapHandle3getERK1K"></span><span id="_CPPv2N2kv17ReadableMapHandle3getERK1K"></span><span id="kv::ReadableMapHandle::get__KCR"></span><span class="target" id="classkv_1_1ReadableMapHandle_1af74c2d2cae68971f5bc92c8c2aa0ae7f"></span><em class="property"><span class="pre">inline</span></em> <span class="pre">std</span><span class="pre">::</span><span class="pre">optional</span><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I0000EN2kv17ReadableMapHandleE" title="kv::ReadableMapHandle::V"><span class="pre">V</span></a><span class="pre">&gt;</span> <code class="sig-name descname"><span class="pre">get</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4I0000EN2kv17ReadableMapHandleE" title="kv::ReadableMapHandle::K"><span class="pre">K</span></a> <span class="pre">&amp;</span><em><span class="pre">key</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N2kv17ReadableMapHandle3getERK1K" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get value for key.</p>
+<p>This returns the value for the key as seen by this transaction. If the key has been updated in the current transaction, that update will be reflected in the return of this call. Where the key has not been modified, this returns the state of a snapshot version from the start of the transaction’s execution.</p>
+<p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>Optional containing associated value, or empty if the key doesn’t exist </p>
+</dd>
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">key</span></code>: Key to read</p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N2kv17ReadableMapHandle3hasERK1K">
+<span id="_CPPv3N2kv17ReadableMapHandle3hasERK1K"></span><span id="_CPPv2N2kv17ReadableMapHandle3hasERK1K"></span><span id="kv::ReadableMapHandle::has__KCR"></span><span class="target" id="classkv_1_1ReadableMapHandle_1adffb1c0ddc862b238698516aa5dca664"></span><em class="property"><span class="pre">inline</span></em> <span class="pre">bool</span> <code class="sig-name descname"><span class="pre">has</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4I0000EN2kv17ReadableMapHandleE" title="kv::ReadableMapHandle::K"><span class="pre">K</span></a> <span class="pre">&amp;</span><em><span class="pre">key</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N2kv17ReadableMapHandle3hasERK1K" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Test if key is present.</p>
+<p>This obeys the same rules as <code class="docutils literal notranslate"><span class="pre">get</span></code> regarding key visibility, but is more efficient if you do not need the associated value.</p>
+<p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>bool true if key exists </p>
+</dd>
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">key</span></code>: Key to read</p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N2kv17ReadableMapHandle29get_version_of_previous_writeERK1K">
+<span id="_CPPv3N2kv17ReadableMapHandle29get_version_of_previous_writeERK1K"></span><span id="_CPPv2N2kv17ReadableMapHandle29get_version_of_previous_writeERK1K"></span><span id="kv::ReadableMapHandle::get_version_of_previous_write__KCR"></span><span class="target" id="classkv_1_1ReadableMapHandle_1a02680f3eaf77e589fd9907e0e34e274c"></span><em class="property"><span class="pre">inline</span></em> <span class="pre">std</span><span class="pre">::</span><span class="pre">optional</span><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4N2kv7VersionE" title="kv::Version"><span class="pre">Version</span></a><span class="pre">&gt;</span> <code class="sig-name descname"><span class="pre">get_version_of_previous_write</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4I0000EN2kv17ReadableMapHandleE" title="kv::ReadableMapHandle::K"><span class="pre">K</span></a> <span class="pre">&amp;</span><em><span class="pre">key</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N2kv17ReadableMapHandle29get_version_of_previous_writeERK1K" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get version when this key was last written to, by a previous transaction.</p>
+<p>Returns nullopt when there is no value, because the key has no value (never existed or has been removed). Note that this is always talking about the version of previously committed state and not the same values as <code class="docutils literal notranslate"><span class="pre">get</span></code> or <code class="docutils literal notranslate"><span class="pre">has</span></code> - this transaction’s pending writes have no version yet, and this method does not talk about them.</p>
+<p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>Optional containing version of applied transaction which last wrote at this key, or nullopt if this key has no associated value </p>
+</dd>
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">key</span></code>: Key to read</p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4I0EN2kv17ReadableMapHandle7foreachEvRR1F">
+<span id="_CPPv3I0EN2kv17ReadableMapHandle7foreachERR1F"></span><span id="_CPPv2I0EN2kv17ReadableMapHandle7foreachERR1F"></span><span class="pre">template&lt;</span><span class="pre">class</span> <code class="sig-name descname"><span class="pre">F</span></code><span class="pre">&gt;</span><br /><span class="target" id="classkv_1_1ReadableMapHandle_1a52c67aa24a822a6d3e4e387f4ff5f73f"></span><em class="property"><span class="pre">inline</span></em> <span class="pre">void</span> <code class="sig-name descname"><span class="pre">foreach</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4I0EN2kv17ReadableMapHandle7foreachEvRR1F" title="kv::ReadableMapHandle::foreach::F"><span class="pre">F</span></a> <span class="pre">&amp;</span><span class="pre">&amp;</span><em><span class="pre">f</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I0EN2kv17ReadableMapHandle7foreachEvRR1F" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Iterate over all entries in the map.</p>
+<p>The passed functor should have the signature <code class="docutils literal notranslate"><span class="pre">bool(const</span> <span class="pre">K&amp;</span> <span class="pre">k,</span> <span class="pre">const</span> <span class="pre">V&amp;</span> <span class="pre">v)</span></code>. The iteration order is undefined. Return true to continue iteration, or return false from any invocation to terminate the iteration at that point - the functor will not be invoked again after it returns false.</p>
+<p>The set of key-value entries which will be iterated over is determined at the point foreach is called, and does not include any modifications made by the functor. This means:<ul class="simple">
+<li><p>If the functor sets a value V at a new key K’, the functor will not be called for (K’, V)</p></li>
+<li><p>If the functor changes the value at key K from V to V’, the functor will be called with the old value (K, V), not the new value (K, V’)</p></li>
+<li><p>If the functor removes K, the functor will still be called for (K, V)</p></li>
+</ul>
+</p>
+<p>Calling <code class="docutils literal notranslate"><span class="pre">get</span></code> will always return the true latest state; the iterator visibility described above only applies to the keys and values passed to this functor.</p>
+<p><dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">F</span></code>: functor, taking (const K&amp; k, const V&amp; v) and returning a bool. Return value determines whether the iteration should continue (true) or stop (false). </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp class">
+<dt id="_CPPv4I0000EN2kv18WriteableMapHandleE">
+<span id="_CPPv3I0000EN2kv18WriteableMapHandleE"></span><span id="_CPPv2I0000EN2kv18WriteableMapHandleE"></span><span class="pre">template&lt;</span><span class="pre">typename</span> <code class="sig-name descname"><span class="pre">K</span></code><span class="pre">,</span> <span class="pre">typename</span> <code class="sig-name descname"><span class="pre">V</span></code><span class="pre">,</span> <span class="pre">typename</span> <code class="sig-name descname"><span class="pre">KSerialiser</span></code><span class="pre">,</span> <span class="pre">typename</span> <code class="sig-name descname"><span class="pre">VSerialiser</span></code><span class="pre">&gt;</span><br /><span class="target" id="classkv_1_1WriteableMapHandle"></span><em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">kv</span><code class="sig-prename descclassname"><span class="pre">::</span></code></code><code class="sig-name descname"><span class="pre">WriteableMapHandle</span></code><a class="headerlink" href="#_CPPv4I0000EN2kv18WriteableMapHandleE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Grants write access to a <code class="docutils literal notranslate"><span class="pre">kv::Map</span></code>, as part of a <code class="docutils literal notranslate"><a class="reference internal" href="#classkv_1_1Tx"><span class="std std-ref"><span class="pre">kv::Tx</span></span></a></code>. </p>
+<p>Subclassed by <a class="reference internal" href="#classkv_1_1MapHandle"><span class="std std-ref">kv::MapHandle&lt; K, V, KSerialiser, VSerialiser &gt;</span></a></p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="cpp function">
+<dt id="_CPPv4N2kv18WriteableMapHandle3putERK1KRK1V">
+<span id="_CPPv3N2kv18WriteableMapHandle3putERK1KRK1V"></span><span id="_CPPv2N2kv18WriteableMapHandle3putERK1KRK1V"></span><span id="kv::WriteableMapHandle::put__KCR.VCR"></span><span class="target" id="classkv_1_1WriteableMapHandle_1a477daed2e3f2a144bd851956da5fda39"></span><em class="property"><span class="pre">inline</span></em> <span class="pre">void</span> <code class="sig-name descname"><span class="pre">put</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4I0000EN2kv18WriteableMapHandleE" title="kv::WriteableMapHandle::K"><span class="pre">K</span></a> <span class="pre">&amp;</span><em><span class="pre">key</span></em>, <em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4I0000EN2kv18WriteableMapHandleE" title="kv::WriteableMapHandle::V"><span class="pre">V</span></a> <span class="pre">&amp;</span><em><span class="pre">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N2kv18WriteableMapHandle3putERK1KRK1V" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Write value at key.</p>
+<p>If the key already exists, the previous value will be replaced with the new value.</p>
+<p><dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">key</span></code>: Key </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">value</span></code>: Value </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N2kv18WriteableMapHandle6removeERK1K">
+<span id="_CPPv3N2kv18WriteableMapHandle6removeERK1K"></span><span id="_CPPv2N2kv18WriteableMapHandle6removeERK1K"></span><span id="kv::WriteableMapHandle::remove__KCR"></span><span class="target" id="classkv_1_1WriteableMapHandle_1a053485cc1c62b5c693ea3f2cd28e2aa6"></span><em class="property"><span class="pre">inline</span></em> <span class="pre">bool</span> <code class="sig-name descname"><span class="pre">remove</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4I0000EN2kv18WriteableMapHandleE" title="kv::WriteableMapHandle::K"><span class="pre">K</span></a> <span class="pre">&amp;</span><em><span class="pre">key</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N2kv18WriteableMapHandle6removeERK1K" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Delete a key-value pair.</p>
+<p>It is safe to call this on non-existent keys - it will simply return false.</p>
+<p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>true if the key had a value previously </p>
+</dd>
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">key</span></code>: Key</p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp class">
+<dt id="_CPPv4I0000EN2kv9MapHandleE">
+<span id="_CPPv3I0000EN2kv9MapHandleE"></span><span id="_CPPv2I0000EN2kv9MapHandleE"></span><span class="pre">template&lt;</span><span class="pre">typename</span> <code class="sig-name descname"><span class="pre">K</span></code><span class="pre">,</span> <span class="pre">typename</span> <code class="sig-name descname"><span class="pre">V</span></code><span class="pre">,</span> <span class="pre">typename</span> <code class="sig-name descname"><span class="pre">KSerialiser</span></code><span class="pre">,</span> <span class="pre">typename</span> <code class="sig-name descname"><span class="pre">VSerialiser</span></code><span class="pre">&gt;</span><br /><span class="target" id="classkv_1_1MapHandle"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">MapHandle</span></code> <span class="pre">:</span> <em class="property"><span class="pre">public</span></em> <span class="pre">kv</span><span class="pre">::</span><span class="pre">AbstractMapHandle</span><span class="pre">,</span> <em class="property"><span class="pre">public</span></em> <span class="pre">kv</span><span class="pre">::</span><a class="reference internal" href="#_CPPv4I0000EN2kv17ReadableMapHandleE" title="kv::ReadableMapHandle"><span class="pre">ReadableMapHandle</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I0000EN2kv9MapHandleE" title="kv::MapHandle::K"><span class="pre">K</span></a><span class="pre">,</span> <a class="reference internal" href="#_CPPv4I0000EN2kv9MapHandleE" title="kv::MapHandle::V"><span class="pre">V</span></a><span class="pre">,</span> <a class="reference internal" href="#_CPPv4I0000EN2kv9MapHandleE" title="kv::MapHandle::KSerialiser"><span class="pre">KSerialiser</span></a><span class="pre">,</span> <a class="reference internal" href="#_CPPv4I0000EN2kv9MapHandleE" title="kv::MapHandle::VSerialiser"><span class="pre">VSerialiser</span></a><span class="pre">&gt;</span><span class="pre">,</span> <em class="property"><span class="pre">public</span></em> <span class="pre">kv</span><span class="pre">::</span><a class="reference internal" href="#_CPPv4I0000EN2kv18WriteableMapHandleE" title="kv::WriteableMapHandle"><span class="pre">WriteableMapHandle</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I0000EN2kv9MapHandleE" title="kv::MapHandle::K"><span class="pre">K</span></a><span class="pre">,</span> <a class="reference internal" href="#_CPPv4I0000EN2kv9MapHandleE" title="kv::MapHandle::V"><span class="pre">V</span></a><span class="pre">,</span> <a class="reference internal" href="#_CPPv4I0000EN2kv9MapHandleE" title="kv::MapHandle::KSerialiser"><span class="pre">KSerialiser</span></a><span class="pre">,</span> <a class="reference internal" href="#_CPPv4I0000EN2kv9MapHandleE" title="kv::MapHandle::VSerialiser"><span class="pre">VSerialiser</span></a><span class="pre">&gt;</span><a class="headerlink" href="#_CPPv4I0000EN2kv9MapHandleE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Grants read and write access to a <code class="docutils literal notranslate"><span class="pre">kv::Map</span></code>, as part of a <code class="docutils literal notranslate"><a class="reference internal" href="#classkv_1_1Tx"><span class="std std-ref"><span class="pre">kv::Tx</span></span></a></code>.</p>
+<p><dl class="simple">
+<dt><strong>See</strong></dt><dd><p><a class="reference internal" href="#classkv_1_1ReadableMapHandle"><span class="std std-ref">kv::ReadableMapHandle</span></a> </p>
+</dd>
+<dt><strong>See</strong></dt><dd><p><a class="reference internal" href="#classkv_1_1WriteableMapHandle"><span class="std std-ref">kv::WriteableMapHandle</span></a> </p>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+              </div>
+              
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="kv_serialisation.html" title="previous page">KV Serialisation</a>
+    <a class='right-next' id="next-link" href="../upgrading_app.html" title="next page">Upgrade Your Application</a>
+
+              </div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+
+    
+  <script src="../../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    <p>
+          &copy; Copyright 2018, Microsoft Research.<br/>
+        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.1.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

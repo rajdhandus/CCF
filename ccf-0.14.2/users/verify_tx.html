@@ -1,0 +1,377 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Verifying Transaction &#8212; CCF  documentation</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Verifying Quote" href="verify_quote.html" />
+    <link rel="prev" title="Issuing Commands" href="issue_commands.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+    
+    <a class="navbar-brand" href="../index.html">
+      <img src="../_static/ccf.svg" class="logo" alt="logo">
+    </a>
+    
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navbar-menu" class="col-11 collapse navbar-collapse">
+      <ul id="navbar-main-elements" class="navbar-nav mr-auto">
+        
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../concepts.html">Overview</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../developers/index.html">Build Apps</a>
+        </li>
+        
+        <li class="nav-item active">
+            <a class="nav-link" href="index.html">Use Apps</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../operators/index.html">Operations</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../members/index.html">Governance</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../audit/index.html">Audit</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../glossary.html">Glossary</a>
+        </li>
+        
+        
+      </ul>
+
+      <ul class="navbar-nav">
+        
+          <li class="nav-item">
+            <a class="nav-link" href="https://github.com/Microsoft/CCF" target="_blank" rel="noopener">
+              <span><i class="fab fa-github-square"></i></span>
+            </a>
+          </li>
+        
+        
+      </ul>
+    </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+          <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+<script>
+    function onVersionChange() {
+      window.location.href = document.getElementById("versions").value;
+    }
+
+    window.addEventListener("DOMContentLoaded",function(){
+        let selectedVersion = "main"
+        const thisURL = window.location.toString()
+        let indexOfVersion = thisURL.indexOf("ccf-")
+        if (indexOfVersion != -1) {
+            selectedVersion = thisURL.substring(indexOfVersion, thisURL.indexOf("/", indexOfVersion));
+        }
+        let sel = document.getElementById("versions");
+        if (sel != null) {
+            let opts = sel.options;
+            for (var opt, j = 0; opt = opts[j]; j++) {
+                if (opt.text == selectedVersion) {
+                    sel.selectedIndex = j;
+                    break;
+                }
+            }
+        }
+    }, false);
+</script>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+
+    <div class="bd-toc-item active">
+        
+
+        <ul class="nav bd-sidenav">
+            
+            
+            
+            
+            
+            
+            
+            
+            <li class="">
+                <a href="issue_commands.html">Issuing Commands</a>
+            </li>
+            
+            
+            
+            <li class="active">
+                <a href="">Verifying Transaction</a>
+            </li>
+            
+            
+            
+            <li class="">
+                <a href="verify_quote.html">Verifying Quote</a>
+            </li>
+            
+            
+            
+            <li class="">
+                <a href="python_tutorial.html">Python Client Tutorial</a>
+            </li>
+            
+            
+            
+            <li class="">
+                <a href="python_api.html">Python Client API</a>
+            </li>
+            
+            
+            
+            <li class="">
+                <a href="rpc_api.html">RPC API</a>
+            </li>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+        </ul>
+
+        
+        <h6> Versions </h6>
+        <select name="versions" id="versions" class="custom-select custom-select-sm" style="width:50%" onchange="onVersionChange()">
+            <option value="../../main/index.html">main </option>
+            <option value="../../ccf-0.18.2/index.html">ccf-0.18.2 </option>
+            <option value="../../ccf-0.18.1/index.html">ccf-0.18.1 </option>
+            <option value="../../ccf-0.18.0/index.html">ccf-0.18.0 </option>
+            <option value="../../ccf-0.17.2/index.html">ccf-0.17.2 </option>
+            <option value="../../ccf-0.17.1/index.html">ccf-0.17.1 </option>
+            <option value="../../ccf-0.17.0/index.html">ccf-0.17.0 </option>
+            <option value="../../ccf-0.16.3/index.html">ccf-0.16.3 </option>
+            <option value="../../ccf-0.16.2/index.html">ccf-0.16.2 </option>
+            <option value="../../ccf-0.16.1/index.html">ccf-0.16.1 </option>
+            <option value="../../ccf-0.16.0/index.html">ccf-0.16.0 </option>
+            <option value="../../ccf-0.15.2/users/verify_tx.html">ccf-0.15.2 </option>
+            <option value="../../ccf-0.15.1/users/verify_tx.html">ccf-0.15.1 </option>
+            <option value="../../ccf-0.15.0/users/verify_tx.html">ccf-0.15.0 </option>
+            <option value="../../ccf-0.14.3/users/verify_tx.html">ccf-0.14.3 </option>
+            <option value="verify_tx.html">ccf-0.14.2 </option>
+            <option value="../../ccf-0.14.1/users/verify_tx.html">ccf-0.14.1 </option>
+            <option value="../../ccf-0.14.0/index.html">ccf-0.14.0 </option>
+            <option value="../../ccf-0.13.4/index.html">ccf-0.13.4 </option>
+            <option value="../../ccf-0.13.3/index.html">ccf-0.13.3 </option>
+            <option value="../../ccf-0.13.2/index.html">ccf-0.13.2 </option>
+            <option value="../../ccf-0.13.1/index.html">ccf-0.13.1 </option>
+            <option value="../../ccf-0.13.0/index.html">ccf-0.13.0 </option>
+            <option value="../../ccf-0.12.2/index.html">ccf-0.12.2 </option>
+            <option value="../../ccf-0.12.1/index.html">ccf-0.12.1 </option>
+            <option value="../../ccf-0.12.0/index.html">ccf-0.12.0 </option>
+            <option value="../../ccf-0.11.7/index.html">ccf-0.11.7 </option>
+            <option value="../../ccf-0.11.4/index.html">ccf-0.11.4 </option>
+            <option value="../../ccf-0.11.1/index.html">ccf-0.11.1 </option>
+        </select>
+        
+</nav>
+          </div>
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+              
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#checking-for-commit" class="nav-link">Checking for Commit</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#transaction-receipts" class="nav-link">Transaction Receipts</a>
+        </li>
+    
+    </ul>
+</nav>
+
+
+
+<div class="tocsection editthispage">
+    <a href="https://github.com/Microsoft/CCF/edit/main/doc/users/verify_tx.rst">
+        <i class="fas fa-pencil-alt"></i> Edit this page
+    </a>
+</div>
+
+              
+          </div>
+          
+
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <div class="section" id="verifying-transaction">
+<h1>Verifying Transaction<a class="headerlink" href="#verifying-transaction" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="checking-for-commit">
+<h2>Checking for Commit<a class="headerlink" href="#checking-for-commit" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>As part of the <a class="reference internal" href="python_tutorial.html"><span class="doc">CCF Python package</span></a>, the <code class="docutils literal notranslate"><span class="pre">wait_for_commit()</span></code> method can be used to verify that a transaction has successfully been committed.</p>
+</div>
+<p>Because of the decentralised nature of CCF, a request is committed to the ledger only once a number of nodes have agreed on that request.</p>
+<p>To guarantee that their request is successfully committed to the ledger, a user should issue a <code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">/tx</span></code> request, specifying the version received in the response. This version is constructed from a view and a sequence number.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ curl -X GET <span class="s2">&quot;https://&lt;ccf-node-address&gt;/app/tx?view=2&amp;seqno=18&quot;</span> --cacert networkcert.pem --key user0_privk.pem --cert user0_cert.pem -i
+HTTP/1.1 <span class="m">200</span> OK
+content-length: <span class="m">23</span>
+content-type: application/json
+x-ccf-tx-seqno: <span class="m">42</span>
+x-ccf-tx-view: <span class="m">5</span>
+
+<span class="o">{</span><span class="s2">&quot;status&quot;</span>:<span class="s2">&quot;COMMITTED&quot;</span><span class="o">}</span>
+</pre></div>
+</div>
+<p>This example queries the status of transaction ID <code class="docutils literal notranslate"><span class="pre">2.18</span></code> (constructed from view <code class="docutils literal notranslate"><span class="pre">2</span></code> and sequence number <code class="docutils literal notranslate"><span class="pre">18</span></code>). The response indicates this was successfully committed. The headers also show that the service has since made progress with other requests (<code class="docutils literal notranslate"><span class="pre">x-ccf-tx-seqno:</span> <span class="pre">42</span></code>) and changed view (<code class="docutils literal notranslate"><span class="pre">x-ccf-tx-view:</span> <span class="pre">5</span></code>).</p>
+<p>The possible statuses returned by <code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">/tx</span></code> are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">UNKNOWN</span></code> - this node has not received a transaction with the given ID</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PENDING</span></code> - this node has received a transaction with the given ID, but does not yet know if the transaction has been committed</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">COMMITTED</span></code> - this node knows that this transaction is committed, it is an irrevocable and durable part of the service’s transaction history</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">INVALID</span></code> - this node knows that the given transaction cannot be committed. This occurs when the view changes, and some pending transactions may be lost and must be resubmitted, but also applies to IDs which are known to be impossible given the current committed IDs</p></li>
+</ul>
+<p>On a given node, the possible transitions between states are described in the following diagram:</p>
+<script>mermaid.initialize({startOnLoad:true});</script><div class="mermaid">
+            stateDiagram
+    UNKNOWN --&gt; PENDING
+    PENDING --&gt; COMMITTED
+    PENDING --&gt; INVALID
+        </div><p>It is possible that intermediate states are not visible (e.g. a transition from <code class="docutils literal notranslate"><span class="pre">UNKNOWN</span></code> to <code class="docutils literal notranslate"><span class="pre">COMMITTED</span></code> may never publically show a <code class="docutils literal notranslate"><span class="pre">PENDING</span></code> result). Nodes may disagree on the current state due to communication delays, but will never disagree on transitions (in other words, they may believe a <code class="docutils literal notranslate"><span class="pre">COMMITTED</span></code> transaction is still <code class="docutils literal notranslate"><span class="pre">UNKNOWN</span></code> or <code class="docutils literal notranslate"><span class="pre">PENDING</span></code>, but will never report it as <code class="docutils literal notranslate"><span class="pre">INVALID</span></code>).</p>
+<p>Note that transaction IDs are uniquely assigned by the service - once a request has been assigned an ID, this ID will never be associated with a different write transaction. In normal operation, the next requests will be given versions 2.19, then 2.20, and so on, and after a short delay <code class="docutils literal notranslate"><span class="pre">2.18</span></code> will be committed. If requests are submitted in parallel, they will be applied in a consistent order indicated by their assigned versions.</p>
+<p>If the network is unable to reach consensus, it will trigger a leadership election which increments the view. In this case the user’s next request may be given a version <code class="docutils literal notranslate"><span class="pre">3.16</span></code>, followed by <code class="docutils literal notranslate"><span class="pre">3.17</span></code>, then <code class="docutils literal notranslate"><span class="pre">3.18</span></code>. The sequence number is reused, but in a different view; the service knows that <code class="docutils literal notranslate"><span class="pre">2.18</span></code> can never be assigned, so it can report this as an invalid ID. Read-only transactions are an exception - they do not get a unique transaction ID but instead return the ID of the last write transaction whose state they may have read.</p>
+</div>
+<div class="section" id="transaction-receipts">
+<h2>Transaction Receipts<a class="headerlink" href="#transaction-receipts" title="Permalink to this headline">¶</a></h2>
+<p>Once a transaction has been committed, it is possible to get a receipt for it. That receipt can later be checked against either a CCF service, or offline against the ledger, to prove that the transaction did happen at a particular commit.</p>
+<p>To obtain a receipt, a user needs to issue a <code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">/receipt</span></code> RPC for a particular commit:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ curl -X GET <span class="s2">&quot;https://&lt;ccf-node-address&gt;/app/receipt?commit=23&quot;</span> --cacert networkcert.pem --key user0_privk.pem --cert user0_cert.pem
+<span class="o">{</span>
+  <span class="s2">&quot;receipt&quot;</span>: <span class="o">[</span> ... <span class="o">]</span>,
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>Receipts can be verified with the <code class="docutils literal notranslate"><span class="pre">POST</span> <span class="pre">/receipt/verify</span></code> RPC:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ cat verify_receipt.json
+<span class="o">{</span>
+  <span class="s2">&quot;receipt&quot;</span>: <span class="o">[</span> ... <span class="o">]</span>
+<span class="o">}</span>
+
+$ curl https://&lt;ccf-node-address&gt;/app/receipt/verify --cacert networkcert.pem --key user0_privk.pem --cert user0_cert.pem --data-binary @verify_receipt.json
+<span class="o">{</span>
+  <span class="s2">&quot;valid&quot;</span>: true,
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+              </div>
+              
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="issue_commands.html" title="previous page">Issuing Commands</a>
+    <a class='right-next' id="next-link" href="verify_quote.html" title="next page">Verifying Quote</a>
+
+              </div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    <p>
+          &copy; Copyright 2018, Microsoft Research.<br/>
+        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.1.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

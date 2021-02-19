@@ -1,0 +1,528 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Starting a New Network &#8212; CCF  documentation</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Catastrophic Recovery" href="recovery.html" />
+    <link rel="prev" title="Operations" href="index.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+    
+    <a class="navbar-brand" href="../index.html">
+      <img src="../_static/ccf.svg" class="logo" alt="logo">
+    </a>
+    
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navbar-menu" class="col-11 collapse navbar-collapse">
+      <ul id="navbar-main-elements" class="navbar-nav mr-auto">
+        
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../concepts.html">Concepts</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../quickstart/index.html">Start Here</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../members/index.html">Governance</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../developers/index.html">Building Apps</a>
+        </li>
+        
+        <li class="nav-item active">
+            <a class="nav-link" href="index.html">Operations</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../users/index.html">Using Apps</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../glossary.html">Glossary</a>
+        </li>
+        
+        
+      </ul>
+
+      <ul class="navbar-nav">
+        
+          <li class="nav-item">
+            <a class="nav-link" href="https://github.com/Microsoft/CCF" target="_blank" rel="noopener">
+              <span><i class="fab fa-github-square"></i></span>
+            </a>
+          </li>
+        
+        
+      </ul>
+    </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+          <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+<script>
+    function onVersionChange() {
+      window.location.href = document.getElementById("versions").value;
+    }
+
+    window.addEventListener("DOMContentLoaded",function(){
+        let selectedVersion = "main"
+        const thisURL = window.location.toString()
+        let indexOfVersion = thisURL.indexOf("ccf-")
+        if (indexOfVersion != -1) {
+            selectedVersion = thisURL.substring(indexOfVersion, thisURL.indexOf("/", indexOfVersion));
+        }
+        let sel = document.getElementById("versions");
+        if (sel != null) {
+            let opts = sel.options;
+            for (var opt, j = 0; opt = opts[j]; j++) {
+                if (opt.text == selectedVersion) {
+                    sel.selectedIndex = j;
+                    break;
+                }
+            }
+        }
+    }, false);
+</script>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+
+    <div class="bd-toc-item active">
+        
+
+        <ul class="nav bd-sidenav">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <li class="active">
+                <a href="">Starting a New Network</a>
+            </li>
+            
+            
+            
+            <li class="">
+                <a href="recovery.html">Catastrophic Recovery</a>
+            </li>
+            
+            
+            
+            <li class="">
+                <a href="node_output.html">Node Output</a>
+            </li>
+            
+            
+            
+            <li class="">
+                <a href="operator_rpc_api.html">Operator RPC API</a>
+            </li>
+            
+            
+            
+            <li class="">
+                <a href="resource_usage.html">Resource Usage</a>
+            </li>
+            
+            
+            
+            <li class="">
+                <a href="ledger.html">Ledger</a>
+            </li>
+            
+            
+            
+            <li class="">
+                <a href="container.html">Runtime Container</a>
+            </li>
+            
+            
+            
+            
+            
+            
+            
+            
+        </ul>
+
+        
+        <h6> Versions </h6>
+        <select name="versions" id="versions" class="custom-select custom-select-sm" style="width:50%" onchange="onVersionChange()">
+            <option value="../../main/index.html">main </option>
+            <option value="../../ccf-0.18.2/index.html">ccf-0.18.2 </option>
+            <option value="../../ccf-0.18.1/index.html">ccf-0.18.1 </option>
+            <option value="../../ccf-0.18.0/index.html">ccf-0.18.0 </option>
+            <option value="../../ccf-0.17.2/index.html">ccf-0.17.2 </option>
+            <option value="../../ccf-0.17.1/index.html">ccf-0.17.1 </option>
+            <option value="../../ccf-0.17.0/index.html">ccf-0.17.0 </option>
+            <option value="../../ccf-0.16.3/index.html">ccf-0.16.3 </option>
+            <option value="../../ccf-0.16.2/index.html">ccf-0.16.2 </option>
+            <option value="../../ccf-0.16.1/index.html">ccf-0.16.1 </option>
+            <option value="../../ccf-0.16.0/index.html">ccf-0.16.0 </option>
+            <option value="../../ccf-0.15.2/operators/start_network.html">ccf-0.15.2 </option>
+            <option value="../../ccf-0.15.1/operators/start_network.html">ccf-0.15.1 </option>
+            <option value="../../ccf-0.15.0/operators/start_network.html">ccf-0.15.0 </option>
+            <option value="../../ccf-0.14.3/operators/start_network.html">ccf-0.14.3 </option>
+            <option value="../../ccf-0.14.2/operators/start_network.html">ccf-0.14.2 </option>
+            <option value="../../ccf-0.14.1/operators/start_network.html">ccf-0.14.1 </option>
+            <option value="../../ccf-0.14.0/operators/start_network.html">ccf-0.14.0 </option>
+            <option value="../../ccf-0.13.4/operators/start_network.html">ccf-0.13.4 </option>
+            <option value="../../ccf-0.13.3/operators/start_network.html">ccf-0.13.3 </option>
+            <option value="../../ccf-0.13.2/operators/start_network.html">ccf-0.13.2 </option>
+            <option value="../../ccf-0.13.1/operators/start_network.html">ccf-0.13.1 </option>
+            <option value="../../ccf-0.13.0/operators/start_network.html">ccf-0.13.0 </option>
+            <option value="../../ccf-0.12.2/operators/start_network.html">ccf-0.12.2 </option>
+            <option value="../../ccf-0.12.1/operators/start_network.html">ccf-0.12.1 </option>
+            <option value="../../ccf-0.12.0/operators/start_network.html">ccf-0.12.0 </option>
+            <option value="start_network.html">ccf-0.11.7 </option>
+            <option value="../../ccf-0.11.4/operators/start_network.html">ccf-0.11.4 </option>
+            <option value="../../ccf-0.11.1/operators/start_network.html">ccf-0.11.1 </option>
+        </select>
+        
+</nav>
+          </div>
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+              
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#starting-the-first-node" class="nav-link">Starting the First Node</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#network-identity" class="nav-link">Network Identity</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#virtual-mode" class="nav-link">Virtual Mode</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#pbft" class="nav-link">PBFT</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#signature-interval" class="nav-link">Signature Interval</a>
+        </li>
+    
+            </ul>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#adding-a-new-node-to-the-network" class="nav-link">Adding a New Node to the Network</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#using-a-configuration-file" class="nav-link">Using a Configuration File</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#opening-a-network-to-users" class="nav-link">Opening a Network to Users</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#summary-diagram" class="nav-link">Summary diagram</a>
+        </li>
+    
+    </ul>
+</nav>
+
+
+
+<div class="tocsection editthispage">
+    <a href="https://github.com/Microsoft/CCF/edit/main/doc/operators/start_network.rst">
+        <i class="fas fa-pencil-alt"></i> Edit this page
+    </a>
+</div>
+
+              
+          </div>
+          
+
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <div class="section" id="starting-a-new-network">
+<h1>Starting a New Network<a class="headerlink" href="#starting-a-new-network" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Before creating a new network:</p>
+<ul class="simple">
+<li><p>The <a class="reference internal" href="../members/index.html#governance"><span class="std std-ref">identity of the initial members of the consortium must be created</span></a>.</p></li>
+<li><p>The <a class="reference internal" href="../members/constitution.html#constitution"><span class="std std-ref">constitution should have been agreed by the initial members</span></a>.</p></li>
+</ul>
+</div>
+<div class="section" id="starting-the-first-node">
+<h2>Starting the First Node<a class="headerlink" href="#starting-the-first-node" title="Permalink to this headline">¶</a></h2>
+<p>To create a new CCF network, the first node of the network should be invoked with the <code class="docutils literal notranslate"><span class="pre">start</span></code> option:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ cchost
+--enclave-file /path/to/enclave_library
+--rpc-address &lt;ccf-node-address&gt;
+--node-address &lt;ccf-node-to-node-address&gt;
+--public-rpc-address &lt;ccf-node-public-address&gt;
+<span class="o">[</span>--domain domain<span class="o">]</span>
+--ledger-dir /path/to/ledger/dir
+--node-cert-file /path/to/node_certificate
+<span class="o">[</span>--sig-max-tx number_of_transactions<span class="o">]</span>
+<span class="o">[</span>--sig-max-ms number_of_milliseconds<span class="o">]</span>
+start
+--network-cert-file /path/to/network_certificate
+--network-enc-pubk-file /path/to/network_encryption_pubk
+--member-info /path/to/member1_cert,/path/to/member1_enc_pub
+<span class="o">[</span>--member-info /path/to/member2_cert,/path/to/member2_enc_pub ...<span class="o">]</span>
+--gov-script /path/to/lua/governance_script
+</pre></div>
+</div>
+<p>CCF nodes can be started by using IP Addresses (both IPv4 and IPv6 are supported) or by specifying a fully qualified domain name. If an FQDN is used then <code class="docutils literal notranslate"><span class="pre">--domain</span></code> should be passed to the node at startup. Once a DNS has been setup it will be possible to connect to the node over TLS by using the node’s domain name.</p>
+<p>When starting up, the node generates its own key pair and outputs the certificate associated with its public key at the location specified by <code class="docutils literal notranslate"><span class="pre">--node-cert-file</span></code>. The certificate of the freshly-created CCF network is also output at the location specified by <code class="docutils literal notranslate"><span class="pre">--network-cert-file</span></code> as well as the network encryption public key used by members during recovery via <code class="docutils literal notranslate"><span class="pre">--network-enc-pubk-file</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The network certificate should be distributed to users and members to be used as the certificate authority (CA) when establishing a TLS connection with any of the nodes part of the CCF network. When using curl, this is passed as the <code class="docutils literal notranslate"><span class="pre">--cacert</span></code> argument.</p>
+</div>
+<p>The certificates and recovery public keys of initial members of the consortium are specified via <code class="docutils literal notranslate"><span class="pre">--member-info</span></code>. For example, if 3 members should be added to CCF, operators should specify <code class="docutils literal notranslate"><span class="pre">--member-info</span> <span class="pre">member1_cert.pem,member1_enc_pubk.pem</span></code>, <code class="docutils literal notranslate"><span class="pre">--member-info</span> <span class="pre">member2_cert.pem,member2_enc_pubk.pem</span></code>, <code class="docutils literal notranslate"><span class="pre">--member-info</span> <span class="pre">member3_cert.pem,member3_enc_pubk.pem</span></code>.</p>
+<p>The <a class="reference internal" href="../glossary.html#term-Constitution"><span class="xref std std-term">Constitution</span></a>, as defined by the initial members, should be passed via the <code class="docutils literal notranslate"><span class="pre">--gov-script</span></code> option.</p>
+<p>The network is now in its opening state and new nodes can join the network. <a class="reference internal" href="../members/open_network.html#opening-a-network"><span class="std std-ref">members can add other members and users via governance</span></a>.</p>
+<div class="section" id="network-identity">
+<h3>Network Identity<a class="headerlink" href="#network-identity" title="Permalink to this headline">¶</a></h3>
+<p>The network certificate should be distributed to users and members to be used as the certificate authority (CA) when establishing a TLS connection with any of the nodes part of the CCF network. When using curl, this is passed as the <code class="docutils literal notranslate"><span class="pre">--cacert</span></code> argument.</p>
+</div>
+<div class="section" id="virtual-mode">
+<h3>Virtual Mode<a class="headerlink" href="#virtual-mode" title="Permalink to this headline">¶</a></h3>
+<p>To start a CCF node in <cite>virtual</cite> mode, operators should run <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">cchost.virtual</span> <span class="pre">--enclave-file</span> <span class="pre">/path/to/virtual_enclave_library</span> <span class="pre">...</span></code>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Nodes started in virtual mode provide no security guarantees. They should never be used for production purposes.</p>
+</div>
+</div>
+<div class="section" id="pbft">
+<h3>PBFT<a class="headerlink" href="#pbft" title="Permalink to this headline">¶</a></h3>
+<p>To use the PBFT consensus protocol, pass <code class="docutils literal notranslate"><span class="pre">--consensus</span> <span class="pre">pbft</span></code>. Please see <a class="reference internal" href="../developers/consensus.html#consensus-protocols"><span class="std std-ref">here</span></a> for more information.</p>
+</div>
+<div class="section" id="signature-interval">
+<h3>Signature Interval<a class="headerlink" href="#signature-interval" title="Permalink to this headline">¶</a></h3>
+<p>Transaction commit latency in a CCF network is primarily a function of signature frequency. A network emitting signatures more frequently will be able to commit transactions faster,
+but will spend a larger proportion of its execution resources creating and verifying signatures. Setting signature frequency is a trade-off between transaction
+latency and throughput.</p>
+<p>Two options are provided to that end:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">--sig-max-tx</span></code>: maximum number of transactions between two signatures</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--sig-max-ms</span></code>: maximum time in milliseconds between two signatures.</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="adding-a-new-node-to-the-network">
+<h2>Adding a New Node to the Network<a class="headerlink" href="#adding-a-new-node-to-the-network" title="Permalink to this headline">¶</a></h2>
+<p>To add a new node to an existing opening network, other nodes should be started with the <code class="docutils literal notranslate"><span class="pre">join</span></code> option:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ cchost
+--enclave-file /path/to/enclave_library
+--rpc-address &lt;ccf-node-address&gt;
+--node-address &lt;ccf-node-to-node-address&gt;
+--public-rpc-address &lt;ccf-node-public-address&gt;
+--ledger-dir /path/to/ledger/dir
+--node-cert-file /path/to/node_certificate
+join
+--network-cert-file /path/to/existing/network_certificate
+--target-rpc-address &lt;another-ccf-node-address&gt;
+</pre></div>
+</div>
+<p>The joining node takes the certificate of the existing network to join via <code class="docutils literal notranslate"><span class="pre">--network-cert-file</span></code> and initiates an enclave-to-enclave TLS connection to an existing node of the network as specified by <code class="docutils literal notranslate"><span class="pre">--target-rpc-address</span></code>.</p>
+<p>If the network has not yet been opened by members (see <a class="reference internal" href="../members/open_network.html#opening-the-network"><span class="std std-ref">Opening the Network</span></a>), the joining node becomes part of the network immediately <a class="footnote-reference brackets" href="#remote-attestation" id="id1">1</a>.</p>
+<p>If the network has already been opened to users, members need to trust the joining node before it can become part of the network (see <a class="reference internal" href="../members/common_member_operations.html#trusting-a-new-node"><span class="std std-ref">Trusting a New Node</span></a>).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If starting up the network with PBFT enabled as the consensus protocol, be sure to add the <code class="docutils literal notranslate"><span class="pre">--consensus</span> <span class="pre">pbft</span></code> CLI argument when starting up the node. For more information on the provided consensus protocols please see <a class="reference internal" href="../developers/consensus.html#consensus-protocols"><span class="std std-ref">here</span></a></p>
+</div>
+</div>
+<div class="section" id="using-a-configuration-file">
+<h2>Using a Configuration File<a class="headerlink" href="#using-a-configuration-file" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">cchost</span></code> can be started using a configuration file in TOML or INI format.</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="c1"># config.toml</span>
+<span class="na">enclave-file</span> <span class="o">=</span> <span class="s">&lt;enclave-file&gt;</span>
+<span class="na">enclave-type</span> <span class="o">=</span> <span class="s">debug</span>
+<span class="na">consensus</span> <span class="o">=</span> <span class="s">raft</span>
+<span class="na">rpc-address</span> <span class="o">=</span> <span class="s">&lt;node-address&gt;</span>
+<span class="na">public-rpc-address</span> <span class="o">=</span> <span class="s">&lt;node-public-address&gt;</span>
+<span class="na">node-address</span> <span class="o">=</span> <span class="s">&lt;ccf-node-to-node-address&gt;</span>
+
+<span class="k">[&lt;subcommand, one of [start, join, recover]&gt;]</span>
+<span class="na">network-cert-file</span> <span class="o">=</span> <span class="s">&lt;network-cert-file-name&gt;</span>
+<span class="na">member-info</span> <span class="o">=</span> <span class="s">&quot;&lt;member_cert.pem&gt;,&lt;member_enc_pubk.pem&gt;&quot;</span>
+<span class="na">gov-script</span> <span class="o">=</span> <span class="s">&lt;gov-script-name&gt;</span>
+</pre></div>
+</div>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="c1">; config.ini</span>
+<span class="na">enclave-file</span> <span class="o">=</span> <span class="s">&lt;enclave-file&gt;</span>
+<span class="na">enclave-type</span> <span class="o">=</span> <span class="s">debug</span>
+<span class="na">consensus</span> <span class="o">=</span> <span class="s">raft</span>
+<span class="na">rpc-address</span> <span class="o">=</span> <span class="s">&lt;node-address&gt;</span>
+<span class="na">public-rpc-address</span> <span class="o">=</span> <span class="s">&lt;node-public-address&gt;</span>
+<span class="na">node-address</span> <span class="o">=</span> <span class="s">&lt;node-to-node-address&gt;</span>
+
+<span class="k">[&lt;subcommand, one of [start, join, recover]&gt;]</span>
+<span class="na">network-cert-file</span> <span class="o">=</span> <span class="s">&lt;network-cert-file-name&gt;</span>
+<span class="na">member-info</span> <span class="o">=</span> <span class="s">&quot;&lt;member_cert.pem&gt;,&lt;member_enc_pubk.pem&gt;&quot;</span>
+<span class="na">gov-script</span> <span class="o">=</span> <span class="s">&lt;gov-script-name&gt;</span>
+</pre></div>
+</div>
+<p>To pass configuration files, use the <code class="docutils literal notranslate"><span class="pre">--config</span></code> option: <code class="docutils literal notranslate"><span class="pre">./cchost</span> <span class="pre">--config=config.ini</span></code>. An error will be generated if the configuration file contains extra fields. Options in the configuration file will be read along with normal command line arguments. Additional information for configuration files in CLI11 can be found <a class="reference external" href="https://cliutils.github.io/CLI11/book/chapters/config.html">here</a>.</p>
+</div>
+<div class="section" id="opening-a-network-to-users">
+<h2>Opening a Network to Users<a class="headerlink" href="#opening-a-network-to-users" title="Permalink to this headline">¶</a></h2>
+<p>Once a CCF network is successfully started and an acceptable number of nodes have joined, <a class="reference internal" href="../members/open_network.html#opening-a-network"><span class="std std-ref">members should vote to open the network</span></a> to <a class="reference internal" href="../glossary.html#term-Users"><span class="xref std std-term">Users</span></a> via governance.</p>
+</div>
+<div class="section" id="summary-diagram">
+<h2>Summary diagram<a class="headerlink" href="#summary-diagram" title="Permalink to this headline">¶</a></h2>
+<p>Once a node is part of the network (started with either the <code class="docutils literal notranslate"><span class="pre">start</span></code> or <code class="docutils literal notranslate"><span class="pre">join</span></code> option), members are authorised to issue governance transactions and eventually open the network (see <a class="reference internal" href="../members/open_network.html#opening-a-network"><span class="std std-ref">Opening a Network</span></a>). Only then are users authorised to issue commands to CCF.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>After the network is open to users, members can still issue governance transactions to CCF (for example, adding new users or additional members to the consortium or updating the Lua app, when applicable). See <a class="reference internal" href="../members/index.html#governance"><span class="std std-ref">Governance</span></a> for more information about member governance.</p>
+</div>
+<p>The following diagram summarises the steps required to bootstrap a CCF network:</p>
+<script>mermaid.initialize({startOnLoad:true});</script><div class="mermaid">
+            sequenceDiagram
+    participant Operators
+    participant Members
+    participant Users
+    participant Node 0
+    participant Node 1
+
+    Operators-&gt;&gt;+Node 0: cchost start --rpc-address=ip0:port0
+    Node 0--&gt;&gt;Operators: Network Certificate
+    Note over Node 0: Part Of Network
+
+    Operators-&gt;&gt;+Node 1: cchost join --network-cert-file=Network Certificate --target-rpc-address=ip0:port0
+
+    Node 1-&gt;&gt;+Node 0: Join network (over TLS)
+    Node 0--&gt;&gt;Node 1: Network Secrets (over TLS)
+
+    Note over Node 1: Part Of Network
+
+    loop Governance transactions (e.g. adding a user)
+        Members-&gt;&gt;+Node 0: HTTP Request (any node)
+        Node 0--&gt;&gt;Members: HTTP Response (any node)
+    end
+
+    Members-&gt;&gt;+Node 0: Propose to open network (any node)
+    Members-&gt;&gt;+Node 0: Vote to open network (any node)
+    Note over Node 0, Node 1: Proposal accepted, CCF open to users
+
+
+    loop Business transactions
+        Users-&gt;&gt;+Node 0: HTTP Request (any node)
+        Node 0--&gt;&gt;Users: HTTP Response (any node)
+    end
+        </div><p class="rubric">Footnotes</p>
+<dl class="footnote brackets">
+<dt class="label" id="remote-attestation"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>When a new node joins an existing network, the network performs the remote attestation protocol by verifying the joining node’s quote. It also checks that the version of the code running by the joining node is trusted by the consortium.</p>
+</dd>
+</dl>
+</div>
+</div>
+
+
+              </div>
+              
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="index.html" title="previous page">Operations</a>
+    <a class='right-next' id="next-link" href="recovery.html" title="next page">Catastrophic Recovery</a>
+
+              </div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    <p>
+          &copy; Copyright 2018, Microsoft Research.<br/>
+        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.1.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

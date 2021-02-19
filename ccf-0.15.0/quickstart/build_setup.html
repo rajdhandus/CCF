@@ -1,0 +1,315 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Setup CCF Development Environment &#8212; CCF  documentation</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+    
+    <a class="navbar-brand" href="../index.html">
+      <img src="../_static/ccf.svg" class="logo" alt="logo">
+    </a>
+    
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navbar-menu" class="col-11 collapse navbar-collapse">
+      <ul id="navbar-main-elements" class="navbar-nav mr-auto">
+        
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../concepts.html">Overview</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../developers/index.html">Build Apps</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../users/index.html">Use Apps</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../operators/index.html">Operations</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../members/index.html">Governance</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../audit/index.html">Audit</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../glossary.html">Glossary</a>
+        </li>
+        
+        
+      </ul>
+
+      <ul class="navbar-nav">
+        
+          <li class="nav-item">
+            <a class="nav-link" href="https://github.com/Microsoft/CCF" target="_blank" rel="noopener">
+              <span><i class="fab fa-github-square"></i></span>
+            </a>
+          </li>
+        
+        
+      </ul>
+    </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+          <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+<script>
+    function onVersionChange() {
+      window.location.href = document.getElementById("versions").value;
+    }
+
+    window.addEventListener("DOMContentLoaded",function(){
+        let selectedVersion = "main"
+        const thisURL = window.location.toString()
+        let indexOfVersion = thisURL.indexOf("ccf-")
+        if (indexOfVersion != -1) {
+            selectedVersion = thisURL.substring(indexOfVersion, thisURL.indexOf("/", indexOfVersion));
+        }
+        let sel = document.getElementById("versions");
+        if (sel != null) {
+            let opts = sel.options;
+            for (var opt, j = 0; opt = opts[j]; j++) {
+                if (opt.text == selectedVersion) {
+                    sel.selectedIndex = j;
+                    break;
+                }
+            }
+        }
+    }, false);
+</script>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+
+    <div class="bd-toc-item active">
+        
+
+        <ul class="nav bd-sidenav">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+        </ul>
+
+        
+        <h6> Versions </h6>
+        <select name="versions" id="versions" class="custom-select custom-select-sm" style="width:50%" onchange="onVersionChange()">
+            <option value="../../main/index.html">main </option>
+            <option value="../../ccf-0.18.2/index.html">ccf-0.18.2 </option>
+            <option value="../../ccf-0.18.1/index.html">ccf-0.18.1 </option>
+            <option value="../../ccf-0.18.0/index.html">ccf-0.18.0 </option>
+            <option value="../../ccf-0.17.2/index.html">ccf-0.17.2 </option>
+            <option value="../../ccf-0.17.1/index.html">ccf-0.17.1 </option>
+            <option value="../../ccf-0.17.0/index.html">ccf-0.17.0 </option>
+            <option value="../../ccf-0.16.3/index.html">ccf-0.16.3 </option>
+            <option value="../../ccf-0.16.2/quickstart/build_setup.html">ccf-0.16.2 </option>
+            <option value="../../ccf-0.16.1/quickstart/build_setup.html">ccf-0.16.1 </option>
+            <option value="../../ccf-0.16.0/quickstart/build_setup.html">ccf-0.16.0 </option>
+            <option value="../../ccf-0.15.2/quickstart/build_setup.html">ccf-0.15.2 </option>
+            <option value="../../ccf-0.15.1/quickstart/build_setup.html">ccf-0.15.1 </option>
+            <option value="build_setup.html">ccf-0.15.0 </option>
+            <option value="../../ccf-0.14.3/quickstart/build_setup.html">ccf-0.14.3 </option>
+            <option value="../../ccf-0.14.2/quickstart/build_setup.html">ccf-0.14.2 </option>
+            <option value="../../ccf-0.14.1/quickstart/build_setup.html">ccf-0.14.1 </option>
+            <option value="../../ccf-0.14.0/index.html">ccf-0.14.0 </option>
+            <option value="../../ccf-0.13.4/index.html">ccf-0.13.4 </option>
+            <option value="../../ccf-0.13.3/index.html">ccf-0.13.3 </option>
+            <option value="../../ccf-0.13.2/index.html">ccf-0.13.2 </option>
+            <option value="../../ccf-0.13.1/index.html">ccf-0.13.1 </option>
+            <option value="../../ccf-0.13.0/index.html">ccf-0.13.0 </option>
+            <option value="../../ccf-0.12.2/index.html">ccf-0.12.2 </option>
+            <option value="../../ccf-0.12.1/index.html">ccf-0.12.1 </option>
+            <option value="../../ccf-0.12.0/index.html">ccf-0.12.0 </option>
+            <option value="../../ccf-0.11.7/index.html">ccf-0.11.7 </option>
+            <option value="../../ccf-0.11.4/index.html">ccf-0.11.4 </option>
+            <option value="../../ccf-0.11.1/index.html">ccf-0.11.1 </option>
+        </select>
+        
+</nav>
+          </div>
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+              
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#environment-setup" class="nav-link">Environment Setup</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#build-container" class="nav-link">Build Container</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#visual-studio-code-setup" class="nav-link">Visual Studio Code Setup</a>
+        </li>
+    
+            </ul>
+        </li>
+    
+    </ul>
+</nav>
+
+
+
+<div class="tocsection editthispage">
+    <a href="https://github.com/Microsoft/CCF/edit/main/doc/quickstart/build_setup.rst">
+        <i class="fas fa-pencil-alt"></i> Edit this page
+    </a>
+</div>
+
+              
+          </div>
+          
+
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <div class="section" id="setup-ccf-development-environment">
+<h1>Setup CCF Development Environment<a class="headerlink" href="#setup-ccf-development-environment" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="environment-setup">
+<h2>Environment Setup<a class="headerlink" href="#environment-setup" title="Permalink to this headline">¶</a></h2>
+<p>First, on your development VM, checkout the CCF repository or <a class="reference internal" href="install.html#install-ccf"><span class="std std-ref">install the latest CCF release</span></a>.</p>
+<p>Then, to quickly set up the dependencies necessary to build CCF itself and CCF applications, simply run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> &lt;ccf_path&gt;/getting_started/setup_vm
+$ ./run.sh driver.yml <span class="c1"># Only on SGX-enabled hardware</span>
+$ ./run.sh ccf-dev.yml
+</pre></div>
+</div>
+<p>Once this is complete, you can proceed to <a class="reference internal" href="build.html#build-ccf-from-source"><span class="std std-ref">Build CCF from Source</span></a>.</p>
+</div>
+<div class="section" id="build-container">
+<h2>Build Container<a class="headerlink" href="#build-container" title="Permalink to this headline">¶</a></h2>
+<p>The quickest way to get started building CCF applications is to use the CCF build container. It contains all the dependencies needed to build and test CCF itself as well as CCF applications.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ docker pull ccfciteam/ccf-app-ci:latest <span class="c1"># Latest CCF release</span>
+$ docker pull ccfciteam/ccf-app-ci:X.YZ   <span class="c1"># Specific CCF release</span>
+</pre></div>
+</div>
+<p>The container contains the latest release of CCF along with a complete build toolchain, and startup scripts.</p>
+<p>If your hardware does support SGX, and has the appropriate driver installed and loaded, then you will only need to expose the device to the container by passing <code class="docutils literal notranslate"><span class="pre">--device</span> <span class="pre">/dev/sgx:/dev/sgx</span></code> when you start it. It can be run on hardware that does not support SGX, in which case you will want to use the virtual binaries, or build in <cite>virtual mode</cite>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>When running the build container on SGX-enabled hardware, pass the <code class="docutils literal notranslate"><span class="pre">--device</span> <span class="pre">/dev/sgx:/dev/sgx</span></code> command to use SGX in the container.</p></li>
+<li><p><cite>virtual</cite> mode provides no security guarantee. It is only useful for development and prototyping.</p></li>
+</ul>
+</div>
+<div class="section" id="visual-studio-code-setup">
+<h3>Visual Studio Code Setup<a class="headerlink" href="#visual-studio-code-setup" title="Permalink to this headline">¶</a></h3>
+<p>If you use <a class="reference external" href="https://code.visualstudio.com/">Visual Studio Code</a> you can install the <a class="reference external" href="https://code.visualstudio.com/docs/remote/containers">Remote Container</a> extension and use the sample <a class="reference external" href="https://github.com/microsoft/CCF/blob/master/.devcontainer/devcontainer.json">devcontainer.json</a> config.
+<a class="reference external" href="https://code.visualstudio.com/docs/remote/containers#_quick-start-open-a-public-git-repository-in-an-isolated-container-volume">More details on that process</a>.</p>
+</div>
+</div>
+</div>
+
+
+              </div>
+              
+              
+              <div class='prev-next-bottom'>
+                
+
+              </div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    <p>
+          &copy; Copyright 2018, Microsoft Research.<br/>
+        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.1.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

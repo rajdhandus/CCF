@@ -1,0 +1,427 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ledger &#8212; CCF  documentation</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Consensus Protocols" href="consensus.html" />
+    <link rel="prev" title="Key-Value Store API" href="kv/api.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+    
+    <a class="navbar-brand" href="../index.html">
+      <img src="../_static/ccf.svg" class="logo" alt="logo">
+    </a>
+    
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navbar-menu" class="col-11 collapse navbar-collapse">
+      <ul id="navbar-main-elements" class="navbar-nav mr-auto">
+        
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../concepts.html">Concepts</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../quickstart/index.html">Start Here</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../members/index.html">Governance</a>
+        </li>
+        
+        <li class="nav-item active">
+            <a class="nav-link" href="index.html">Building Apps</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../operators/index.html">Operations</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../users/index.html">Using Apps</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../glossary.html">Glossary</a>
+        </li>
+        
+        
+      </ul>
+
+      <ul class="navbar-nav">
+        
+          <li class="nav-item">
+            <a class="nav-link" href="https://github.com/Microsoft/CCF" target="_blank" rel="noopener">
+              <span><i class="fab fa-github-square"></i></span>
+            </a>
+          </li>
+        
+        
+      </ul>
+    </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+          <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+<script>
+    function onVersionChange() {
+      window.location.href = document.getElementById("versions").value;
+    }
+
+    window.addEventListener("DOMContentLoaded",function(){
+        let selectedVersion = "main"
+        const thisURL = window.location.toString()
+        let indexOfVersion = thisURL.indexOf("ccf-")
+        if (indexOfVersion != -1) {
+            selectedVersion = thisURL.substring(indexOfVersion, thisURL.indexOf("/", indexOfVersion));
+        }
+        let sel = document.getElementById("versions");
+        if (sel != null) {
+            let opts = sel.options;
+            for (var opt, j = 0; opt = opts[j]; j++) {
+                if (opt.text == selectedVersion) {
+                    sel.selectedIndex = j;
+                    break;
+                }
+            }
+        }
+    }, false);
+</script>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+
+    <div class="bd-toc-item active">
+        
+
+        <ul class="nav bd-sidenav">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <li class="">
+                <a href="example.html">Example Application</a>
+            </li>
+            
+            
+            
+            <li class="">
+                <a href="build_app.html">Build and Sign Application</a>
+            </li>
+            
+            
+            
+            <li class="">
+                <a href="demo.html">End-to-end demo</a>
+            </li>
+            
+            
+            
+            <li class="">
+                <a href="kv/index.html">Key-Value Store</a>
+            </li>
+            
+            
+            
+            <li class="active">
+                <a href="">Ledger</a>
+            </li>
+            
+            
+            
+            <li class="">
+                <a href="consensus.html">Consensus Protocols</a>
+            </li>
+            
+            
+            
+            <li class="">
+                <a href="cryptography.html">Cryptography</a>
+            </li>
+            
+            
+            
+            <li class="">
+                <a href="threading.html">Threading</a>
+            </li>
+            
+            
+            
+            <li class="">
+                <a href="performance.html">Performance</a>
+            </li>
+            
+            
+            
+            <li class="">
+                <a href="api.html">Developer API</a>
+            </li>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+        </ul>
+
+        
+        <h6> Versions </h6>
+        <select name="versions" id="versions" class="custom-select custom-select-sm" style="width:50%" onchange="onVersionChange()">
+            <option value="../../main/index.html">main </option>
+            <option value="../../ccf-0.18.2/index.html">ccf-0.18.2 </option>
+            <option value="../../ccf-0.18.1/index.html">ccf-0.18.1 </option>
+            <option value="../../ccf-0.18.0/index.html">ccf-0.18.0 </option>
+            <option value="../../ccf-0.17.2/index.html">ccf-0.17.2 </option>
+            <option value="../../ccf-0.17.1/index.html">ccf-0.17.1 </option>
+            <option value="../../ccf-0.17.0/index.html">ccf-0.17.0 </option>
+            <option value="../../ccf-0.16.3/index.html">ccf-0.16.3 </option>
+            <option value="../../ccf-0.16.2/index.html">ccf-0.16.2 </option>
+            <option value="../../ccf-0.16.1/index.html">ccf-0.16.1 </option>
+            <option value="../../ccf-0.16.0/index.html">ccf-0.16.0 </option>
+            <option value="../../ccf-0.15.2/index.html">ccf-0.15.2 </option>
+            <option value="../../ccf-0.15.1/index.html">ccf-0.15.1 </option>
+            <option value="../../ccf-0.15.0/index.html">ccf-0.15.0 </option>
+            <option value="../../ccf-0.14.3/index.html">ccf-0.14.3 </option>
+            <option value="../../ccf-0.14.2/index.html">ccf-0.14.2 </option>
+            <option value="../../ccf-0.14.1/index.html">ccf-0.14.1 </option>
+            <option value="../../ccf-0.14.0/developers/ledger.html">ccf-0.14.0 </option>
+            <option value="../../ccf-0.13.4/developers/ledger.html">ccf-0.13.4 </option>
+            <option value="../../ccf-0.13.3/developers/ledger.html">ccf-0.13.3 </option>
+            <option value="../../ccf-0.13.2/developers/ledger.html">ccf-0.13.2 </option>
+            <option value="../../ccf-0.13.1/developers/ledger.html">ccf-0.13.1 </option>
+            <option value="../../ccf-0.13.0/developers/ledger.html">ccf-0.13.0 </option>
+            <option value="../../ccf-0.12.2/developers/ledger.html">ccf-0.12.2 </option>
+            <option value="../../ccf-0.12.1/developers/ledger.html">ccf-0.12.1 </option>
+            <option value="../../ccf-0.12.0/developers/ledger.html">ccf-0.12.0 </option>
+            <option value="../../ccf-0.11.7/developers/ledger.html">ccf-0.11.7 </option>
+            <option value="../../ccf-0.11.4/developers/ledger.html">ccf-0.11.4 </option>
+            <option value="ledger.html">ccf-0.11.1 </option>
+        </select>
+        
+</nav>
+          </div>
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+              
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#ledger-encryption" class="nav-link">Ledger Encryption</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#ledger-replication" class="nav-link">Ledger Replication</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#reading-and-verifing-ledger" class="nav-link">Reading and Verifing Ledger</a>
+        </li>
+    
+    </ul>
+</nav>
+
+
+
+<div class="tocsection editthispage">
+    <a href="https://github.com/Microsoft/CCF/edit/main/doc/developers/ledger.rst">
+        <i class="fas fa-pencil-alt"></i> Edit this page
+    </a>
+</div>
+
+              
+          </div>
+          
+
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <div class="section" id="ledger">
+<h1>Ledger<a class="headerlink" href="#ledger" title="Permalink to this headline">¶</a></h1>
+<p>The ledger is the persistent distributed append-only record of the transactions that have been executed by the network. It is written by the primary when a transaction is committed and replicated to all backups which maintain their own duplicated copy.</p>
+<p>A node writes its ledger to a directory as specified by the <code class="docutils literal notranslate"><span class="pre">--ledger-dir</span></code> command line argument.</p>
+<div class="section" id="ledger-encryption">
+<h2>Ledger Encryption<a class="headerlink" href="#ledger-encryption" title="Permalink to this headline">¶</a></h2>
+<p>Each entry in the ledger corresponds to a transaction (or delta) committed by the primary’s key-value store.</p>
+<p>When a transaction is committed, each affected <code class="docutils literal notranslate"><span class="pre">Store::Map</span></code> is serialised in different security domains (i.e. public or private), based on the policy set when the <code class="docutils literal notranslate"><span class="pre">Store::Map</span></code> was created (default is private). Public <code class="docutils literal notranslate"><span class="pre">Store::Map</span></code> are serialised and stored in the ledger as plaintext while private <code class="docutils literal notranslate"><span class="pre">Store::Map</span></code> are serialised and encrypted before being stored.</p>
+<p>Ledger entries are integrity-protected and encrypted using a symmetric key shared by all trusted nodes (see <a class="reference internal" href="cryptography.html#algorithms-and-curves"><span class="std std-ref">Algorithms and Curves</span></a>). This key is kept secure inside each enclave. See <a class="reference internal" href="../members/common_member_operations.html#rekeying-ledger"><span class="std std-ref">Rekeying Ledger</span></a> for details on how members can rotate the ledger encryption key.</p>
+<p>Note that even if a transaction only affects a private <code class="docutils literal notranslate"><span class="pre">Store::Map</span></code>, unencrypted information such as the version number is always present in the serialised entry. More information about the ledger entry format is available in the <a class="reference internal" href="kv/kv_serialisation.html#serialised-format"><span class="std std-ref">Serialised Format</span></a> section.</p>
+</div>
+<div class="section" id="ledger-replication">
+<h2>Ledger Replication<a class="headerlink" href="#ledger-replication" title="Permalink to this headline">¶</a></h2>
+<p>The replication process currently uses Raft as the consensus algorithm and therefore the terminology changes slightly. Instead of primary we use the term leader and instead of backup we use the term follower.</p>
+<p>As such, the replicated process relies on authenticated Append Entries (AE) headers sent from the leader to followers and which specify the start and end index of the encrypted deltas payload. When an AE header is emitted from a node’s enclave for replication, the corresponding encrypted deltas are read from the ledger and appended to the AE header.</p>
+<p>The following diagram describes how deltas committed by the leader are written to the ledger and how they are replicated to one follower. Note that the full replication process and acknowledgment from the follower is not detailed here.</p>
+<script>mermaid.initialize({startOnLoad:true});</script><div class="mermaid">
+            sequenceDiagram
+    participant Leader KV
+    participant Leader Raft
+    participant Leader Host
+    participant Leader Ledger
+
+    participant Follower Ledger
+    participant Follower Host
+    participant Follower Raft
+    participant Follower KV
+
+    Note left of Leader KV: tx.commit(): Serialise transaction based on maps security domain
+    Leader KV-&gt;&gt;+Leader Raft: replicate (batch of serialised deltas)
+
+    loop for each serialised delta in batch
+        Leader Raft-&gt;&gt;+Leader Host: log_append (delta)
+        Leader Host-&gt;&gt;+Leader Ledger: write(delta)
+
+        Leader Raft-&gt;&gt;+Leader Host: node_outbound (AE)
+        Leader Raft--&gt;&gt;+Leader KV: replicate success
+
+        Note right of Leader Host: Append Ledger entries to AE
+        loop for each entry in AE
+            Leader Host-&gt;&gt;+Leader Ledger: read(entry's index)
+            Leader Ledger--&gt;&gt;Leader Host: delta
+        end
+        Leader Host-&gt;&gt;+Follower Host: TCP packet (AE + deltas)
+
+        Follower Host-&gt;&gt;+Follower Raft: node_inbound (AE + deltas)
+
+        Follower Raft-&gt;&gt;Follower Raft: recv_authenticated (AE + deltas)
+        loop for each delta
+            Follower Raft-&gt;&gt;Follower Host: log_append (delta)
+            Follower Host-&gt;&gt;+Follower Ledger: write(delta)
+            Follower Raft-&gt;&gt;Follower KV: deserialise(delta)
+            Follower KV--&gt;&gt;+Follower Raft: deserialise success
+        end
+
+    end
+        </div></div>
+<div class="section" id="reading-and-verifing-ledger">
+<h2>Reading and Verifing Ledger<a class="headerlink" href="#reading-and-verifing-ledger" title="Permalink to this headline">¶</a></h2>
+<p>A Python implementation for parsing the ledger can be found in <a class="reference external" href="https://github.com/microsoft/CCF/blob/master/tests/ledger.py">ledger.py</a>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">Ledger</span></code> class is constructed using the path of the ledger. It then exposes an iterator for transaction data structures, where each transaction is composed of the following:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>The GCM header (gcm_header)</p></li>
+<li><p>The serialised public domain, containing operations made only on public tables (get_public_domain)</p></li>
+</ul>
+</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Parsing the encrypted private data (which begins immediately after the public data on the ledger, and is optional) is not supported by the <code class="docutils literal notranslate"><span class="pre">Ledger</span></code> class at the moment.</p>
+</div>
+<p>An example of how to read and verify entries on the ledger can be found in <a class="reference external" href="https://github.com/microsoft/CCF/blob/master/tests/governance_history.py">governance_history.py</a>, which verifies the voting history.
+Since every vote request is signed by the voting member, verified by the primary and then stored on the ledger, the test performs the following (this sequence of operations is performed sequentially per transaction):</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Read and store the member certificates</p></li>
+<li><p>Read an entry from the <code class="docutils literal notranslate"><span class="pre">ccf.governance.history</span></code> table (each entry in the table contains the member id of the voting member, along with the signed request)</p></li>
+<li><p>Create a public key using the certificate of the voting member (which was stored on step 1)</p></li>
+<li><p>Verify the signature using the public key and the raw request</p></li>
+<li><p>Repeat steps 2 - 4 until all voting history entries have been read</p></li>
+</ol>
+</div></blockquote>
+</div>
+</div>
+
+
+              </div>
+              
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="kv/api.html" title="previous page">Key-Value Store API</a>
+    <a class='right-next' id="next-link" href="consensus.html" title="next page">Consensus Protocols</a>
+
+              </div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    <p>
+          &copy; Copyright 2018, Microsoft Research.<br/>
+        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.1.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>
